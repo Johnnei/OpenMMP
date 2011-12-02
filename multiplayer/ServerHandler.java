@@ -29,7 +29,7 @@ public class ServerHandler extends Thread
 					{
 						p.handle();
 					}
-					playerSocket.sendAllPacket();
+					playerSocket.sendAllPackets();
 
 				} catch (Exception e)
 				{

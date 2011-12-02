@@ -19,7 +19,6 @@ public class Connection extends Thread
 	}
 
 	List<PlayerMP> clients;
-	public boolean hostMode = false;
 	private String server;
 
 	public void setMode(String server)

@@ -7,27 +7,31 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import monopoly.Player;
 import multiplayer.packet.Packet;
 
-public class PlayerMP
+public class PlayerMP extends Player
 {
 	Socket socket;
 	private List<Packet> toSend;
 	private DataOutputStream out;
+	private byte playerId;
 
-	public PlayerMP(int id, Socket s) throws IOException
+	public PlayerMP(byte id, Socket s) throws IOException
 	{
+		super("Johnnei", 1);
 		socket = s;
 		toSend = new ArrayList<Packet>();
 		out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+		playerId = id;
 	}
 
-	public void add(Packet p)
+	public void addPacket(Packet p)
 	{
 		toSend.add(p);
 	}
 
-	public void sendAllPacket() throws IOException
+	public void sendAllPackets() throws IOException
 	{
 		while (toSend.size() > 0)
 		{
