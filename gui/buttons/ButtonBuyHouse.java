@@ -10,11 +10,12 @@ import javax.swing.JButton;
 import monopoly.Game;
 import monopoly.GameEvent;
 
-public class ButtonBuyHouse extends JButton implements ActionListener {
-	
+public class ButtonBuyHouse extends JButton implements ActionListener
+{
+
 	private Game game;
 	private String owner;
-	
+
 	public ButtonBuyHouse(String owner)
 	{
 		game = Game.Monopoly();
@@ -23,10 +24,11 @@ public class ButtonBuyHouse extends JButton implements ActionListener {
 		addActionListener(this);
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() != this)
+	public void actionPerformed(ActionEvent e)
+	{
+		if (e.getSource() != this)
 			return;
-		if(game.turn.myTurn(owner))
+		if (game.turn.myTurn(owner))
 			game.turn.addEvent(GameEvent.buyHouse);
 	}
 }

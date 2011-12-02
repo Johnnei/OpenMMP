@@ -3,14 +3,16 @@ package gui;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class GameGUIHandler extends WindowAdapter {
-	
+public class GameGUIHandler extends WindowAdapter
+{
+
 	public GameGUIHandler()
 	{
 	}
-	
+
 	@Override
-	public void windowClosing(WindowEvent e) {
+	public void windowClosing(WindowEvent e)
+	{
 		System.exit(0);
 	}
 

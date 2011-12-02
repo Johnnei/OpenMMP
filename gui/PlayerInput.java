@@ -7,12 +7,13 @@ import javax.swing.JComponent;
 import monopoly.Game;
 import gui.buttons.*;
 
-public class PlayerInput extends JComponent {
+public class PlayerInput extends JComponent
+{
 
 	Game game;
 	int width;
 	int height;
-	
+
 	public PlayerInput(Game game, int width, int height, String player)
 	{
 		this.game = game;
@@ -22,11 +23,11 @@ public class PlayerInput extends JComponent {
 		setMinimumSize(new Dimension(width, height));
 		setMaximumSize(new Dimension(width, height));
 		setBackground(Color.BLACK);
-		setLayout(new GridLayout(0,1));
+		setLayout(new GridLayout(0, 1));
 		add(new ButtonRollDice(player));
 		add(new ButtonBuyStreet(player));
 		add(new ButtonBuyHouse(player));
 		add(new ButtonTrade(player));
 		add(new ButtonNextTurn(player));
-	}	
+	}
 }

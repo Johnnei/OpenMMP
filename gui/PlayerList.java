@@ -7,10 +7,11 @@ import javax.swing.JList;
 import monopoly.Game;
 import monopoly.Player;
 
-public class PlayerList extends JList {
-	
+public class PlayerList extends JList
+{
+
 	private Game game;
-	
+
 	public PlayerList(Game game, int WIDTH, int HEIGHT)
 	{
 		this.game = game;
@@ -19,14 +20,14 @@ public class PlayerList extends JList {
 		setMaximumSize(new Dimension(WIDTH, HEIGHT));
 		new PlayerListGUIUpdater(this).start();
 	}
-	
+
 	public void doUpdate()
 	{
-		Vector<String> vector = new Vector<String>();        
+		Vector<String> vector = new Vector<String>();
 		Player[] players = game.getPlayers();
-		for(int i = 0; i < players.length; i++)
+		for (int i = 0; i < players.length; i++)
 		{
-			if(players[i] != null)
+			if (players[i] != null)
 			{
 				vector.add(players[i].Username() + " €" + players[i].MoneyString());
 			}

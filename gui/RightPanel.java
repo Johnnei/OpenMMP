@@ -8,8 +8,9 @@ import javax.swing.JComponent;
 
 import monopoly.Game;
 
-public class RightPanel extends JComponent {
-	
+public class RightPanel extends JComponent
+{
+
 	public RightPanel(Game game, int width, int height, String user)
 	{
 		setPreferredSize(new Dimension(width, height));
@@ -17,8 +18,8 @@ public class RightPanel extends JComponent {
 		setMaximumSize(new Dimension(width, height));
 		setBackground(Color.BLACK);
 		setLayout(new BorderLayout());
-		add(new PlayerList(game, width, height/4), "North");
-		add(new PlayerInput(game, width, height/4, user), "South");
+		add(new PlayerList(game, width, height / 4), "North");
+		add(new PlayerInput(game, width, height / 4, user), "South");
 	}
 
 }
