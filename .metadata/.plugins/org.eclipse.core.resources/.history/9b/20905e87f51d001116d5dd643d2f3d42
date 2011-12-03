@@ -1,0 +1,6 @@
+package multiplayer;
+
+public class ThreadDataReader extends Thread
+{
+	
+}

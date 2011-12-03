@@ -1,0 +1,11 @@
+package server;
+
+public class ConsoleCommand extends Thread
+{
+	public ConsoleCommnad(MMP mmp)
+	{
+		
+	}
+	
+	private mmp;
+}

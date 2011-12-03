@@ -1,0 +1,54 @@
+package multiplayer;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
+import monopoly.Player;
+import multiplayer.packet.Packet;
+
+public class PlayerMP extends Player
+{
+	Socket socket;
+	private List<Packet> toSend;
+	private DataOutputStream out;
+	private DataInputStream in;
+	private byte playerId;
+
+	public PlayerMP(Socket s) throws IOException
+	{
+		socket = s;
+		toSend = new ArrayList<Packet>();
+		out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+		in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+	}
+	
+	public void setUsername(String username)
+	{
+		
+	}
+	
+	public void setId(byte id)
+	{
+		playerId = id;
+	}
+
+	public void addPacket(Packet p)
+	{
+		toSend.add(p);
+	}
+
+	public void sendAllPackets() throws IOException
+	{
+		while (toSend.size() > 0)
+		{
+			Packet.sendPacket(toSend.remove(0), out);
+		}
+	}
+
+}

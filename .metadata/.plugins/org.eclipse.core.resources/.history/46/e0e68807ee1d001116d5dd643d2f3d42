@@ -1,0 +1,8 @@
+package server;
+
+import monopoly.Game;
+
+public class ServerGame
+{
+	
+}

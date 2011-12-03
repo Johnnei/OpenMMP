@@ -1,0 +1,20 @@
+package monopoly;
+
+import java.util.Scanner;
+
+public class Game
+{
+	
+	
+	
+	public Game()
+	{
+		
+	}
+	
+	private static String readInput()
+	{
+		Scanner input = new Scanner(System.in);
+		return input.nextLine();
+	}
+}

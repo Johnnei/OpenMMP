@@ -1,0 +1,26 @@
+package multiplayer;
+
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import multiplayer.packet.Packet;
+
+public class ThreadDataWriter extends Thread
+{
+	public ThreadDataWriter(OutputStream socketOut)
+	{
+		outStream = new BufferedOutputStream(new DataOutputStream(socketOut));
+		packetQueue = new ArrayList<Packet>();
+	}
+	
+	public void run()
+	{
+		//TODO: Packet Sending
+	}
+	
+	private List<Packet> packetQueue;
+	private BufferedOutputStream outStream;
+}

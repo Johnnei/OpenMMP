@@ -1,0 +1,12 @@
+package server;
+
+public class ThreadPlayerAccept extends Thread
+{
+
+	public ThreadPlayerAccept()
+	{
+		setDaemon(true);
+		run();
+	}
+	
+}

@@ -1,0 +1,13 @@
+package multiplayer;
+
+import java.io.InputStream;
+
+public class ThreadDataReader extends Thread
+{
+	private BufferedInputStream inStream;
+	
+	public ThreadDataReader(InputStream socketIn)
+	{
+		setDaemon(true);
+	}
+}

@@ -1,0 +1,6 @@
+package multiplayer.packet;
+
+public class Packet02GiveID
+{
+
+}

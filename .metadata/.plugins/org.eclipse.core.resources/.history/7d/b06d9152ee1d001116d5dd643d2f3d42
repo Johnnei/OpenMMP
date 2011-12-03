@@ -1,0 +1,17 @@
+package server;
+
+public class ServerGame
+{
+	
+	public ServerGame()
+	{
+	}
+	
+	public boolean isPhase(int i)
+	{
+		return (byte)i == phase;
+	}
+	
+	private byte phase;
+	
+}

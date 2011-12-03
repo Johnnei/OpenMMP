@@ -1,0 +1,38 @@
+package server;
+
+import monopoly.Player;
+
+public class ServerGame
+{
+	
+	public ServerGame()
+	{
+		players = new Player[6];
+	}
+	
+	public Player[] getPlayers()
+	{
+		return players;
+	}
+	
+	public Player getPlayer(int i)
+	{
+		if(players[i] == null)
+			return null;
+		return players[i];
+	}
+	
+	public void setPhase(int i)
+	{
+		phase = (byte)i;
+	}
+	
+	public boolean isPhase(int i)
+	{
+		return (byte)i == phase;
+	}
+	
+	private byte phase;
+	private Player[] players;
+	
+}

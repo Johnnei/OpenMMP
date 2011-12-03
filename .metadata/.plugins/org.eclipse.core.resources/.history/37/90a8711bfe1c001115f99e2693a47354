@@ -1,0 +1,32 @@
+package multiplayer;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+import monopoly.Game;
+import monopoly.Turn;
+import multiplayer.Packet;
+
+public class Packet00SetTurn extends Packet{
+
+	public Packet00SetTurn() {}
+	public Packet00SetTurn(byte b) { turn = b; }
+	
+	void readData(DataInputStream d) throws IOException
+	{
+		turn = d.readByte();
+	}
+
+	void writeData(DataOutputStream d) throws IOException
+	{
+		d.writeByte(turn);
+	}
+	
+	void handle()
+	{
+		Game.Monopoly().turn = new Turn(Game.Monopoly(), Game.Monopoly().getPlayers()[turn]);
+	}
+	
+	byte turn;
+}

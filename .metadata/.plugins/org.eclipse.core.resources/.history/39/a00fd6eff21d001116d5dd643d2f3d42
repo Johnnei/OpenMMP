@@ -1,0 +1,44 @@
+package server;
+
+import java.io.IOException;
+import java.net.Socket;
+
+import multiplayer.PlayerMP;
+
+public class ThreadPlayerAccept extends Thread
+{
+
+	public ThreadPlayerAccept(MMP mmp)
+	{
+		this.mmp = mmp;
+		usernames = new String[6];
+		colorcodes = new int[6];
+		sockets = new Socket[6];
+		setDaemon(true);
+		run();
+	}
+	
+	public void run()
+	{
+		while(nextId < 6)
+		{
+			try
+			{
+				Socket s = mmp.getSocket().accept();
+				PlayerMP pmp = new PlayerMP(nextId++, s); 
+				mmp.addPlayer(pmp);
+			} catch (IOException e)
+			{
+			}
+		}
+	}
+	
+	//Temp Data
+	private String usernames[];
+	private int colorcodes[];
+	private Socket sockets[];
+	private byte nextId = 0;
+	
+	//Server Data
+	private MMP mmp;
+}

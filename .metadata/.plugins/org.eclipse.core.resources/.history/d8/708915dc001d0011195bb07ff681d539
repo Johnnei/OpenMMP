@@ -1,0 +1,13 @@
+package server;
+
+public class ConsoleCommand extends Thread
+{
+	public ConsoleCommand(MMP mmp)
+	{
+		this.mmp = mmp;
+		setDaemon(false);
+		run();
+	}
+	
+	private MMP mmp;
+}

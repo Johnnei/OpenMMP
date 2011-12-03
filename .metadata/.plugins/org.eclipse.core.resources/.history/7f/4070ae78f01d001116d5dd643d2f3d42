@@ -1,0 +1,33 @@
+package monopoly;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Scanner;
+
+import multiplayer.PlayerMP;
+
+public class Game
+{
+	PlayerMP socket;
+	
+	public Game()
+	{
+		System.out.print("Username: ");
+		username = readInput();
+		System.out.print("Color Code: 0x");
+		String code = readInput();
+		System.out.print("Server IP: ");
+		String ip = readInput();
+	}
+	
+	private static String readInput()
+	{
+		Scanner input = new Scanner(System.in);
+		return input.nextLine();
+	}
+	
+	public static void Log(String line)
+	{
+		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] " + line);
+	}
+}

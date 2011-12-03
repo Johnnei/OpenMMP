@@ -1,0 +1,31 @@
+package server;
+
+import java.io.IOException;
+import java.net.Socket;
+
+public class ThreadPlayerAccept extends Thread
+{
+
+	public ThreadPlayerAccept(MMP mmp)
+	{
+		this.mmp = mmp;
+		setDaemon(true);
+		run();
+	}
+	
+	public void run()
+	{
+		while(true)
+		{
+			try
+			{
+				Socket s = mmp.getSocket().accept();
+			} catch (IOException e)
+			{
+			}
+		}
+	}
+	
+	
+	private MMP mmp;
+}

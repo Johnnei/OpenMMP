@@ -1,0 +1,84 @@
+package server;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.util.ArrayList;
+import java.util.List;
+
+import multiplayer.PlayerMP;
+
+public class MMP
+{
+
+	public void Host()
+	{
+		System.out.println("Launching Server...");
+		try
+		{
+			System.out.print("Preparing OpenMMP Server...");
+			players = new ArrayList<PlayerMP>();
+			acceptPlayers = true;
+			
+			System.out.print("Binding to port 27960... ");
+			hostSocket.bind(new InetSocketAddress(27960));
+			System.out.println("Succeed");
+			
+			System.out.print("Launching Console Command Handler...");
+			conComm = new ConsoleCommand(this);
+			System.out.println("Succeed");
+			
+			playGame();
+			
+			System.out.print("Stopping Server...");
+			hostSocket.close();
+			System.out.println("Succeed");
+		}
+		catch(IOException e)
+		{
+			System.out.println("failed");
+			e.printStackTrace();
+		}
+	}
+	
+	public void addPlayer(PlayerMP player)
+	{
+		for(int i = 0; i < players.size(); i++)
+		{
+			players.get(i).addPacket(new Packet01PlayerJoin())
+		}
+	}
+	
+	public void startGame()
+	{
+		acceptPlayers = false;
+	}
+	
+	private void playGame()
+	{
+		// Phase 1 - Waiting for players
+		while(acceptPlayers)
+		{
+			try
+			{
+				Thread.sleep(100);
+			}
+			catch(InterruptedException e)
+			{
+			}
+		}
+	}
+	
+	//Game
+	private boolean acceptPlayers;
+	private List<PlayerMP> players;
+	
+	//Server
+	private DataInputStream input;
+	private DataOutputStream output;
+	private ServerSocket hostSocket;
+	private ConsoleCommand conComm;
+
+}

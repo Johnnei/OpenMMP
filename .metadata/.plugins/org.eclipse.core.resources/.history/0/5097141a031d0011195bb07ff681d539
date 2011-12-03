@@ -1,0 +1,23 @@
+package server;
+
+public class ThreadPlayerAccept extends Thread
+{
+
+	public ThreadPlayerAccept(MMP mmp)
+	{
+		this.mmp = mmp;
+		setDaemon(true);
+		run();
+	}
+	
+	public void run()
+	{
+		while(true)
+		{
+			
+		}
+	}
+	
+	
+	private MMP mmp;
+}

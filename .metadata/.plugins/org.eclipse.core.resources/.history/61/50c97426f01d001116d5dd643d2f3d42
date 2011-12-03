@@ -1,0 +1,21 @@
+package monopoly;
+
+import java.util.Scanner;
+
+public class Game
+{
+	
+	String username;
+	int colorCode;
+	
+	public Game()
+	{
+		username = readInput();
+	}
+	
+	private static String readInput()
+	{
+		Scanner input = new Scanner(System.in);
+		return input.nextLine();
+	}
+}
