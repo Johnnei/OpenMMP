@@ -2,7 +2,6 @@ package server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.util.ArrayList;
@@ -13,6 +12,12 @@ import multiplayer.packet.Packet01PlayerJoin;
 
 public class MMP
 {
+	
+	public static void main(String[] args)
+	{
+		MMP server = new MMP();
+		server.Host();
+	}
 
 	public void Host()
 	{
@@ -22,13 +27,16 @@ public class MMP
 			System.out.print("Preparing OpenMMP Server...");
 			players = new ArrayList<PlayerMP>();
 			acceptPlayers = true;
+			System.out.println("Done");
 			
 			System.out.print("Binding to port 27960... ");
-			hostSocket.bind(new InetSocketAddress(27960));
+			hostSocket = new ServerSocket(27960);
 			System.out.println("Succeed");
 			
 			System.out.print("Launching Console Command Handler...");
 			conComm = new ConsoleCommand(this);
+			Thread t = new Thread(conComm);
+			t.start();
 			System.out.println("Succeed");
 			
 			playGame();
@@ -37,7 +45,7 @@ public class MMP
 			hostSocket.close();
 			System.out.println("Succeed");
 		}
-		catch(IOException e)
+		catch(Exception e)
 		{
 			System.out.println("failed");
 			e.printStackTrace();
@@ -81,8 +89,6 @@ public class MMP
 	private List<PlayerMP> players;
 	
 	//Server
-	private DataInputStream input;
-	private DataOutputStream output;
 	private ServerSocket hostSocket;
 	private ConsoleCommand conComm;
 	
