@@ -17,12 +17,16 @@ public class PlayerMP extends Player
 	private DataOutputStream out;
 	private byte playerId;
 
-	public PlayerMP(byte id, Socket s) throws IOException
+	public PlayerMP(String username, int color, Socket s) throws IOException
 	{
-		super("Johnnei", 1);
+		super(username, color);
 		socket = s;
 		toSend = new ArrayList<Packet>();
 		out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+	}
+	
+	public void setPlayerId(byte id)
+	{
 		playerId = id;
 	}
 

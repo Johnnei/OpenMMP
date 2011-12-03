@@ -21,7 +21,7 @@ public class Connection extends Thread
 	List<PlayerMP> clients;
 	private String server;
 
-	public void setMode(String server)
+	public void setServer(String server)
 	{
 		this.server = server;
 	}

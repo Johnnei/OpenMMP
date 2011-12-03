@@ -2,6 +2,7 @@ package server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.util.ArrayList;
@@ -25,8 +26,7 @@ public class MMP
 		try
 		{
 			System.out.print("Preparing OpenMMP Server...");
-			players = new ArrayList<PlayerMP>();
-			acceptPlayers = true;
+			game = new ServerGame(this);
 			System.out.println("Done");
 			
 			System.out.print("Binding to port 27960... ");
@@ -54,15 +54,19 @@ public class MMP
 	
 	public void addPlayer(PlayerMP player)
 	{
-		for(int i = 0; i < players.size(); i++)
+		for(int i = 0; i < 6; i++)
 		{
-			players.get(i).addPacket(new Packet01PlayerJoin(player.Username()));
+			game.getPlayer(i).addPacket(new Packet01PlayerJoin(player.Username()));
 		}
 	}
 	
 	public void startGame()
 	{
-		acceptPlayers = false;
+		if(game.isPhase(1))
+		{
+			System.out.println("Stopping Player Acception");
+			game.setPhase(2);
+		}
 	}
 	
 	private void playGame()
@@ -70,7 +74,7 @@ public class MMP
 		// Phase 1 - Waiting for players
 		System.out.println("Phase 1 - Waiting for players...");
 		ThreadPlayerAccept pAccepter = new ThreadPlayerAccept(this);
-		while(acceptPlayers)
+		while(game.isPhase(1))
 		{
 			try
 			{
@@ -81,12 +85,21 @@ public class MMP
 			}
 		}
 		pAccepter.interrupt();
+		System.out.println("Starting Game...");
 		// Phase 2 - Let's Play
+		System.out.println("Game has ended...");
+		try
+		{
+			hostSocket.close();
+		} catch (IOException e)
+		{
+			System.out.println("Failed to close port!");
+			e.printStackTrace();
+		}
 	}
 	
 	//Game
-	private boolean acceptPlayers;
-	private List<PlayerMP> players;
+	private ServerGame game;
 	
 	//Server
 	private ServerSocket hostSocket;

@@ -20,7 +20,6 @@ public class ConsoleCommand extends Thread
 			try
 			{
 				cmd = in.readLine();
-				
 				if(cmd.equals("start"))
 				{
 					mmp.startGame();
