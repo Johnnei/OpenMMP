@@ -31,6 +31,7 @@ public class Game
 	public static Game Monopoly() { return game; }
 	
 	public PlayerMP getPlayer() { return players[myId]; }
+	public byte getMyID() { return myId; }
 	
 	public static void main(String[] args)
 	{
