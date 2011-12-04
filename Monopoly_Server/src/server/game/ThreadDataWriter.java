@@ -4,16 +4,16 @@ import java.io.DataOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import server.MMP;
 import server.packet.Packet;
 
 public class ThreadDataWriter extends Thread
 {
 	public ThreadDataWriter(OutputStream socketOut)
 	{
+		super("Network Data Writer");
 		outStream = new DataOutputStream(socketOut);
 		packetQueue = new ArrayList<Packet>();
+		setDaemon(true);
 	}
 	
 	public void run()
@@ -24,9 +24,7 @@ public class ThreadDataWriter extends Thread
 			{
 				if(packetQueue.size() > 0)
 				{
-					Packet p = packetQueue.remove(0);
-					MMP.Log("Sending Packet " + p.getPacketID());
-					p.writeData(outStream);
+					Packet.sendPacket(packetQueue.remove(0), outStream);
 				}
 				sleep(1);
 			}

@@ -26,7 +26,10 @@ public class PlayerMP extends Player
 		socket = s;
 		toSend = new ArrayList<Packet>();
 		writer = new ThreadDataWriter(s.getOutputStream());
+		writer.start();
 		reader = new ThreadDataReader(s.getInputStream());
+		reader.start();
+		playerId = 127;
 	}
 	
 	public void addPacket(Packet p)
@@ -34,14 +37,19 @@ public class PlayerMP extends Player
 		writer.queuePacket(p);
 	}
 	
-	public void setUsername(String username)
-	{
-		super.setUsername(username);
-	}
-	
 	public void setId(byte id)
 	{
 		playerId = id;
+	}
+	
+	public byte getId()
+	{
+		return playerId;
+	}
+	
+	public boolean hasId()
+	{
+		return playerId != 127;
 	}
 
 }

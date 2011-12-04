@@ -8,10 +8,11 @@ import server.packet.Packet;
 
 public class Packet01PlayerJoin extends Packet
 {
-
+	
 	public Packet01PlayerJoin()
 	{
-	};
+		
+	}
 
 	public Packet01PlayerJoin(String username, int color, byte id)
 	{

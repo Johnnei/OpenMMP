@@ -3,6 +3,7 @@ package multiplayer;
 import java.io.DataInputStream;
 import java.io.InputStream;
 
+import monopoly.Game;
 import multiplayer.packet.Packet;
 
 public class ThreadDataReader extends Thread
@@ -20,9 +21,11 @@ public class ThreadDataReader extends Thread
 		{
 			try
 			{
-				if (inStream.available() > 0)
+				if (inStream.available() > 1) //Atleast the ID is there
 				{
+					Game.Log("Reading a packet! (" + inStream.available() + ")");
 					Packet p = Packet.readPacket(inStream);
+					Game.Log("Read packet " + p.getPacketID());
 					p.handle();
 				}
 				sleep(1);

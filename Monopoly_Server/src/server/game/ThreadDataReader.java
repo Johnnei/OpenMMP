@@ -10,6 +10,7 @@ public class ThreadDataReader extends Thread
 
 	public ThreadDataReader(InputStream socketIn)
 	{
+		super("Network Data Reader");
 		setDaemon(true);
 		inStream = new DataInputStream(socketIn);
 	}

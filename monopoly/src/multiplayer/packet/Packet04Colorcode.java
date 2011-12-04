@@ -9,6 +9,10 @@ public class Packet04Colorcode extends Packet
 	byte id;
 	int code;
 	
+	public Packet04Colorcode()
+	{
+	}
+	
 	public Packet04Colorcode(int color, byte userId)
 	{
 		id = userId;
@@ -32,6 +36,11 @@ public class Packet04Colorcode extends Packet
 	@Override
 	public void handle()
 	{
+	}
+	
+	public int size()
+	{
+		return 5;
 	}
 
 }

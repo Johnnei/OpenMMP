@@ -11,6 +11,10 @@ public class Packet02GiveID extends Packet
 
 	public byte id;
 	
+	public Packet02GiveID()
+	{
+	}
+	
 	@Override
 	public void readData(DataInputStream d) throws IOException
 	{
@@ -28,10 +32,11 @@ public class Packet02GiveID extends Packet
 	{
 		Game.Log("Recieved ID: " + id);
 		Game.Monopoly().getPlayer().setId(id);
-		Packet p = new Packet03Username(Game.Monopoly().getPlayer().Username(), id);
-		Packet p2 = new Packet04Colorcode(Game.Monopoly().getPlayer().getColorCode(), id);
-		Game.Monopoly().getPlayer().addPacket(p);
-		Game.Monopoly().getPlayer().addPacket(p2);
+	}
+	
+	public int size()
+	{
+		return 1;
 	}
 
 }

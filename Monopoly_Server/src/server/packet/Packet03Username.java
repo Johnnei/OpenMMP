@@ -11,6 +11,11 @@ public class Packet03Username extends Packet
 	byte id;
 	String username;
 
+	public Packet03Username()
+	{
+		
+	}
+
 	@Override
 	public void readData(DataInputStream d) throws IOException
 	{

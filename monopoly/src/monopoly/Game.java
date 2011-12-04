@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 import multiplayer.PlayerMP;
+import multiplayer.packet.Packet03Username;
+import multiplayer.packet.Packet04Colorcode;
 
 public class Game
 {
@@ -31,9 +33,14 @@ public class Game
 	public static void main(String[] args)
 	{
 		game = new Game();
+		game.StartGame();
 	}
 	
 	private Game()
+	{	
+	}
+	
+	private void StartGame()
 	{
 		Log("OpenMMP, Open Source Monopoly Multiplayer!");
 		Log("OpenMMP V0.1 Alpha");
@@ -56,8 +63,18 @@ public class Game
 			socket.setUsername(username);
 			socket.setColor(colorCode);
 			Log("Waiting for ID...");
+			while(!socket.hasId())
+			{
+				Thread.sleep(100);
+			}
+			Log("Sending Player Data...");
+			socket.addPacket(new Packet03Username(username, socket.getId()));
+			socket.addPacket(new Packet04Colorcode(colorCode, socket.getId()));
+			Log("Waiting for Server to start the game!");
+			
 			while(true)
 			{
+				//Idle to keep connection, just for testing atm
 				Thread.sleep(100);
 			}
 		} catch (Exception e)

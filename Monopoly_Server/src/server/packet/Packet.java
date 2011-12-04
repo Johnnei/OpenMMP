@@ -5,11 +5,13 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 
+import server.packet.Packet03Username;
+import server.packet.Packet04Colorcode;
+
 public abstract class Packet
 {
 
-	static HashMap<Class, Integer> classToID = new HashMap<Class, Integer>();
-	static HashMap<Integer, Class> IDToClass = new HashMap<Integer, Class>();
+	private static Class[] packetArray = new Class[5];
 
 	public Packet()
 	{
@@ -23,7 +25,9 @@ public abstract class Packet
 
 	public final int getPacketID()
 	{
-		return classToID.get(getClass());
+		String packetClass = getClass().getName();
+		String id = packetClass.substring(20, 22);
+		return Integer.parseInt(id);
 	}
 
 	public static void sendPacket(Packet p, DataOutputStream d) throws IOException
@@ -36,19 +40,14 @@ public abstract class Packet
 	{
 		if (d.available() <= 0)
 			return null;
-		Packet p = (Packet) IDToClass.get(d.readShort()).newInstance();
+		Packet p = (Packet) packetArray[d.readShort()].newInstance();
 		p.readData(d);
 		return p;
 	}
 
 	public static void registerClass(int id, Class c)
 	{
-		if (IDToClass.get(id) != null)
-		{
-			return;
-		}
-		classToID.put(c, id);
-		IDToClass.put(id, c);
+		packetArray[id] = c;
 	}
 
 	static
@@ -56,6 +55,8 @@ public abstract class Packet
 		registerClass(0, Packet00SetTurn.class);
 		registerClass(1, Packet01PlayerJoin.class);
 		registerClass(2, Packet02GiveID.class);
+		registerClass(3, Packet03Username.class);
+		registerClass(4, Packet04Colorcode.class);
 	}
 
 }

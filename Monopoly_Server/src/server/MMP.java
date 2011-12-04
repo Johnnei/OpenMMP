@@ -57,11 +57,11 @@ public class MMP
 			PlayerMP playermp = new PlayerMP(player);
 			playermp.setId(nextId++);
 			game.setPlayer(playermp, playermp.getId());
-			
 			Packet02GiveID packet = new Packet02GiveID();
 			packet.id = playermp.getId();
 			Monopoly().sendPacket(packet, packet.id);
-		} catch (IOException e) {
+			Log("Player " + packet.id + " has joined");
+		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 	}

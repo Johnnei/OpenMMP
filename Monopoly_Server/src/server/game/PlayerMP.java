@@ -2,6 +2,8 @@ package server.game;
 
 import java.io.IOException;
 import java.net.Socket;
+
+import server.MMP;
 import server.game.Player;
 import server.packet.Packet;
 
@@ -16,9 +18,9 @@ public class PlayerMP extends Player
 	{
 		socket = s;
 		writer = new ThreadDataWriter(s.getOutputStream());
+		writer.start();
 		reader = new ThreadDataReader(s.getInputStream());
-		writer.run();
-		reader.run();
+		reader.start();
 	}
 	
 	public void setID(byte id)

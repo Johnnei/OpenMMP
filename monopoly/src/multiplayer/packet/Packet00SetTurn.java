@@ -33,6 +33,11 @@ public class Packet00SetTurn extends Packet
 	{
 		Game.Monopoly().turn = new Turn(Game.Monopoly(), Game.Monopoly().getPlayers()[turn]);
 	}
+	
+	public int size()
+	{
+		return 1;
+	}
 
 	byte turn;
 }

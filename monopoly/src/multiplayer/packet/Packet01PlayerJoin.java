@@ -12,7 +12,7 @@ public class Packet01PlayerJoin extends Packet
 
 	public Packet01PlayerJoin()
 	{
-	};
+	}
 
 	public Packet01PlayerJoin(String username, int color, byte id)
 	{
@@ -23,12 +23,14 @@ public class Packet01PlayerJoin extends Packet
 
 	public void readData(DataInputStream d) throws IOException
 	{
+		this.id = d.readByte();
 		user = d.readUTF();
 		colorCode = d.readInt();
 	}
 
 	public void writeData(DataOutputStream d) throws IOException
 	{
+		d.writeByte(id);
 		d.writeUTF(user);
 		d.writeInt(colorCode);
 	}
@@ -45,6 +47,11 @@ public class Packet01PlayerJoin extends Packet
 				return;
 			}
 		}*/
+	}
+	
+	public int size()
+	{
+		return 5;
 	}
 
 	String user;

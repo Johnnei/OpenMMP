@@ -10,6 +10,11 @@ public class Packet04Colorcode extends Packet
 {
 	byte id;
 	int code;
+	
+	public Packet04Colorcode()
+	{
+		
+	}
 
 	@Override
 	public void readData(DataInputStream d) throws IOException

@@ -23,8 +23,7 @@ public class ThreadDataWriter extends Thread
 			{
 				if(packetQueue.size() > 0)
 				{
-					Packet p = packetQueue.remove(0);
-					p.writeData(outStream);
+					Packet.sendPacket(packetQueue.remove(0), outStream);
 				}
 				sleep(1);
 			}

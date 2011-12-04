@@ -9,6 +9,10 @@ public class Packet03Username extends Packet
 	byte id;
 	String username;
 	
+	public Packet03Username()
+	{
+	}
+	
 	public Packet03Username(String user, byte userId)
 	{
 		id = userId;
@@ -32,6 +36,11 @@ public class Packet03Username extends Packet
 	@Override
 	public void handle()
 	{
+	}
+	
+	public int size()
+	{
+		return 2;
 	}
 
 }

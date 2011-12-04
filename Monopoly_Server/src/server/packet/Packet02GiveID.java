@@ -12,6 +12,11 @@ public class Packet02GiveID extends Packet
 
 	public byte id;
 	
+	public Packet02GiveID()
+	{
+		
+	}
+	
 	@Override
 	public void readData(DataInputStream d) throws IOException
 	{
