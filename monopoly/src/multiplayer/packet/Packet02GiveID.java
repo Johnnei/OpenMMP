@@ -31,7 +31,7 @@ public class Packet02GiveID extends Packet
 	public void handle()
 	{
 		Game.Log("Recieved ID: " + id);
-		Game.Monopoly().getPlayer().setId(id);
+		Game.Monopoly().setMyID(id);
 	}
 	
 	public int size()

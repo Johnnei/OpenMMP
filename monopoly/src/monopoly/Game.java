@@ -21,7 +21,7 @@ public class Game
 	public Turn turn;
 	
 	/* MP Data */
-	private byte myId;
+	private byte myId = 127;
 	PlayerMP[] players;
 	public byte playerCount = 127;
 	public byte gotPlayers = 1;
@@ -32,6 +32,7 @@ public class Game
 	
 	public PlayerMP getPlayer() { return players[myId]; }
 	public byte getMyID() { return myId; }
+	public void setMyID(byte b) { myId = b; }
 	
 	public static void main(String[] args)
 	{
@@ -66,11 +67,11 @@ public class Game
 			socket.setUsername(username);
 			socket.setColor(colorCode);
 			Log("Waiting for ID...");
-			while(!socket.hasId())
+			while(myId == 127)
 			{
 				Thread.sleep(100);
 			}
-			myId = socket.getId();
+			socket.setId(myId);
 			players[socket.getId()] = socket;
 			Log("Sending Player Data...");
 			getPlayer().addPacket(new Packet03Username(username, socket.getId()));
