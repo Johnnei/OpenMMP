@@ -50,7 +50,18 @@ public class ServerGame
 	
 	public void sendPacket(Packet p, byte id)
 	{
-		players[id].addPacket(p);
+		if(players[id] != null)
+			players[id].addPacket(p);
+	}
+	
+	public void sendPacket(Packet p)
+	{
+		for(int i = 0; i < 6; i++)
+		{
+			if(players[i] == null)
+				continue;
+			players[i].addPacket(p);
+		}
 	}
 	
 	private byte phase;

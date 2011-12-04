@@ -21,14 +21,16 @@ public class Game
 	public Turn turn;
 	
 	/* MP Data */
-	PlayerMP socket;
+	private byte myId;
 	PlayerMP[] players;
+	public byte playerCount = 127;
+	public byte gotPlayers = 1;
 	
 	/* Pass by Reference */
 	private static Game game;
 	public static Game Monopoly() { return game; }
 	
-	public PlayerMP getPlayer() { return socket; }
+	public PlayerMP getPlayer() { return players[myId]; }
 	
 	public static void main(String[] args)
 	{
@@ -59,7 +61,7 @@ public class Game
 		try
 		{
 			Socket pSocket = new Socket(ip, 27960);
-			socket = new PlayerMP(pSocket);
+			PlayerMP socket = new PlayerMP(pSocket);
 			socket.setUsername(username);
 			socket.setColor(colorCode);
 			Log("Waiting for ID...");
@@ -67,12 +69,14 @@ public class Game
 			{
 				Thread.sleep(100);
 			}
+			myId = socket.getId();
+			players[socket.getId()] = socket;
 			Log("Sending Player Data...");
-			socket.addPacket(new Packet03Username(username, socket.getId()));
-			socket.addPacket(new Packet04Colorcode(colorCode, socket.getId()));
+			getPlayer().addPacket(new Packet03Username(username, socket.getId()));
+			getPlayer().addPacket(new Packet04Colorcode(colorCode, socket.getId()));
 			Log("Waiting for Server to start the game!");
 			
-			while(true)
+			while(playerCount != gotPlayers)
 			{
 				//Idle to keep connection, just for testing atm
 				Thread.sleep(100);
@@ -106,6 +110,12 @@ public class Game
 	public Player[] getPlayers()
 	{
 		return players;
+	}
+	
+	public void registerPlayer(PlayerMP player)
+	{
+		players[player.getId()] = player;
+		++gotPlayers;
 	}
 	
 	public int getDice(int i)

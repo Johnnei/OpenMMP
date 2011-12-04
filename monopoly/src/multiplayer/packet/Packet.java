@@ -10,7 +10,7 @@ import monopoly.Game;
 public abstract class Packet
 {
 	
-	private static Class[] packetArray = new Class[5];
+	private static Class[] packetArray = new Class[6];
 
 	public Packet()
 	{
@@ -21,8 +21,6 @@ public abstract class Packet
 	public abstract void writeData(DataOutputStream d) throws IOException;
 
 	public abstract void handle();
-	
-	public abstract int size();
 
 	public final int getPacketID()
 	{
@@ -55,6 +53,7 @@ public abstract class Packet
 		registerClass(2, Packet02GiveID.class);
 		registerClass(3, Packet03Username.class);
 		registerClass(4, Packet04Colorcode.class);
+		registerClass(5, Packet05StartGame.class);
 	}
 	
 	public static void registerClass(int id, Class c)

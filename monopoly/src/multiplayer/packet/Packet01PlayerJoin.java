@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import monopoly.Game;
 import monopoly.Player;
+import multiplayer.PlayerMP;
 
 public class Packet01PlayerJoin extends Packet
 {
@@ -37,16 +38,9 @@ public class Packet01PlayerJoin extends Packet
 
 	public void handle()
 	{
-		/*Player p = new Player(user, colorCode);
-		Player[] ps = Game.Monopoly().getPlayers();
-		for (int i = 0; i < ps.length; i++)
-		{
-			if (ps[i] == null)
-			{
-				Game.Monopoly().setPlayer(i, p);
-				return;
-			}
-		}*/
+		PlayerMP player = new PlayerMP(user, id, colorCode);
+		Game.Monopoly().registerPlayer(player);
+		Game.Log(user + " has joined the game!");
 	}
 	
 	public int size()

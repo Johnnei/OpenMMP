@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import server.game.PlayerMP;
+import server.packet.Packet01PlayerJoin;
 import server.packet.Packet02GiveID;
+import server.packet.Packet05StartGame;
 
 public class MMP
 {
@@ -68,11 +70,13 @@ public class MMP
 	
 	public void startGame()
 	{
-		if(game.isPhase(1))
+		if(game.isPhase(1) && nextId >= 2)
 		{
-			System.out.println("Stopping Player Acception");
+			Log("Stopping Player Acception");
 			game.setPhase(2);
 		}
+		else
+			Log("Cannot start the Game (Already Started / Only 1 player)");
 	}
 	
 	private void playGame()
@@ -92,7 +96,15 @@ public class MMP
 		}
 		pAccepter.interrupt();
 		Log("Preparing Game...");
-		//TODO: Send player data to all players!
+		
+		Monopoly().sendPacket(new Packet05StartGame(nextId));
+		for(int i = 0; i < Monopoly().getPlayers().length; i++)
+		{
+			PlayerMP player = Monopoly().getPlayer(i);
+			if(player != null)
+				Monopoly().sendPacket(new Packet01PlayerJoin(player.Username(), player.getColorCode(), player.getId()));
+		}
+		
 		Log("Starting Game...");
 		// Phase 2 - Let's Play
 		Log("Game has ended...");

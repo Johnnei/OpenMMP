@@ -9,6 +9,7 @@ public class Player
 	private int money;
 	private int value;
 	private Color color;
+	private int colorcode;
 	
 	public Player()
 	{
@@ -30,6 +31,7 @@ public class Player
 	public void setColor(int code)
 	{
 		color = new Color(code);
+		colorcode = code;
 	}
 
 	public String MoneyString()
@@ -43,6 +45,11 @@ public class Player
 			}
 		}
 		return smoney;
+	}
+	
+	public int getColorCode()
+	{
+		return colorcode;
 	}
 
 	public void getMoney(int amount)

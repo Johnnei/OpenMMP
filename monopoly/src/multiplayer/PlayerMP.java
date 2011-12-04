@@ -21,6 +21,13 @@ public class PlayerMP extends Player
 	private List<Packet> toSend;
 	private byte playerId;
 
+	public PlayerMP(String username, byte id, int colorC)
+	{
+		setUsername(username);
+		setId(id);
+		setColor(colorC);
+	}
+	
 	public PlayerMP(Socket s) throws IOException
 	{
 		socket = s;
