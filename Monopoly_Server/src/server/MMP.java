@@ -76,13 +76,17 @@ public class MMP
 			game.setPhase(2);
 		}
 		else
+		{
 			Log("Cannot start the Game (Already Started / Only 1 player)");
+			Log("Player Count: " + nextId);
+		}
 	}
 	
 	private void playGame()
 	{
 		// Phase 1 - Waiting for players
 		Log("Phase 1 - Waiting for players...");
+		game.setPhase(1);
 		ThreadPlayerAccept pAccepter = new ThreadPlayerAccept();
 		while(game.isPhase(1))
 		{
