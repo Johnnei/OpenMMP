@@ -1,28 +1,32 @@
-package server.packet;
+package multiplayer.packet;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import server.MMP;
-import server.packet.Packet;
-
-public class Packet02GiveID extends Packet
+public class Packet03Username extends Packet
 {
-
-	public byte id;
+	byte id;
+	String username;
 	
+	public Packet03Username(String user, byte userId)
+	{
+		id = userId;
+		username = user;
+	}
+
 	@Override
 	public void readData(DataInputStream d) throws IOException
 	{
 		id = d.readByte();
+		username = d.readUTF();
 	}
 
 	@Override
 	public void writeData(DataOutputStream d) throws IOException
 	{
-		MMP.Log("Sending ID Data to: " + id);
 		d.writeByte(id);
+		d.writeUTF(username);
 	}
 
 	@Override

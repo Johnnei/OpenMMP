@@ -3,6 +3,11 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import server.game.PlayerMP;
+import server.packet.Packet02GiveID;
 
 public class MMP
 {
@@ -19,38 +24,46 @@ public class MMP
 
 	public void Host()
 	{
-		System.out.println("Launching Server...");
+		Log("Launching Server...");
 		try
 		{
-			System.out.print("Preparing OpenMMP Server...");
-			game = new ServerGame(this);
-			System.out.println("Done");
+			Log("Preparing OpenMMP Server...");
+			game = new ServerGame();
 			
-			System.out.print("Binding to port 27960... ");
+			Log("Binding to port 27960... ");
 			hostSocket = new ServerSocket(27960);
-			System.out.println("Succeed");
 			
-			System.out.print("Launching Console Command Handler...");
+			Log("Launching Console Command Handler...");
 			conComm = new ConsoleCommand(this);
 			Thread t = new Thread(conComm);
 			t.start();
-			System.out.println("Succeed");
 			
 			playGame();
 			
-			System.out.print("Stopping Server...");
+			Log("Stopping Server...");
 			hostSocket.close();
-			System.out.println("Succeed");
 		}
 		catch(Exception e)
 		{
-			System.out.println("failed");
+			Log("Error Occured!");
 			e.printStackTrace();
 		}
 	}
 	
 	public void addPlayer(Socket player)
 	{
+		Log("Incoming Connection... (" + nextId + ")");
+		try {
+			PlayerMP playermp = new PlayerMP(player);
+			playermp.setId(nextId++);
+			game.setPlayer(playermp, playermp.getId());
+			
+			Packet02GiveID packet = new Packet02GiveID();
+			packet.id = playermp.getId();
+			Monopoly().sendPacket(packet, packet.id);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 	}
 	
 	public void startGame()
@@ -65,7 +78,7 @@ public class MMP
 	private void playGame()
 	{
 		// Phase 1 - Waiting for players
-		System.out.println("Phase 1 - Waiting for players...");
+		Log("Phase 1 - Waiting for players...");
 		ThreadPlayerAccept pAccepter = new ThreadPlayerAccept();
 		while(game.isPhase(1))
 		{
@@ -78,11 +91,11 @@ public class MMP
 			}
 		}
 		pAccepter.interrupt();
-		System.out.println("Preparing Game...");
+		Log("Preparing Game...");
 		//TODO: Send player data to all players!
-		System.out.println("Starting Game...");
+		Log("Starting Game...");
 		// Phase 2 - Let's Play
-		System.out.println("Game has ended...");
+		Log("Game has ended...");
 		try
 		{
 			hostSocket.close();
@@ -93,8 +106,17 @@ public class MMP
 		}
 	}
 	
+	public static void Log(String line)
+	{
+		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] " + line);
+	}
+	
 	//Game
 	private ServerGame game;
+	public ServerGame Monopoly() { return game; }
+	
+	//Connection Data
+	private byte nextId = 0;
 	
 	//Server
 	private ServerSocket hostSocket;

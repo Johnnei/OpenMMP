@@ -10,6 +10,7 @@ public class Player
 	private int value;
 	private int index;
 	private Color color;
+	private int colorCode;
 	
 	public Player()
 	{
@@ -32,6 +33,7 @@ public class Player
 	public void setColor(int code)
 	{
 		color = new Color(code);
+		colorCode = code;
 	}
 	
 	public void setIndex(int i)
@@ -87,5 +89,10 @@ public class Player
 	public Color getColor()
 	{
 		return color;
+	}
+	
+	public int getColorCode()
+	{
+		return colorCode;
 	}
 }

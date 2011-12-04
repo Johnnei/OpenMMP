@@ -11,6 +11,7 @@ import java.util.List;
 
 import monopoly.Player;
 import multiplayer.packet.Packet;
+import multiplayer.packet.Packet03Username;
 
 public class PlayerMP extends Player
 {
@@ -35,7 +36,7 @@ public class PlayerMP extends Player
 	
 	public void setUsername(String username)
 	{
-		
+		super.setUsername(username);
 	}
 	
 	public void setId(byte id)

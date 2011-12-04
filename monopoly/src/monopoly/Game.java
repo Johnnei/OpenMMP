@@ -26,6 +26,8 @@ public class Game
 	private static Game game;
 	public static Game Monopoly() { return game; }
 	
+	public PlayerMP getPlayer() { return socket; }
+	
 	public static void main(String[] args)
 	{
 		game = new Game();
@@ -53,6 +55,11 @@ public class Game
 			socket = new PlayerMP(pSocket);
 			socket.setUsername(username);
 			socket.setColor(colorCode);
+			Log("Waiting for ID...");
+			while(true)
+			{
+				Thread.sleep(100);
+			}
 		} catch (Exception e)
 		{
 			Log("Failed!");

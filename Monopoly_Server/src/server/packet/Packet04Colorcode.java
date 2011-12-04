@@ -5,29 +5,31 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import server.MMP;
-import server.packet.Packet;
 
-public class Packet02GiveID extends Packet
+public class Packet04Colorcode extends Packet
 {
+	byte id;
+	int code;
 
-	public byte id;
-	
 	@Override
 	public void readData(DataInputStream d) throws IOException
 	{
 		id = d.readByte();
+		code = d.readInt();
 	}
 
 	@Override
 	public void writeData(DataOutputStream d) throws IOException
 	{
-		MMP.Log("Sending ID Data to: " + id);
 		d.writeByte(id);
+		d.writeInt(code);
 	}
 
 	@Override
 	public void handle()
 	{
+		MMP.Log("Client " + MMP.getServer().Monopoly().getPlayer(id).Username() + " picked color " + code);
+		MMP.getServer().Monopoly().setColor(id, code);
 	}
 
 }

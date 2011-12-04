@@ -1,21 +1,37 @@
 package multiplayer;
 
-import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.InputStream;
 
+import multiplayer.packet.Packet;
+
 public class ThreadDataReader extends Thread
 {
-	private BufferedInputStream inStream;
-	
+
 	public ThreadDataReader(InputStream socketIn)
 	{
 		setDaemon(true);
-		inStream = new BufferedInputStream(new DataInputStream(socketIn));
+		inStream = new DataInputStream(socketIn);
 	}
-	
+
 	public void run()
 	{
-		//TODO: Packet Reading
+		while(true)
+		{
+			try
+			{
+				if (inStream.available() > 0)
+				{
+					Packet p = Packet.readPacket(inStream);
+					p.handle();
+				}
+				sleep(1);
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
+	
+	private DataInputStream inStream;
 }
