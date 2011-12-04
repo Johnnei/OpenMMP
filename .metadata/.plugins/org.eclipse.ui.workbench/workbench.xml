@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="30" version="2.0">
+<workbench progressCount="31" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="100" y="100">
 <fastViewData fastViewLocation="1024"/>
@@ -34,57 +34,34 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
-<part id="4"/>
-<part id="5"/>
-<part id="6"/>
-<part id="7"/>
-<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConsoleCommand.java" partName="ConsoleCommand.java" path="C:/Users/Johnnei/freetime/Monopoly/src/server/ConsoleCommand.java" title="ConsoleCommand.java" tooltip="Monopoly/src/server/ConsoleCommand.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/server/ConsoleCommand.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="14" selectionOffset="172" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet01PlayerJoin.java" partName="Packet01PlayerJoin.java" path="C:/Users/Johnnei/freetime/Monopoly_Server/src/server/packet/Packet01PlayerJoin.java" title="Packet01PlayerJoin.java" tooltip="Monopoly_Server/src/server/packet/Packet01PlayerJoin.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly_Server/src/server/packet/Packet01PlayerJoin.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="651" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadPlayerAccept.java" partName="ThreadPlayerAccept.java" path="C:/Users/Johnnei/freetime/Monopoly/src/server/ThreadPlayerAccept.java" title="ThreadPlayerAccept.java" tooltip="Monopoly/src/server/ThreadPlayerAccept.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/server/ThreadPlayerAccept.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="434" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet02GiveID.java" partName="Packet02GiveID.java" path="C:/Users/Johnnei/freetime/Monopoly_Server/src/server/packet/Packet02GiveID.java" title="Packet02GiveID.java" tooltip="Monopoly_Server/src/server/packet/Packet02GiveID.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly_Server/src/server/packet/Packet02GiveID.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="137" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet.java" partName="Packet.java" path="C:/Users/Johnnei/freetime/Monopoly/src/multiplayer/packet/Packet.java" title="Packet.java" tooltip="Monopoly/src/multiplayer/packet/Packet.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/multiplayer/packet/Packet.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="232" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadPlayerAccept.java" partName="ThreadPlayerAccept.java" path="C:/Users/Johnnei/freetime/Monopoly_Server/src/server/ThreadPlayerAccept.java" title="ThreadPlayerAccept.java" tooltip="Monopoly_Server/src/server/ThreadPlayerAccept.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly_Server/src/server/ThreadPlayerAccept.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="93" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ButtonRollDice.java" partName="ButtonRollDice.java" path="C:/Users/Johnnei/freetime/Monopoly/src/gui/buttons/ButtonRollDice.java" title="ButtonRollDice.java" tooltip="Monopoly/src/gui/buttons/ButtonRollDice.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/gui/buttons/ButtonRollDice.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="71" selectionOffset="99" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PlayerMP.java" partName="PlayerMP.java" path="C:/Users/Johnnei/freetime/Monopoly/src/multiplayer/PlayerMP.java" title="PlayerMP.java" tooltip="Monopoly/src/multiplayer/PlayerMP.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/multiplayer/PlayerMP.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="497" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Player.java" partName="Player.java" path="C:/Users/Johnnei/freetime/Monopoly/src/monopoly/Player.java" title="Player.java" tooltip="Monopoly/src/monopoly/Player.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/monopoly/Player.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="60" selectionTopPixel="60"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MMP.java" partName="MMP.java" path="C:/Users/Johnnei/freetime/Monopoly/src/server/MMP.java" title="MMP.java" tooltip="Monopoly/src/server/MMP.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/server/MMP.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1971" selectionTopPixel="817"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" partName="Game.java" path="C:/Users/Johnnei/freetime/Monopoly/src/monopoly/Game.java" title="Game.java" tooltip="Monopoly/src/monopoly/Game.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/monopoly/Game.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="42" selectionOffset="5481" selectionTopPixel="2407"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Connection.java" partName="Connection.java" path="C:/Users/Johnnei/freetime/Monopoly/src/multiplayer/Connection.java" title="Connection.java" tooltip="Monopoly/src/multiplayer/Connection.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly/src/multiplayer/Connection.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="97"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MMP.java" partName="MMP.java" path="C:/Users/Johnnei/freetime/Monopoly_Server/src/server/MMP.java" title="MMP.java" tooltip="Monopoly_Server/src/server/MMP.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Monopoly_Server/src/server/MMP.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="251" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (37 items)"/>
+<category IMemento.internal.id="Warnings (36 items)"/>
+<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -126,21 +103,16 @@
 </customFilters>
 </viewState>
 </view>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List">
-<viewState linkWithEditor="true" presentation="org.eclipse.mylyn.tasks.ui.categorized">
-<sorter groupBy="CATEGORY_QUERY">
-<sorter>
-<sort0 sortDirection="1" sortKey="PRIORITY"/>
-<sort1 sortDirection="1" sortKey="RANK"/>
-<sort2 sortDirection="1" sortKey="DATE_CREATED"/>
-<sort3 sortDirection="1" sortKey="NONE"/>
-<sort4 sortDirection="1" sortKey="NONE"/>
-<sort5 sortDirection="1" sortKey="NONE"/>
-<sort6 sortDirection="1" sortKey="NONE"/>
-<sort7 sortDirection="1" sortKey="NONE"/>
-</sorter>
-</sorter>
-<filteredTreeFindHistory/>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="300" org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.priorityField="30" org.eclipse.ui.ide.resourceField="90"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
@@ -212,8 +184,8 @@
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -241,11 +213,12 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.7496136" ratioLeft="485" ratioRight="162" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.views.TaskList" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
@@ -254,15 +227,14 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@191aca5" ratio="0.7493333" ratioLeft="562" ratioRight="188" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.mylyn.tasks.ui.views.tasks" appearance="2" expanded="2">
-<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@191aca5" ratio="0.734252" ratioLeft="746" ratioRight="270" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="right" ratio="0.49896908" ratioLeft="242" ratioRight="243" relationship="4" relative="org.eclipse.ui.internal.ViewStack@191aca5">
@@ -282,168 +254,175 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/server/MMP.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/monopoly/Player.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/server/ThreadPlayerAccept.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/PlayerMP.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/packet/Packet00SetTurn.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/monopoly/Game.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/gui/Images.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/Connection.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/server/ConsoleCommand.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/packet/Packet.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/server/MMP.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/gui/GameGUIHandler.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/Connection.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/gui/Board.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/packet/Packet00SetTurn.java"/>
+<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Monopoly/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.lang(Thread.class"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/PlayerMP.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/ThreadDataReader.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/multiplayer/ThreadDataWriter.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly/src/server/packet/Packet.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/game/Player.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/game/PlayerMP.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/game/ThreadDataReader.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/game/ThreadDataWriter.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/packet/Packet01PlayerJoin.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/packet/Packet02GiveID.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/ThreadPlayerAccept.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/ServerGame.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Monopoly_Server/src/server/MMP.java"/>
 </editors>
 <item historyLabel="ThreadPlayerAccept.java" index="1">
-<position info="not_deleted" x="474" y="0"/>
+<position info="not_deleted" x="149" y="0"/>
 </item>
-<item historyLabel="MMP.java" index="0">
-<position info="not_deleted" x="1224" y="0"/>
-</item>
-<item historyLabel="ThreadPlayerAccept.java" index="1">
-<position info="not_deleted" x="474" y="0"/>
+<item historyLabel="Thread.class" index="5">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="ThreadPlayerAccept.java" index="1">
+<position info="not_deleted" x="149" y="0"/>
+</item>
+<item historyLabel="MMP.java" index="3">
+<position info="not_deleted" x="1095" y="0"/>
+</item>
+<item historyLabel="MMP.java" index="3">
+<position info="not_deleted" x="2218" y="0"/>
+</item>
+<item historyLabel="MMP.java" index="3">
+<position info="not_deleted" x="278" y="0"/>
+</item>
+<item historyLabel="MMP.java" index="3">
+<position info="not_deleted" x="160" y="0"/>
+</item>
+<item historyLabel="Packet00SetTurn.java" index="4">
 <position/>
 </item>
-<item historyLabel="ThreadPlayerAccept.java" index="1">
-<position info="not_deleted" x="474" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="0">
-<position info="not_deleted" x="1224" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="0">
-<position info="not_deleted" x="1936" y="0"/>
+<item historyLabel="MMP.java" index="3">
+<position info="not_deleted" x="1417" y="0"/>
 </item>
 <item historyLabel="ThreadPlayerAccept.java" index="1">
-<position info="not_deleted" x="391" y="0"/>
-</item>
-<item historyLabel="PlayerMP.java" index="2">
-<position info="not_deleted" x="497" y="0"/>
+<position info="not_deleted" x="168" y="18"/>
 </item>
 <item historyLabel="ThreadPlayerAccept.java" index="1">
-<position info="not_deleted" x="434" y="0"/>
+<position info="not_deleted" x="393" y="0"/>
 </item>
-<item historyLabel="PlayerMP.java" index="2">
-<position info="not_deleted" x="497" y="0"/>
+<item historyLabel="MMP.java" index="3">
+<position info="not_deleted" x="104" y="30"/>
 </item>
-<item historyLabel="ThreadPlayerAccept.java" index="1">
-<position info="not_deleted" x="434" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="0">
-<position info="not_deleted" x="1936" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="0">
-<position info="not_deleted" x="1517" y="0"/>
-</item>
-<item historyLabel="Packet00SetTurn.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Game.java" index="4">
-<position info="not_deleted" x="5846" y="0"/>
-</item>
-<item historyLabel="Game.java" index="4">
-<position info="not_deleted" x="5084" y="10"/>
-</item>
-<item historyLabel="Packet00SetTurn.java" index="3">
-<position info="not_deleted" x="610" y="0"/>
-</item>
-<item historyLabel="Images.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Packet00SetTurn.java" index="3">
-<position info="not_deleted" x="610" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="0">
-<position info="not_deleted" x="1517" y="0"/>
-</item>
-<item historyLabel="Connection.java" index="6">
-<position info="not_deleted" x="460" y="0"/>
-</item>
-<item historyLabel="ConsoleCommand.java" index="7">
-<position info="not_deleted" x="543" y="0"/>
-</item>
-<item historyLabel="ConsoleCommand.java" index="7">
-<position info="not_deleted" x="422" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="1409" y="0"/>
-</item>
-<item historyLabel="GameGUIHandler.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="403" y="0"/>
-</item>
-<item historyLabel="Game.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Game.java" index="4">
-<position info="not_deleted" x="5481" y="42"/>
-</item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="403" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="379" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="640" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="639" y="0"/>
-</item>
-<item historyLabel="MMP.java" index="8">
+<item historyLabel="PlayerMP.java" index="6">
 <position/>
 </item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="383" y="16"/>
+<item historyLabel="Player.java" index="0">
+<position info="not_deleted" x="208" y="6"/>
 </item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="738" y="0"/>
+<item historyLabel="Player.java" index="0">
+<position info="not_deleted" x="183" y="0"/>
 </item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="931" y="0"/>
+<item historyLabel="Player.java" index="0">
+<position info="not_deleted" x="196" y="0"/>
 </item>
-<item historyLabel="MMP.java" index="8">
-<position info="not_deleted" x="738" y="0"/>
+<item historyLabel="Player.java" index="0">
+<position info="not_deleted" x="449" y="0"/>
 </item>
-<item historyLabel="Connection.java" index="10">
+<item historyLabel="MMP.java" index="3">
+<position info="not_deleted" x="104" y="30"/>
+</item>
+<item historyLabel="PlayerMP.java" index="6">
+<position info="not_deleted" x="898" y="0"/>
+</item>
+<item historyLabel="ThreadDataReader.java" index="7">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Game.java" index="4">
-<position info="not_deleted" x="5481" y="42"/>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="647" y="0"/>
 </item>
-<item historyLabel="MMP.java" index="8">
-<position/>
+<item historyLabel="PlayerMP.java" index="6">
+<position info="not_deleted" x="741" y="0"/>
 </item>
-<item historyLabel="ConsoleCommand.java" index="7">
-<position info="not_deleted" x="239" y="0"/>
+<item historyLabel="ThreadDataReader.java" index="7">
+<position info="not_deleted" x="212" y="0"/>
 </item>
-<item historyLabel="MMP.java" index="8">
-<position/>
+<item historyLabel="PlayerMP.java" index="6">
+<position info="not_deleted" x="39" y="19"/>
 </item>
-<item historyLabel="ConsoleCommand.java" index="7">
-<position info="not_deleted" x="172" y="14"/>
+<item historyLabel="ThreadDataReader.java" index="7">
+<position info="not_deleted" x="212" y="0"/>
 </item>
-<item historyLabel="Game.java" index="4">
-<position info="not_deleted" x="5481" y="42"/>
+<item historyLabel="ThreadDataReader.java" index="7">
+<position info="not_deleted" x="414" y="0"/>
 </item>
-<item historyLabel="Board.java" index="11">
+<item historyLabel="Packet.java" index="2">
+<position info="not_deleted" x="683" y="0"/>
+</item>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="647" y="0"/>
+</item>
+<item historyLabel="ThreadDataReader.java" index="7">
+<position info="not_deleted" x="414" y="0"/>
+</item>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="435" y="0"/>
+</item>
+<item historyLabel="ThreadDataReader.java" index="7">
+<position info="not_deleted" x="414" y="0"/>
+</item>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="435" y="0"/>
+</item>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="461" y="0"/>
+</item>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="435" y="0"/>
+</item>
+<item historyLabel="Packet.java" index="9">
+<position info="not_deleted" x="147" y="0"/>
+</item>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="492" y="0"/>
+</item>
+<item historyLabel="Packet00SetTurn.java" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Game.java" index="4">
-<position info="not_deleted" x="5481" y="42"/>
+<item historyLabel="ThreadDataWriter.java" index="8">
+<position info="not_deleted" x="562" y="0"/>
 </item>
-<item historyLabel="Connection.java" index="10">
+<item historyLabel="ThreadDataReader.java" index="7">
+<position info="not_deleted" x="414" y="0"/>
+</item>
+<item historyLabel="Player.java" index="10">
+<position info="not_deleted" x="19" y="0"/>
+</item>
+<item historyLabel="PlayerMP.java" index="11">
+<position info="not_deleted" x="600" y="0"/>
+</item>
+<item historyLabel="ThreadDataReader.java" index="12">
+<position info="not_deleted" x="19" y="0"/>
+</item>
+<item historyLabel="PlayerMP.java" index="11">
+<position info="not_deleted" x="600" y="0"/>
+</item>
+<item historyLabel="ThreadDataWriter.java" index="13">
+<position info="not_deleted" x="647" y="0"/>
+</item>
+<item historyLabel="Packet01PlayerJoin.java" index="14">
+<position info="not_deleted" x="651" y="0"/>
+</item>
+<item historyLabel="Packet02GiveID.java" index="15">
+<position info="not_deleted" x="137" y="0"/>
+</item>
+<item historyLabel="ThreadPlayerAccept.java" index="16">
+<position info="not_deleted" x="93" y="0"/>
+</item>
+<item historyLabel="ServerGame.java" index="17">
+<position info="not_deleted" x="37" y="0"/>
+</item>
+<item historyLabel="ThreadPlayerAccept.java" index="16">
+<position info="not_deleted" x="93" y="0"/>
+</item>
+<item active="true" historyLabel="MMP.java" index="18">
 <position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ConsoleCommand.java" index="7">
-<position info="not_deleted" x="172" y="14"/>
-</item>
-<item active="true" historyLabel="MMP.java" index="8">
-<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -463,50 +442,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Board.java" tooltip="Monopoly/src/gui/Board.java">
-<persistable path="/Monopoly/src/gui/Board.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MMP.java" tooltip="Monopoly_Server/src/server/MMP.java">
+<persistable path="/Monopoly_Server/src/server/MMP.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Connection.java" tooltip="Monopoly/src/multiplayer/Connection.java">
-<persistable path="/Monopoly/src/multiplayer/Connection.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ServerGame.java" tooltip="Monopoly_Server/src/server/ServerGame.java">
+<persistable path="/Monopoly_Server/src/server/ServerGame.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" tooltip="Monopoly/src/monopoly/Game.java">
-<persistable path="/Monopoly/src/monopoly/Game.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadPlayerAccept.java" tooltip="Monopoly_Server/src/server/ThreadPlayerAccept.java">
+<persistable path="/Monopoly_Server/src/server/ThreadPlayerAccept.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GameGUIHandler.java" tooltip="Monopoly/src/gui/GameGUIHandler.java">
-<persistable path="/Monopoly/src/gui/GameGUIHandler.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet02GiveID.java" tooltip="Monopoly_Server/src/server/packet/Packet02GiveID.java">
+<persistable path="/Monopoly_Server/src/server/packet/Packet02GiveID.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MMP.java" tooltip="Monopoly/src/server/MMP.java">
-<persistable path="/Monopoly/src/server/MMP.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet01PlayerJoin.java" tooltip="Monopoly_Server/src/server/packet/Packet01PlayerJoin.java">
+<persistable path="/Monopoly_Server/src/server/packet/Packet01PlayerJoin.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Images.java" tooltip="Monopoly/src/gui/Images.java">
-<persistable path="/Monopoly/src/gui/Images.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet00SetTurn.java" tooltip="Monopoly_Server/src/server/packet/Packet00SetTurn.java">
+<persistable path="/Monopoly_Server/src/server/packet/Packet00SetTurn.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadDataWriter.java" tooltip="Monopoly_Server/src/server/game/ThreadDataWriter.java">
+<persistable path="/Monopoly_Server/src/server/game/ThreadDataWriter.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadDataReader.java" tooltip="Monopoly_Server/src/server/game/ThreadDataReader.java">
+<persistable path="/Monopoly_Server/src/server/game/ThreadDataReader.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PlayerMP.java" tooltip="Monopoly_Server/src/server/game/PlayerMP.java">
+<persistable path="/Monopoly_Server/src/server/game/PlayerMP.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Player.java" tooltip="Monopoly_Server/src/server/game/Player.java">
+<persistable path="/Monopoly_Server/src/server/game/Player.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet00SetTurn.java" tooltip="Monopoly/src/multiplayer/packet/Packet00SetTurn.java">
 <persistable path="/Monopoly/src/multiplayer/packet/Packet00SetTurn.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Player.java" tooltip="Monopoly/src/monopoly/Player.java">
-<persistable path="/Monopoly/src/monopoly/Player.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ServerHandler.java" tooltip="Monopoly/src/multiplayer/ServerHandler.java">
-<persistable path="/Monopoly/src/multiplayer/ServerHandler.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PlayerMP.java" tooltip="Monopoly/src/multiplayer/PlayerMP.java">
-<persistable path="/Monopoly/src/multiplayer/PlayerMP.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ButtonRollDice.java" tooltip="Monopoly/src/gui/buttons/ButtonRollDice.java">
-<persistable path="/Monopoly/src/gui/buttons/ButtonRollDice.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet.java" tooltip="Monopoly/src/server/packet/Packet.java">
+<persistable path="/Monopoly/src/server/packet/Packet.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Packet.java" tooltip="Monopoly/src/multiplayer/packet/Packet.java">
 <persistable path="/Monopoly/src/multiplayer/packet/Packet.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadPlayerAccept.java" tooltip="Monopoly/src/server/ThreadPlayerAccept.java">
-<persistable path="/Monopoly/src/server/ThreadPlayerAccept.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadDataWriter.java" tooltip="Monopoly/src/multiplayer/ThreadDataWriter.java">
+<persistable path="/Monopoly/src/multiplayer/ThreadDataWriter.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConsoleCommand.java" tooltip="Monopoly/src/server/ConsoleCommand.java">
-<persistable path="/Monopoly/src/server/ConsoleCommand.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="Socket.class" tooltip="java.net.Socket">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Monopoly/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.net(Socket.class"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ThreadDataReader.java" tooltip="Monopoly/src/multiplayer/ThreadDataReader.java">
+<persistable path="/Monopoly/src/multiplayer/ThreadDataReader.java"/>
 </file>
 </mruList>
 </workbench>

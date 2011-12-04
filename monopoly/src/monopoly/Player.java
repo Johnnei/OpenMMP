@@ -8,6 +8,7 @@ public class Player
 	private String username;
 	private int money;
 	private int value;
+	private int index;
 	private Color color;
 	
 	public Player()
@@ -18,6 +19,7 @@ public class Player
 	public Player(String user, int colorCode)
 	{
 		username = user;
+		index = 0;
 		money = 200000;
 		value = money;
 	}
@@ -30,6 +32,11 @@ public class Player
 	public void setColor(int code)
 	{
 		color = new Color(code);
+	}
+	
+	public void setIndex(int i)
+	{
+		index = i;
 	}
 
 	public String MoneyString()
@@ -60,6 +67,11 @@ public class Player
 	public String Username()
 	{
 		return username;
+	}
+	
+	public int Index()
+	{
+		return index;
 	}
 
 	public int Money()

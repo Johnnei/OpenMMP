@@ -78,8 +78,8 @@ public class MMP
 			}
 		}
 		pAccepter.interrupt();
-		System.out.println("Sharing Players...");
-		// Send player data to all players!
+		System.out.println("Preparing Game...");
+		//TODO: Send player data to all players!
 		System.out.println("Starting Game...");
 		// Phase 2 - Let's Play
 		System.out.println("Game has ended...");

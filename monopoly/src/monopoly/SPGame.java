@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import multiplayer.Connection;
 
-public class SPGame extends Game
+public class SPGame
 {
 
 	public TownManager towns;
