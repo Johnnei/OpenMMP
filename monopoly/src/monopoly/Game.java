@@ -83,6 +83,7 @@ public class Game
 				//Idle to keep connection, just for testing atm
 				Thread.sleep(100);
 			}
+			Log("Game Can Start!");
 		} catch (Exception e)
 		{
 			Log("Failed!");

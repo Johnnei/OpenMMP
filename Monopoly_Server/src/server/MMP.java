@@ -112,6 +112,7 @@ public class MMP
 		
 		Log("Starting Game...");
 		// Phase 2 - Let's Play
+		game.setPhase(2);
 		Log("Game has ended...");
 		try
 		{

@@ -28,5 +28,6 @@ public class ThreadPlayerAccept extends Thread
 			{
 			}
 		}
+		MMP.getServer().startGame();
 	}
 }
