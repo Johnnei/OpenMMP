@@ -12,7 +12,6 @@ public class ThreadPlayerAccept extends Thread
 	{
 		super("Player Accepter");
 		setDaemon(true);
-		run();
 	}
 	
 	public void run()

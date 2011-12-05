@@ -23,9 +23,7 @@ public class ThreadDataReader extends Thread
 			{
 				if (inStream.available() > 1) //Atleast the ID is there
 				{
-					Game.Log("Reading a packet! (" + inStream.available() + ")");
 					Packet p = Packet.readPacket(inStream);
-					Game.Log("Read packet " + p.getPacketID());
 					p.handle();
 				}
 				sleep(1);

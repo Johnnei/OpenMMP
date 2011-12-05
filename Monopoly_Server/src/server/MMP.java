@@ -88,6 +88,7 @@ public class MMP
 		Log("Phase 1 - Waiting for players...");
 		game.setPhase(1);
 		ThreadPlayerAccept pAccepter = new ThreadPlayerAccept();
+		pAccepter.start();
 		while(game.isPhase(1))
 		{
 			try
