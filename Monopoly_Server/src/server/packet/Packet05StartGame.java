@@ -13,7 +13,7 @@ public class Packet05StartGame extends Packet
 	
 	public Packet05StartGame(byte playerCount)
 	{
-		
+		pCount = playerCount;
 	}
 
 	@Override

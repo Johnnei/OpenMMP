@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import monopoly.Game;
+
 public class Packet05StartGame extends Packet
 {
 	public Packet05StartGame()
@@ -31,6 +33,8 @@ public class Packet05StartGame extends Packet
 	@Override
 	public void handle()
 	{
+		Game.Monopoly().playerCount = pCount;
+		Game.Log("Server wants to start! We got " + pCount + " players!");
 	}
 	
 	byte pCount;
