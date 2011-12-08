@@ -29,6 +29,26 @@ public abstract class Packet
 		String id = packetClass.substring(20, 22);
 		return Integer.parseInt(id);
 	}
+	
+	protected String readString(DataInputStream d) throws IOException
+	{
+		short l = d.readShort();
+		String s = "";
+		for(int i = 0; i < l; i++)
+		{
+			s = s + (char)d.readByte();
+		}
+		return s;
+	}
+	
+	protected void writeString(DataOutputStream d, String s) throws IOException
+	{
+		d.writeShort((short)s.length());
+		for(int i = 0; i < s.length(); i++)
+		{
+			d.writeByte(s.substring(i, i + 1).charAt(0));
+		}
+	}
 
 	public static void sendPacket(Packet p, DataOutputStream d) throws IOException
 	{

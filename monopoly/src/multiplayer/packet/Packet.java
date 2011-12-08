@@ -40,10 +40,31 @@ public abstract class Packet
 		if (d.available() <= 0)
 			return null;
 		short packetId = d.readShort();
+		Game.Log("Retrieving Packet ID: " + packetId);
 		Class packetClass = packetArray[packetId];
 		Packet p = (Packet)packetClass.newInstance();
 		p.readData(d);
 		return p;
+	}
+	
+	protected String readString(DataInputStream d) throws IOException
+	{
+		short l = d.readShort();
+		String s = "";
+		for(int i = 0; i < l; i++)
+		{
+			s = s + (char)d.readByte();
+		}
+		return s;
+	}
+	
+	protected void writeString(DataOutputStream d, String s) throws IOException
+	{
+		d.writeShort((short)s.length());
+		for(int i = 0; i < s.length(); i++)
+		{
+			d.writeByte(s.substring(i, i + 1).charAt(0));
+		}
 	}
 	
 	static

@@ -113,6 +113,19 @@ public class MMP
 		Log("Starting Game...");
 		// Phase 2 - Let's Play
 		game.setPhase(2);
+		
+		while(game.isPhase(2)) //Hold program :D
+		{
+			try
+			{
+				Thread.sleep(1);
+			} catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		Log("Game has ended...");
 		try
 		{

@@ -23,13 +23,13 @@ public class Packet01PlayerJoin extends Packet
 
 	public void readData(DataInputStream d) throws IOException
 	{
-		user = d.readUTF();
+		user = readString(d);
 		colorCode = d.readInt();
 	}
 
 	public void writeData(DataOutputStream d) throws IOException
 	{
-		d.writeUTF(user);
+		writeString(d, user);
 		d.writeInt(colorCode);
 	}
 
