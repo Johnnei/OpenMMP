@@ -3,28 +3,30 @@ package monopoly;
 import java.util.ArrayList;
 import java.util.List;
 
+import multiplayer.PlayerMP;
+
 public class Turn
 {
 
-	private Player player;
+	private byte playerId;
 	private Game game;
 
 	private boolean rolledDice;
 	boolean finished;
 	List<GameEvent> events;
 
-	public Turn(Game game, Player player)
+	public Turn(Game game, PlayerMP player)
 	{
 		this.game = game;
-		this.player = player;
+		playerId = player.getId();
 		rolledDice = false;
 		finished = false;
 		events = new ArrayList<GameEvent>();
 	}
 
-	public boolean myTurn(String user)
+	public boolean myTurn(byte id)
 	{
-		return (player.Username().equals(user)) ? true : false;
+		return playerId == id;
 	}
 
 	public void addEvent(GameEvent s)

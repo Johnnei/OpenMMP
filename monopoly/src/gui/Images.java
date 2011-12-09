@@ -18,17 +18,17 @@ public class Images
 	{
 		try
 		{
-			Bord = ImageIO.read(new File("src/bord.jpg"));
-			Icon = ImageIO.read(new File("src/icon.png"));
+			Bord = ImageIO.read(new File("bord.jpg"));
+			Icon = ImageIO.read(new File("icon.png"));
 			Dice = new BufferedImage[6];
 			for (int i = 0; i < Dice.length; i++)
 			{
 				try
 				{
-					Dice[i] = ImageIO.read(new File("src/dice" + (i + 1) + ".png"));
+					Dice[i] = ImageIO.read(new File("dice" + (i + 1) + ".png"));
 				} catch (Exception e)
 				{
-					Game.Log("Err Loading: src/dice" + (i + 1) + ".png");
+					Game.Log("Err Loading: dice" + (i + 1) + ".png");
 				}
 			}
 		} catch (IOException e)

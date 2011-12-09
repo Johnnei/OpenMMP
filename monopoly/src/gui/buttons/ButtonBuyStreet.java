@@ -2,8 +2,6 @@ package gui.buttons;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
@@ -14,12 +12,10 @@ public class ButtonBuyStreet extends JButton implements ActionListener
 {
 
 	private Game game;
-	private String owner;
 
-	public ButtonBuyStreet(String owner)
+	public ButtonBuyStreet()
 	{
 		game = Game.Monopoly();
-		this.owner = owner;
 		setText("Buy Street");
 		addActionListener(this);
 	}
@@ -28,7 +24,7 @@ public class ButtonBuyStreet extends JButton implements ActionListener
 	{
 		if (e.getSource() != this)
 			return;
-		if (game.turn.myTurn(owner))
+		if (game.turn.myTurn(game.getMyID()))
 			game.turn.addEvent(GameEvent.buyStreet);
 	}
 }

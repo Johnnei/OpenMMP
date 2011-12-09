@@ -24,10 +24,10 @@ public class PlayerInput extends JComponent
 		setMaximumSize(new Dimension(width, height));
 		setBackground(Color.BLACK);
 		setLayout(new GridLayout(0, 1));
-		add(new ButtonRollDice(player));
-		add(new ButtonBuyStreet(player));
-		add(new ButtonBuyHouse(player));
-		add(new ButtonTrade(player));
-		add(new ButtonNextTurn(player));
+		add(new ButtonRollDice());
+		add(new ButtonBuyStreet());
+		add(new ButtonBuyHouse());
+		add(new ButtonTrade());
+		add(new ButtonNextTurn());
 	}
 }

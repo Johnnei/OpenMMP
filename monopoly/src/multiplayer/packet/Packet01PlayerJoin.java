@@ -24,13 +24,9 @@ public class Packet01PlayerJoin extends Packet
 
 	public void readData(DataInputStream d) throws IOException
 	{
-		Game.Log("0");
 		id = d.readByte();
-		Game.Log("1");
 		user = readString(d);
-		Game.Log("2");
 		colorCode = d.readInt();
-		Game.Log("3");
 	}
 
 	public void writeData(DataOutputStream d) throws IOException
@@ -48,11 +44,8 @@ public class Packet01PlayerJoin extends Packet
 			Game.Log("I joined the game! (" + id + ")");
 			return;
 		}
-		Game.Log("1");
 		PlayerMP player = new PlayerMP(user, id, colorCode);
-		Game.Log("2");
 		Game.Monopoly().registerPlayer(player);
-		Game.Log("3");
 	}
 	
 	public int size()

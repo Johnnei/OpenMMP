@@ -14,12 +14,10 @@ public class ButtonBuyHouse extends JButton implements ActionListener
 {
 
 	private Game game;
-	private String owner;
 
-	public ButtonBuyHouse(String owner)
+	public ButtonBuyHouse()
 	{
 		game = Game.Monopoly();
-		this.owner = owner;
 		setText("Buy House");
 		addActionListener(this);
 	}
@@ -28,7 +26,7 @@ public class ButtonBuyHouse extends JButton implements ActionListener
 	{
 		if (e.getSource() != this)
 			return;
-		if (game.turn.myTurn(owner))
+		if (game.turn.myTurn(game.getMyID()))
 			game.turn.addEvent(GameEvent.buyHouse);
 	}
 }

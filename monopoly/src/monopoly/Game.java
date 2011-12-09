@@ -84,6 +84,7 @@ public class Game
 				Thread.sleep(100);
 			}
 			Log("Game Can Start!");
+			new Thread(new GameFrame()).start();
 		} catch (Exception e)
 		{
 			Log("Failed!");
@@ -110,7 +111,7 @@ public class Game
 	
 	/* Public Getters / Setters */
 
-	public Player[] getPlayers()
+	public PlayerMP[] getPlayers()
 	{
 		return players;
 	}

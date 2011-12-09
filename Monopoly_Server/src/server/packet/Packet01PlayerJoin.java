@@ -29,6 +29,7 @@ public class Packet01PlayerJoin extends Packet
 
 	public void writeData(DataOutputStream d) throws IOException
 	{
+		d.writeByte(id);
 		writeString(d, user);
 		d.writeInt(colorCode);
 	}
