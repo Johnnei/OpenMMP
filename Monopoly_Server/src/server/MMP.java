@@ -7,9 +7,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import server.game.PlayerMP;
+import server.packet.Packet00SetTurn;
 import server.packet.Packet01PlayerJoin;
 import server.packet.Packet02GiveID;
 import server.packet.Packet05StartGame;
+import server.packet.Packet14ChangeMoney;
 
 public class MMP
 {
@@ -107,23 +109,24 @@ public class MMP
 		{
 			PlayerMP player = Monopoly().getPlayer(i);
 			if(player != null)
+			{
 				Monopoly().sendPacket(new Packet01PlayerJoin(player.Username(), player.getColorCode(), player.getId()));
+				Monopoly().sendPacket(new Packet14ChangeMoney(player.getId(), 150000));
+			}
 		}
 		
 		Log("Starting Game...");
 		// Phase 2 - Let's Play
 		game.setPhase(2);
+		Monopoly().sendPacket(new Packet00SetTurn((byte)0));
 		
-		while(game.isPhase(2)) //Hold program :D
+		while(game.isPhase(2))
 		{
-			try
-			{
-				Thread.sleep(1);
-			} catch (InterruptedException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			/*
+			 * This will halt the program until somethings happens which changes the game phase
+			 * This currently can't happen and has to be replaced to once per 100ms to check if the game has ended
+			 */
+			Sleep(1);
 		}
 		
 		Log("Game has ended...");
@@ -133,6 +136,18 @@ public class MMP
 		} catch (IOException e)
 		{
 			System.out.println("Failed to close port!");
+			e.printStackTrace();
+		}
+	}
+	
+	public static void Sleep(long l)
+	{
+		try
+		{
+			Thread.sleep(l);
+		} catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

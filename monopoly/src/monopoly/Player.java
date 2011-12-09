@@ -54,7 +54,7 @@ public class Player
 		return smoney;
 	}
 
-	public void getMoney(int amount)
+	public void addMoney(int amount)
 	{
 		money += amount;
 		value += amount;

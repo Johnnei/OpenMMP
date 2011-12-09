@@ -188,6 +188,11 @@ public class Game
 	}
 	
 	/* Public Getters / Setters */
+	
+	public void changePlayerMoney(byte id, int amount)
+	{
+		players[id].addMoney(amount);
+	}
 
 	public PlayerMP[] getPlayers()
 	{

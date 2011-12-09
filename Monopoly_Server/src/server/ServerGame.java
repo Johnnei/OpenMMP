@@ -1,5 +1,6 @@
 package server;
 
+import monopoly.Turn;
 import server.game.PlayerMP;
 import server.packet.Packet;
 
@@ -9,6 +10,7 @@ public class ServerGame
 	public ServerGame()
 	{
 		players = new PlayerMP[6];
+		turn = new Turn();
 	}
 	
 	public void setPlayer(PlayerMP player, byte slot)
@@ -66,5 +68,6 @@ public class ServerGame
 	
 	private byte phase;
 	private PlayerMP[] players;
+	public Turn turn;
 	
 }
