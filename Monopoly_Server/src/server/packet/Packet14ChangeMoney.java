@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import server.MMP;
+
 public class Packet14ChangeMoney extends Packet
 {
 	byte id;
@@ -17,6 +19,7 @@ public class Packet14ChangeMoney extends Packet
 	{
 		id = pId;
 		amount = mChange;
+		MMP.Log(MMP.getServer().Monopoly().getPlayer(id).Username() + " has gained " + amount + " money");
 	}
 	
 	@Override

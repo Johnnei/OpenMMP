@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import server.MMP;
 import server.packet.Packet;
 
 public class Packet00SetTurn extends Packet
@@ -16,6 +17,7 @@ public class Packet00SetTurn extends Packet
 	public Packet00SetTurn(byte b)
 	{
 		turn = b;
+		MMP.Log("Turn has been given to " + MMP.getServer().Monopoly().getPlayer(turn).Username());
 	}
 
 	public void readData(DataInputStream d) throws IOException
