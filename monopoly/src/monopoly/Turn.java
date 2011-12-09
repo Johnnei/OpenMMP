@@ -9,15 +9,12 @@ public class Turn
 {
 
 	private byte playerId;
-	private Game game;
-
 	private boolean rolledDice;
 	boolean finished;
 	List<GameEvent> events;
 
-	public Turn(Game game, PlayerMP player)
+	public Turn(PlayerMP player)
 	{
-		this.game = game;
 		playerId = player.getId();
 		rolledDice = false;
 		finished = false;

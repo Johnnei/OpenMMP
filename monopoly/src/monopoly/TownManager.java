@@ -35,7 +35,12 @@ public class TownManager
 	public boolean isBuyable(int index)
 	{
 		if (towns.get(index).getPlayer() == null)
-			return true;
+		{
+			SpecialTown t = towns.get(index).getType();
+			if(t == SpecialTown.Normaal || t == SpecialTown.Voorzieningen)
+				return true;
+			return false;
+		}
 		else
 			return false;
 	}
