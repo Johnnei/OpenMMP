@@ -4,8 +4,13 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import server.MMP;
+
 public class Packet11BuyStreet extends Packet
 {
+	
+	byte pId;
+	byte pIndex;
 	
 	public Packet11BuyStreet()
 	{
@@ -14,6 +19,8 @@ public class Packet11BuyStreet extends Packet
 	@Override
 	public void readData(DataInputStream d) throws IOException
 	{
+		pId = d.readByte();
+		pIndex = d.readByte();
 	}
 
 	@Override

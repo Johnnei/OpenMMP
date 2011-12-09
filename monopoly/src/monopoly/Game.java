@@ -9,6 +9,8 @@ import multiplayer.PlayerMP;
 import multiplayer.packet.Packet03Username;
 import multiplayer.packet.Packet04Colorcode;
 import multiplayer.packet.Packet06NextTurn;
+import multiplayer.packet.Packet07RollDice;
+import multiplayer.packet.Packet11BuyStreet;
 
 public class Game
 {
@@ -115,6 +117,7 @@ public class Game
 					Sleep(100);
 					break;
 				case rollDice:
+					getPlayer().addPacket(new Packet07RollDice());
 					break;
 				case nextTurn:
 					getPlayer().addPacket(new Packet06NextTurn());
@@ -122,6 +125,7 @@ public class Game
 				case buyHouse:
 					break;
 				case buyStreet:
+					getPlayer().addPacket(new Packet11BuyStreet(getPlayer().getId(), (byte)getPlayer().Index()));
 					break;
 				case trade:
 					break;
