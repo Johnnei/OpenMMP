@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import server.MMP;
+
 public class Packet06NextTurn extends Packet
 {
 
@@ -23,7 +25,9 @@ public class Packet06NextTurn extends Packet
 
 	@Override
 	public void handle()
-	{	
+	{
+		if(!MMP.getServer().Monopoly().turn.canRollDice())
+			MMP.getServer().Monopoly().advanceTurn();
 	}
 
 }
