@@ -1,11 +1,14 @@
 package server;
 
+import java.util.Random;
+
 import monopoly.SpecialTown;
 import monopoly.Street;
 import monopoly.TownManager;
 import monopoly.Turn;
 import server.game.PlayerMP;
 import server.packet.Packet;
+import server.packet.Packet00SetTurn;
 
 public class ServerGame
 {
@@ -14,9 +17,13 @@ public class ServerGame
 	{
 		players = new PlayerMP[6];
 		turn = new Turn();
+		turnId = -1;
 		dice = new byte[] { 1, 1 };
+		rand = new Random();
 		initStreets();
 	}
+	
+	/* Game Simulation */
 	
 	public void initStreets()
 	{
@@ -62,6 +69,34 @@ public class ServerGame
 		towns.Add("Extra Belasting", Street.Tax_Extra, 10000, 0, SpecialTown.Belasting_Extra);
 		towns.Add("Kalverstraat", Street.Amsterdam, 45000, 20000);
 	}
+	
+	public void rollDice()
+	{
+		dice[0] = (byte)(1 + rand.nextInt(6));
+		dice[1] = (byte)(1 + rand.nextInt(6));
+	}
+	
+	public byte[] getDices()
+	{
+		return dice;
+	}
+	
+	public void advanceTurn()
+	{
+		while(true)
+		{
+			if(getPlayer(++turnId) != null)
+			{
+				sendPacket(new Packet00SetTurn(turnId));
+				turn.ResetTurn(turnId);
+				break;
+			}
+			if(turnId == 5)
+				turnId = -1;
+		}
+	}
+	
+	/* MP Area */
 	
 	public void setPlayer(PlayerMP player, byte slot)
 	{
@@ -132,5 +167,7 @@ public class ServerGame
 	private PlayerMP[] players;
 	private TownManager towns;
 	public Turn turn;
+	private byte turnId;
+	private Random rand;
 	
 }

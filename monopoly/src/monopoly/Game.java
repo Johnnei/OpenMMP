@@ -88,6 +88,7 @@ public class Game
 			}
 			Log("Game Can Start!");
 			new Thread(new GameFrame()).start();
+			GameLoop();
 		} catch (Exception e)
 		{
 			Log("Failed!");
@@ -114,20 +115,25 @@ public class Game
 			switch (turn.getEvent())
 			{
 				case none:
-					Sleep(100);
+					Sleep(10);
 					break;
 				case rollDice:
-					getPlayer().addPacket(new Packet07RollDice());
+					turn.rollDice();
+					Game.Log("Rolling Dice...");
 					break;
 				case nextTurn:
 					getPlayer().addPacket(new Packet06NextTurn());
+					Game.Log("Ending turn...");
 					break;
 				case buyHouse:
+					Game.Log("Buying Houses...");
 					break;
 				case buyStreet:
 					getPlayer().addPacket(new Packet11BuyStreet(getPlayer().getId(), (byte)getPlayer().Index()));
+					Game.Log("Buying Street...");
 					break;
 				case trade:
+					Game.Log("Trading...");
 					break;
 			}
 		} while (true);

@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import monopoly.Game;
+
 public class Packet08SetDice extends Packet
 {
 	
@@ -28,6 +30,7 @@ public class Packet08SetDice extends Packet
 	@Override
 	public void handle()
 	{
+		Game.Monopoly().setDice(dice, dice2);
 	}
 
 }

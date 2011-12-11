@@ -14,15 +14,21 @@ public class Packet08SetDice extends Packet
 	{
 	}
 	
+	public Packet08SetDice(byte[] dices)
+	{
+		dice = dices[0];
+		dice2 = dices[1];
+	}
+	
 	public void readData(DataInputStream d) throws IOException
 	{
-		dice = d.readByte();
-		dice2 = d.readByte();
 	}
 
 	@Override
 	public void writeData(DataOutputStream d) throws IOException
 	{
+		d.writeByte(dice);
+		d.writeByte(dice2);
 	}
 
 	@Override

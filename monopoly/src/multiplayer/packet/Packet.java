@@ -40,7 +40,6 @@ public abstract class Packet
 		if (d.available() <= 0)
 			return null;
 		short packetId = d.readShort();
-		Game.Log("Retrieving Packet ID: " + packetId);
 		Class packetClass = packetArray[packetId];
 		Packet p = (Packet)packetClass.newInstance();
 		p.readData(d);

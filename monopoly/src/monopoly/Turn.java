@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import multiplayer.PlayerMP;
+import multiplayer.packet.Packet07RollDice;
 
 public class Turn
 {
@@ -45,10 +46,12 @@ public class Turn
 
 	public void rollDice()
 	{
+		if (!myTurn(Game.Monopoly().getMyID()))
+			return;
 		if (rolledDice)
 			return;
 		rolledDice = true;
-		//TODO: Send request to roll dices
+		Game.Monopoly().getPlayer().addPacket(new Packet07RollDice());
 	}
 
 }

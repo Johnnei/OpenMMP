@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import server.MMP;
+
 public class Packet07RollDice extends Packet
 {
 	
@@ -24,6 +26,14 @@ public class Packet07RollDice extends Packet
 	@Override
 	public void handle()
 	{
+		MMP.Log("Roll Dice Request Recieved");
+		if(MMP.getServer().Monopoly().turn.canRollDice())
+		{
+			MMP.Log("Rolling Dices...");
+			MMP.getServer().Monopoly().turn.rollDice();
+			MMP.getServer().Monopoly().rollDice();
+			MMP.getServer().Monopoly().sendPacket(new Packet08SetDice(MMP.getServer().Monopoly().getDices()));
+		}
 	}
 
 }

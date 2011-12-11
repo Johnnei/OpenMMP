@@ -118,7 +118,7 @@ public class MMP
 		Log("Starting Game...");
 		// Phase 2 - Let's Play
 		game.setPhase(2);
-		Monopoly().sendPacket(new Packet00SetTurn((byte)0));
+		Monopoly().advanceTurn();
 		
 		while(game.isPhase(2))
 		{
