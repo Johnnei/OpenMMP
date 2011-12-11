@@ -26,7 +26,6 @@ public class Packet07RollDice extends Packet
 	@Override
 	public void handle()
 	{
-		MMP.Log("Roll Dice Request Recieved");
 		if(MMP.getServer().Monopoly().turn.canRollDice())
 		{
 			MMP.Log("Rolling Dices...");

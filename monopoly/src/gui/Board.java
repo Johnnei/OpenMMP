@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -111,6 +112,9 @@ public class Board extends JComponent
 		}
 		drawImage(g, Images.getImages().Dice[game.getDice(0) - 1], 100, 100, 200, 200);
 		drawImage(g, Images.getImages().Dice[game.getDice(1) - 1], 210, 100, 310, 200);
+		g.setColor(new Color(Integer.valueOf("000000", 16)));
+		setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		g.drawString(Game.Monopoly().getPlayer(Game.Monopoly().turn.getId()).Username()+ "'s Turn", 100, 225);
 	}
 
 }
