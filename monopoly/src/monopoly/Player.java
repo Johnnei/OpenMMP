@@ -71,6 +71,11 @@ public class Player
 		return username;
 	}
 	
+	public void addIndex(int i)
+	{
+		index += i;
+	}
+	
 	public int Index()
 	{
 		return index;

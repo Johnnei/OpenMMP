@@ -33,6 +33,7 @@ public class Game
 	private static Game game;
 	public static Game Monopoly() { return game; }
 	
+	public PlayerMP getPlayer(byte b) { return players[b]; }
 	public PlayerMP getPlayer() { return players[myId]; }
 	public byte getMyID() { return myId; }
 	public void setMyID(byte b) { myId = b; }
@@ -195,6 +196,37 @@ public class Game
 	public static void Log(String line)
 	{
 		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] " + line);
+	}
+	
+	/* Game */
+	
+	public void movePlayer(int places)
+	{
+		byte pId = turn.getId();
+		if(places > 0) //Move forward
+		{
+			while(places != 0)
+			{
+				getPlayer(pId).addIndex(1);
+				--places;
+				if(getPlayer(pId).Index() == 40)
+					getPlayer(pId).addIndex(-40);
+				gframe.board.doUpdate();
+				Sleep(300);
+			}
+		}
+		else //Move Backward
+		{
+			while(places != 0)
+			{
+				getPlayer(pId).addIndex(1);
+				++places;
+				if(getPlayer(pId).Index() == -1)
+					getPlayer(pId).addIndex(40);
+				gframe.board.doUpdate();
+				Sleep(300);
+			}
+		}
 	}
 	
 	/* Public Getters / Setters */

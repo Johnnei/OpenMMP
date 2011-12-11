@@ -21,6 +21,11 @@ public class Turn
 		finished = false;
 		events = new ArrayList<GameEvent>();
 	}
+	
+	public byte getId()
+	{
+		return playerId;
+	}
 
 	public boolean myTurn(byte id)
 	{

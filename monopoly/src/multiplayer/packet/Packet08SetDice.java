@@ -31,6 +31,7 @@ public class Packet08SetDice extends Packet
 	public void handle()
 	{
 		Game.Monopoly().setDice(dice, dice2);
+		Game.Monopoly().movePlayer(Game.Monopoly().getDice(0) + Game.Monopoly().getDice(1));
 	}
 
 }
