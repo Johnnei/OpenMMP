@@ -59,6 +59,11 @@ public class Town
 	{
 		return (ownerId == -1) ? "Bank" : getPlayer().Username();
 	}
+	
+	public boolean hasOwner()
+	{
+		return (ownerId == -1) ? false : true;
+	}
 
 	public PlayerMP getPlayer()
 	{

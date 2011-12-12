@@ -41,10 +41,11 @@ public class TownManager
 
 	public boolean isBuyable(int index)
 	{
-		if (towns.get(index).getPlayer() == null)
+		Town town = towns.get(index);
+		if (!towns.get(index).hasOwner())
 		{
-			SpecialTown t = towns.get(index).getType();
-			if(t == SpecialTown.Normaal || t == SpecialTown.Voorzieningen)
+			SpecialTown t = town.getType();
+			if(t == SpecialTown.Normaal || t == SpecialTown.Voorzieningen || t == SpecialTown.Station)
 				return true;
 			return false;
 		}
