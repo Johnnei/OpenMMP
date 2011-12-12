@@ -32,6 +32,7 @@ public class Packet07RollDice extends Packet
 			MMP.getServer().Monopoly().turn.rollDice();
 			MMP.getServer().Monopoly().rollDice();
 			MMP.getServer().Monopoly().sendPacket(new Packet08SetDice(MMP.getServer().Monopoly().getDices()));
+			MMP.getServer().Monopoly().getPlayer(MMP.getServer().Monopoly().turn.getID()).addIndex((byte)MMP.getServer().Monopoly().diceEyesCount());
 		}
 	}
 

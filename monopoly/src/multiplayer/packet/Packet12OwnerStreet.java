@@ -4,8 +4,12 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import monopoly.Game;
+
 public class Packet12OwnerStreet extends Packet
 {
+	byte pId;
+	byte sIndex;
 
 	public Packet12OwnerStreet()
 	{
@@ -15,6 +19,8 @@ public class Packet12OwnerStreet extends Packet
 	@Override
 	public void readData(DataInputStream d) throws IOException
 	{
+		pId = d.readByte();
+		sIndex = d.readByte();
 	}
 
 	@Override
@@ -25,6 +31,7 @@ public class Packet12OwnerStreet extends Packet
 	@Override
 	public void handle()
 	{
+		Game.Monopoly().towns.setOwner(pId, sIndex);
 	}
 
 }

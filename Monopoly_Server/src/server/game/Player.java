@@ -8,6 +8,7 @@ public class Player
 	private String username;
 	private int money;
 	private int value;
+	private byte index;
 	private Color color;
 	private int colorcode;
 	
@@ -21,6 +22,7 @@ public class Player
 		username = user;
 		money = 200000;
 		value = money;
+		index = 0;
 	}
 	
 	public void setUsername(String user)
@@ -32,6 +34,20 @@ public class Player
 	{
 		color = new Color(code);
 		colorcode = code;
+	}
+	
+	public void addIndex(byte value)
+	{
+		index += value;
+		if(index > 40)
+			index -= 40;
+		else if(index < 0)
+			index += 40;
+	}
+	
+	public byte getIndex()
+	{
+		return index;
 	}
 
 	public String MoneyString()

@@ -33,6 +33,11 @@ public class TownManager
 		}
 		return false;
 	}
+	
+	public int getPrice(int index)
+	{
+		return towns.get(index).getPrice();
+	}
 
 	public boolean isBuyable(int index)
 	{
@@ -52,7 +57,7 @@ public class TownManager
 		Town t = towns.get(index);
 		if (t.getType() == SpecialTown.Normaal)
 			return t.getCost();
-		else if (t.getType() == SpecialTown.Station)
+		else if (t.getType() == SpecialTown.Station) //TODO Improve this to 1250, 5000, 10000, 20000
 		{
 			int cost = 1250;
 			for (int i = 0; i < towns.size(); i++)

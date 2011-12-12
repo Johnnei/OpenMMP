@@ -10,6 +10,11 @@ public class Turn
 		
 	}
 	
+	public byte getID()
+	{
+		return playerId;
+	}
+	
 	public void ResetTurn(byte id)
 	{
 		playerId = id;

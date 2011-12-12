@@ -130,7 +130,7 @@ public class Game
 					Game.Log("Buying Houses...");
 					break;
 				case buyStreet:
-					getPlayer().addPacket(new Packet11BuyStreet(getPlayer().getId(), (byte)getPlayer().Index()));
+					getPlayer().addPacket(new Packet11BuyStreet());
 					Game.Log("Buying Street...");
 					break;
 				case trade:

@@ -2,6 +2,7 @@ package monopoly;
 
 import java.awt.Graphics;
 
+import server.MMP;
 import server.game.PlayerMP;
 
 public class Town
@@ -9,7 +10,7 @@ public class Town
 
 	public Street street;
 	private String name;
-	private PlayerMP owner;
+	private byte ownerId;
 	private int houseCount;
 	private int price;
 	private int cost;
@@ -22,6 +23,7 @@ public class Town
 		this.price = price;
 		this.street = street;
 		houseCount = 0;
+		ownerId = -1;
 		type = SpecialTown.Normaal;
 	}
 
@@ -33,7 +35,7 @@ public class Town
 
 	public boolean isBuyable()
 	{
-		if (owner.Username() == null)
+		if (ownerId != -1)
 		{
 			if (type == SpecialTown.Normaal || type == SpecialTown.Station || type == SpecialTown.Voorzieningen)
 			{
@@ -55,22 +57,22 @@ public class Town
 
 	public String getOwner()
 	{
-		return (owner == null) ? null : owner.Username();
+		return (ownerId == -1) ? "Bank" : getPlayer().Username();
 	}
 
 	public PlayerMP getPlayer()
 	{
-		return owner;
+		return MMP.getServer().Monopoly().getPlayer(ownerId);
 	}
 
-	public void setOwner(PlayerMP player)
+	public void setOwner(byte pId)
 	{
-		owner = player;
+		ownerId = pId;
 	}
 
-	public void removeOwner(PlayerMP player)
+	public void removeOwner()
 	{
-		owner = null;
+		ownerId = -1;
 	}
 
 	public String getName()

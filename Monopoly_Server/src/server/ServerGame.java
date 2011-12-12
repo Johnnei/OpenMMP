@@ -162,6 +162,11 @@ public class ServerGame
 		}
 	}
 	
+	public TownManager getTownManager()
+	{
+		return towns;
+	}
+	
 	private byte[] dice;
 	private byte phase;
 	private PlayerMP[] players;

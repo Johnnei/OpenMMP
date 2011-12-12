@@ -31,6 +31,12 @@ public class TownManager
 		}
 		return false;
 	}
+	
+	public void setOwner(byte pId, byte sIndex)
+	{
+		Town t = towns.get(sIndex);
+		t.setOwner(Game.Monopoly().getPlayer(pId));
+	}
 
 	public boolean isBuyable(int index)
 	{
