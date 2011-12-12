@@ -104,7 +104,6 @@ public class Game
 			Thread.sleep(l);
 		} catch (InterruptedException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

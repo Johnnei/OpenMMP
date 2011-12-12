@@ -49,7 +49,7 @@ public class Town
 			g.drawRect(x, y, width, height);
 			if (houseCount > 0)
 			{
-				if (houseCount == 5)
+				if (houseCount == 5) //Hotel
 				{
 					if (hor)
 					{

@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 
 import monopoly.Game;
 import monopoly.Player;
+import monopoly.Town;
 
 public class Board extends JComponent
 {
@@ -114,7 +115,12 @@ public class Board extends JComponent
 		drawImage(g, Images.getImages().Dice[game.getDice(1) - 1], 210, 100, 310, 200);
 		g.setColor(new Color(Integer.valueOf("000000", 16)));
 		setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		g.drawString(Game.Monopoly().getPlayer(Game.Monopoly().turn.getId()).Username()+ "'s Turn", 100, 225);
+		g.drawString(Game.Monopoly().getPlayer(Game.Monopoly().turn.getId()).Username()+ "'s Turn", 100, 225); //TODO Change this to a global variable for even more read ability possiblities
+		for (int i = 0; i < Game.Monopoly().towns.size(); i++)
+		{
+			Town t = Game.Monopoly().towns.get(i);
+			//TODO Add Town Painting to see it's owner
+		}
 	}
 
 }

@@ -17,6 +17,11 @@ public class TownManager
 	{
 		return towns.get(i);
 	}
+	
+	public int size()
+	{
+		return towns.size();
+	}
 
 	private boolean streetIsFull(Street s)
 	{
