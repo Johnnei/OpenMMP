@@ -1,13 +1,16 @@
 package monopoly;
 
+import java.awt.Color;
 import java.awt.Graphics;
+
+import multiplayer.PlayerMP;
 
 public class Town
 {
 
 	public Street street;
 	private String name;
-	private Player owner;
+	private PlayerMP owner;
 	private int houseCount;
 	private int price;
 	private int cost;
@@ -27,18 +30,6 @@ public class Town
 	{
 		this(name, street, price, cost);
 		type = special;
-	}
-
-	public boolean isBuyable()
-	{
-		if (owner.Username() == null)
-		{
-			if (type == SpecialTown.Normaal || type == SpecialTown.Station || type == SpecialTown.Voorzieningen)
-			{
-				return true;
-			}
-		}
-		return false;
 	}
 
 	public void paint(Graphics g, int x, int y, int width, int height, boolean hor)
@@ -95,12 +86,12 @@ public class Town
 		return owner;
 	}
 
-	public void setOwner(Player player)
+	public void setOwner(PlayerMP player)
 	{
 		owner = player;
 	}
 
-	public void removeOwner(Player player)
+	public void removeOwner()
 	{
 		owner = null;
 	}

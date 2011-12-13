@@ -119,6 +119,78 @@ public class Board extends JComponent
 		for (int i = 0; i < Game.Monopoly().towns.size(); i++)
 		{
 			Town t = Game.Monopoly().towns.get(i);
+			/* Bottom Row */
+			//Start
+			if(i == 1)
+				t.paint(g, 511, 520, 52, 78, true);
+			//General Funds
+			else if(i == 3)
+				t.paint(g, 405, 520, 52, 78, true);
+			//Income Tax
+			else if(i == 5)
+				t.paint(g, 298, 520, 52, 78, true);
+			else if(i == 6)
+				t.paint(g, 244, 520, 52, 78, true);
+			//Random Funds
+			else if(i == 8)
+				t.paint(g, 139, 520, 52, 78, true);
+			else if(i == 9)
+				t.paint(g, 86, 520, 51, 78, true);
+			//Jail
+			/* Left Column */
+			else if(i == 11)
+				t.paint(g, 0, 472, 86, 49, false);
+			else if(i == 12)
+				t.paint(g, 0, 423, 86, 49, false);
+			else if(i == 13)
+				t.paint(g, 0, 374, 86, 49, false);
+			else if(i == 14)
+				t.paint(g, 0, 325, 86, 48, false);
+			else if(i == 15)
+				t.paint(g, 0, 275, 86, 49, false);
+			else if(i == 16)
+				t.paint(g, 0, 225, 86, 49, false);
+			//General Funds
+			else if(i == 18)
+				t.paint(g, 0, 127, 86, 49, false);
+			else if(i == 19)
+				t.paint(g, 0, 79, 86, 49, false);
+			//Free Parking
+			/* Top Row */
+			else if(i == 21)
+				t.paint(g, 86, 0, 52, 78, true);
+			//Random Funds
+			else if(i == 23)
+				t.paint(g, 191, 0, 52, 78, true);
+			else if(i == 24)
+				t.paint(g, 245, 0, 52, 78, true);
+			else if(i == 25)
+				t.paint(g, 299, 0, 52, 78, true);
+			else if(i == 26)
+				t.paint(g, 352, 0, 52, 78, true);
+			else if(i == 27)
+				t.paint(g, 405, 0, 52, 78, true);
+			else if(i == 28)
+				t.paint(g, 459, 0, 52, 78, true);
+			else if(i == 29)
+				t.paint(g, 512, 0, 52, 78, true);
+			//To Jail
+			/* Right Column */
+			else if(i == 31)
+				t.paint(g, 564, 79, 83, 48, false);
+			else if(i == 32)
+				t.paint(g, 564, 128, 83, 48, false);
+			//General Funds
+			else if(i == 34)
+				t.paint(g, 564, 225, 83, 49, false);
+			else if(i == 35)
+				t.paint(g, 564, 275, 83, 48, false);
+			//Random Funds
+			else if(i == 37)
+				t.paint(g, 564, 374, 83, 48, false);
+			//Special Tax
+			else if(i == 39)
+				t.paint(g, 564, 472, 83, 48, false);
 			//TODO Add Town Painting to see it's owner
 		}
 	}
