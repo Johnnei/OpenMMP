@@ -60,6 +60,16 @@ public class Town
 		return (ownerId == -1) ? "Bank" : getPlayer().Username();
 	}
 	
+	public byte getOwnerId()
+	{
+		return ownerId;
+	}
+	
+	public boolean isSameOwner(int id)
+	{
+		return ownerId == id;
+	}
+	
 	public boolean hasOwner()
 	{
 		return (ownerId == -1) ? false : true;
