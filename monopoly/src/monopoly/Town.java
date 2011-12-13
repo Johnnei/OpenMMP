@@ -38,28 +38,59 @@ public class Town
 		{
 			g.setColor(owner.getColor());
 			g.drawRect(x, y, width, height);
+			
+			boolean isLeft = (y == 520 || x == 0); //Left side of board (diagonal left top, right bot)
+			
 			if (houseCount > 0)
 			{
 				if (houseCount == 5) //Hotel
 				{
-					if (hor)
+					if (isLeft)
 					{
-
+						if(hor)
+						{
+							
+						}
+						else
+						{
+							
+						}
 					}
 					else
 					{
-
+						if(hor)
+						{
+							
+						}
+						else
+						{
+							
+						}
 					}
 				}
-				else
+				else if(houseCount > 0)
 				{
-					if (hor)
+					if (isLeft)
 					{
-
+						if(hor)
+						{
+							
+						}
+						else
+						{
+							
+						}
 					}
 					else
 					{
-
+						if(hor)
+						{
+							
+						}
+						else
+						{
+							
+						}
 					}
 				}
 			}
