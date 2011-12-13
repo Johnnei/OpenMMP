@@ -41,55 +41,90 @@ public class Town
 			
 			boolean isLeft = (y == 520 || x == 0); //Left side of board (diagonal left top, right bot)
 			
-			if (houseCount > 0)
+			if (houseCount == 5) //Hotel
 			{
-				if (houseCount == 5) //Hotel
+				int hWidth = 35;
+				if (isLeft)
 				{
-					if (isLeft)
+					if(hor)
 					{
-						if(hor)
+						g.setColor(new Color(Integer.valueOf("000000", 16)));
+						g.drawRect(x + 7, y + 5, hWidth + 1, 9);
+						g.setColor(new Color(Integer.valueOf("ff0000", 16)));
+						g.fillRect(x + 8, y + 6, hWidth, 8);
+					}
+					else
+					{
+						g.setColor(new Color(Integer.valueOf("000000", 16)));
+						g.drawRect(x + width - 16, y + 6, 9, hWidth + 1);
+						g.setColor(new Color(Integer.valueOf("ff0000", 16)));
+						g.fillRect(x + width - 15, y + 7, 8, hWidth);
+					}
+				}
+				else
+				{
+					if(hor)
+					{
+						g.setColor(new Color(Integer.valueOf("000000", 16)));
+						g.drawRect(x + 7, y + height - 13, hWidth + 1, 9);
+						g.setColor(new Color(Integer.valueOf("ff0000", 16)));
+						g.fillRect(x + 8, y + height - 12, hWidth, 8);
+					}
+					else
+					{
+						g.setColor(new Color(Integer.valueOf("000000", 16)));
+						g.drawRect(x + 6, y + 5, 9, hWidth + 1);
+						g.setColor(new Color(Integer.valueOf("ff0000", 16)));
+						g.fillRect(x + 7, y + 6, 8, hWidth);
+					}
+				}
+			}
+			else if(houseCount > 0)
+			{
+				int hWidth = 10;
+				if (isLeft)
+				{
+					if(hor)
+					{
+						for(int i = 0; i < houseCount; i++)
 						{
-							
-						}
-						else
-						{
-							
+							g.setColor(new Color(Integer.valueOf("000000", 16)));
+							g.drawRect(x + 2 + (12 * i), y + 5, hWidth + 1, 9);
+							g.setColor(new Color(Integer.valueOf("00ff00", 16)));
+							g.fillRect(x + 3 + (12 * i), y + 6, hWidth, 8);
 						}
 					}
 					else
 					{
-						if(hor)
+						for(int i = 0; i < houseCount; i++)
 						{
-							
-						}
-						else
-						{
-							
+							g.setColor(new Color(Integer.valueOf("000000", 16)));
+							g.drawRect(x + width - 16, y + 2 + (i * 12), hWidth + 1, 9);
+							g.setColor(new Color(Integer.valueOf("00ff00", 16)));
+							g.fillRect(x + width - 15, y + 3 + (i * 12), hWidth, 8);
 						}
 					}
 				}
-				else if(houseCount > 0)
+				else
 				{
-					if (isLeft)
+					if(hor)
 					{
-						if(hor)
+						for(int i = 0; i < houseCount; i++)
 						{
-							
-						}
-						else
-						{
-							
+							g.setColor(new Color(Integer.valueOf("000000", 16)));
+							g.drawRect(x + 2 + (12 * i), y + height - 13, hWidth + 1, 9);
+							g.setColor(new Color(Integer.valueOf("00ff00", 16)));
+							g.fillRect(x + 3 + (12 * i), y + height - 12, hWidth, 8);
 						}
 					}
 					else
 					{
-						if(hor)
+						for(int i = 0; i < houseCount; i++)
 						{
-							
-						}
-						else
-						{
-							
+							g.setColor(new Color(Integer.valueOf("000000", 16)));
+							g.drawRect(x + 4, y + 2 + (i * 12), hWidth + 1, 9);
+							g.setColor(new Color(Integer.valueOf("00ff00", 16)));
+							g.fillRect(x + 5, y + 3 + (i * 12), hWidth, 8);
 						}
 					}
 				}

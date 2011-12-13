@@ -191,7 +191,6 @@ public class Board extends JComponent
 			//Special Tax
 			else if(i == 39)
 				t.paint(g, 564, 472, 83, 48, false);
-			//TODO Add Town Painting to see it's owner
 		}
 	}
 
