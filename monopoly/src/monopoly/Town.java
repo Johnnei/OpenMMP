@@ -156,6 +156,25 @@ public class Town
 	{
 		return (owner == null) ? null : owner.Username();
 	}
+	
+	public byte getOwnerId()
+	{
+		if(!hasOwner())
+			return 127;
+		return owner.getId();
+	}
+	
+	public boolean isSameOwner(int id)
+	{
+		if(!hasOwner())
+			return false;
+		return id == owner.getId();
+	}
+	
+	public boolean hasOwner()
+	{
+		return owner != null;
+	}
 
 	public Player getPlayer()
 	{

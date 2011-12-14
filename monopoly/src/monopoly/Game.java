@@ -17,6 +17,8 @@ public class Game
 	/* GUI Data */
 	public String myPlayer;
 	public GameFrame gframe;
+	private String stateString;
+	private String stateSubString;
 	
 	/* Game Data */
 	private int[] dice;
@@ -45,7 +47,7 @@ public class Game
 	}
 	
 	private Game()
-	{	
+	{
 	}
 	
 	private void StartGame()
@@ -143,6 +145,7 @@ public class Game
 	{
 		players = new PlayerMP[6];
 		dice = new int[] { 1, 1};
+		resetStateString();
 		towns = new TownManager();
 		towns.Add("Start", Street.Start, 0, 0, SpecialTown.Start);
 		towns.Add("Dorpstraat", Street.Ons_Dorp, 1000, 500);
@@ -211,7 +214,7 @@ public class Game
 				if(getPlayer(pId).Index() == 40)
 					getPlayer(pId).addIndex(-40);
 				gframe.board.doUpdate();
-				Sleep(300);
+				Sleep(150);
 			}
 		}
 		else //Move Backward
@@ -223,12 +226,59 @@ public class Game
 				if(getPlayer(pId).Index() == -1)
 					getPlayer(pId).addIndex(40);
 				gframe.board.doUpdate();
-				Sleep(300);
+				Sleep(150);
 			}
 		}
+		//Execute events on landing
+		updateStateString();
 	}
 	
 	/* Public Getters / Setters */
+	
+	public void updateStateString()
+	{
+		stateString = getCurrentUser() + " landed on " + getCurrentTown().getName();
+		if(towns.get(getCurrentIndex()).hasOwner())
+		{
+			if(towns.get(getCurrentIndex()).isSameOwner(turn.getId()))
+				stateSubString = getCurrentTown().getName() + " is " + getCurrentUser() + "'s own property";
+			else if(!towns.isInvalid(getCurrentIndex()))
+				stateSubString = getCurrentUser() + " needs to pay €" + towns.getCost(getCurrentIndex());
+		}
+		else
+			stateSubString = getCurrentUser() + " can buy " + getCurrentTown().getName() + " for €" + getCurrentTown().getPrice();
+	}
+	
+	public void resetStateString()
+	{
+		stateString = "";
+		stateSubString = "";
+	}
+	
+	public Town getCurrentTown()
+	{
+		return towns.get(getCurrentIndex());
+	}
+	
+	public String getCurrentUser()
+	{
+		return getPlayers()[turn.getId()].Username();
+	}
+	
+	public int getCurrentIndex()
+	{
+		return getPlayers()[turn.getId()].Index();
+	}
+	
+	public String getState()
+	{
+		return stateString;
+	}
+	
+	public String getStateSub()
+	{
+		return stateSubString;
+	}
 	
 	public void changePlayerMoney(byte id, int amount)
 	{

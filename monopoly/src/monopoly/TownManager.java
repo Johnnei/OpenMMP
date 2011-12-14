@@ -37,6 +37,17 @@ public class TownManager
 		return false;
 	}
 	
+	public boolean isInvalid(int index)
+	{
+		return 
+		(
+			index == 0 || index == 10 || index == 20 || index == 30 ||//Corners
+			index == 2 || index == 17 || index == 33 || //General Funds
+			index == 7 || index == 22 || index == 36 || //Random Funds
+			index == 4 || index == 38//Taxes
+		);
+	}
+	
 	public void setOwner(byte pId, byte sIndex)
 	{
 		Town t = towns.get(sIndex);
@@ -64,30 +75,26 @@ public class TownManager
 			return t.getCost();
 		else if (t.getType() == SpecialTown.Station)
 		{
-			int cost = 1250;
-			for (int i = 0; i < towns.size(); i++)
-			{
-				Town t2 = towns.get(i);
-				if (t2.getType() == SpecialTown.Station && t2.getOwner().equals(t.getOwner()))
-				{
-					cost *= 2;
-				}
-			}
-			return cost;
+			int[] cost = new int[] { 1250, 5000, 10000, 20000 };
+			int stationCount = 0;
+			byte ownerId = t.getOwnerId();
+			if(towns.get(5).isSameOwner(ownerId))
+				stationCount++;
+			if(towns.get(15).isSameOwner(ownerId))
+				stationCount++;
+			if(towns.get(25).isSameOwner(ownerId))
+				stationCount++;
+			if(towns.get(35).isSameOwner(ownerId))
+				stationCount++;
+			return cost[stationCount - 1];
 		}
 		else
 		// SpecialTown.Voorziening
 		{
-			int voorzieningen = 0;
-			for (int i = 0; i < towns.size(); i++)
-			{
-				Town t2 = towns.get(i);
-				if (t2.getType() == SpecialTown.Voorzieningen && t2.getOwner().equals(t.getOwner()))
-				{
-					voorzieningen++;
-				}
-			}
-			return Game.Monopoly().diceEyesCount() * voorzieningen * 500;
+			int voorzieningCount = 1;
+			if(towns.get(12).isSameOwner(towns.get(28).getOwnerId()))
+				voorzieningCount = 2;
+			return Game.Monopoly().diceEyesCount() * 500 * voorzieningCount;
 		}
 	}
 

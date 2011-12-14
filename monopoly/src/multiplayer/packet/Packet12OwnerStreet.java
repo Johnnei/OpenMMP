@@ -32,6 +32,7 @@ public class Packet12OwnerStreet extends Packet
 	public void handle()
 	{
 		Game.Monopoly().towns.setOwner(pId, sIndex);
+		Game.Monopoly().updateStateString();
 	}
 
 }
