@@ -38,6 +38,16 @@ public class Town
 		{
 			g.setColor(owner.getColor());
 			g.drawRect(x, y, width, height);
+			if(hor)
+			{
+				g.drawRect(x + 1, y + 2, width - 2, height - 3);
+				g.drawRect(x + 2, y + 3, width - 4, height - 5);
+			}
+			else
+			{
+				g.drawRect(x + 2, y + 1, width - 4, height - 2);
+				g.drawRect(x + 3, y + 2, width - 6, height - 4);
+			}
 			
 			boolean isLeft = (y == 520 || x == 0); //Left side of board (diagonal left top, right bot)
 			

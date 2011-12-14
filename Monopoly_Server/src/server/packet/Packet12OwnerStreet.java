@@ -4,8 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import server.MMP;
-
 public class Packet12OwnerStreet extends Packet
 {
 	byte pId;
