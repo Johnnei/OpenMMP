@@ -32,8 +32,11 @@ public class Packet11BuyStreet extends Packet
 		{
 			if(MMP.getServer().Monopoly().getPlayer(pId).Money() >= MMP.getServer().Monopoly().getTownManager().getPrice(sIndex))
 			{
-				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(pId, MMP.getServer().Monopoly().getTownManager().getPrice(sIndex)));
+				MMP.Log(MMP.getServer().Monopoly().getPlayer(pId).Username() + " has bought " + MMP.getServer().Monopoly().getTownManager().get(sIndex).getName());
+				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(pId, -MMP.getServer().Monopoly().getTownManager().getPrice(sIndex)));
 				MMP.getServer().Monopoly().sendPacket(new Packet12OwnerStreet(pId, sIndex));
+				MMP.getServer().Monopoly().getTownManager().setOwner(pId, sIndex);
+				MMP.getServer().Monopoly().getPlayer(pId).Buy(MMP.getServer().Monopoly().getTownManager().getPrice(sIndex));
 			}
 		}
 	}

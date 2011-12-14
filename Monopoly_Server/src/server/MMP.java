@@ -112,6 +112,7 @@ public class MMP
 			{
 				Monopoly().sendPacket(new Packet01PlayerJoin(player.Username(), player.getColorCode(), player.getId()));
 				Monopoly().sendPacket(new Packet14ChangeMoney(player.getId(), 150000));
+				Monopoly().getPlayer(i).getMoney(150000);
 			}
 		}
 		

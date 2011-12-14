@@ -41,6 +41,7 @@ public class TownManager
 	{
 		Town t = towns.get(sIndex);
 		t.setOwner(Game.Monopoly().getPlayer(pId));
+		towns.set(sIndex, t);
 	}
 
 	public boolean isBuyable(int index)

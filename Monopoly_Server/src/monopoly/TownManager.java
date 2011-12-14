@@ -34,6 +34,13 @@ public class TownManager
 		return false;
 	}
 	
+	public void setOwner(int pId, int sIndex)
+	{
+		Town t = towns.get(sIndex);
+		t.setOwner((byte)pId);
+		towns.set(sIndex, t);
+	}
+	
 	public int getPrice(int index)
 	{
 		return towns.get(index).getPrice();

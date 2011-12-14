@@ -11,40 +11,40 @@ public class Player
 	private byte index;
 	private Color color;
 	private int colorcode;
-	
+
 	public Player()
 	{
-		
+
 	}
 
 	public Player(String user, int colorCode)
 	{
 		username = user;
-		money = 200000;
+		money = 0;
 		value = money;
 		index = 0;
 	}
-	
+
 	public void setUsername(String user)
 	{
 		username = user;
 	}
-	
+
 	public void setColor(int code)
 	{
 		color = new Color(code);
 		colorcode = code;
 	}
-	
+
 	public void addIndex(byte value)
 	{
 		index += value;
-		if(index > 40)
+		if (index > 40)
 			index -= 40;
-		else if(index < 0)
+		else if (index < 0)
 			index += 40;
 	}
-	
+
 	public byte getIndex()
 	{
 		return index;
@@ -62,7 +62,7 @@ public class Player
 		}
 		return smoney;
 	}
-	
+
 	public int getColorCode()
 	{
 		return colorcode;
