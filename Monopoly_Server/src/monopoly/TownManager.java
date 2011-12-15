@@ -44,12 +44,12 @@ public class TownManager
 	public int getPayPrice(int index)
 	{
 		Town town = towns.get(index);
-		if(!town.hasOwner())
-			return 0;
 		if(town.getType() == SpecialTown.Belasting)
 			return 20000;
 		if(town.getType() == SpecialTown.Belasting_Extra)
 			return 10000;
+		if(!town.hasOwner())
+			return 0;
 		if(town.getType() == SpecialTown.Kans || town.getType() == SpecialTown.Algemeen_Fonds)
 			return 0;
 		else
