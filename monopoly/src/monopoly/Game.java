@@ -238,7 +238,11 @@ public class Game
 	public void updateStateString()
 	{
 		stateString = getCurrentUser() + " landed on " + getCurrentTown().getName();
-		if(towns.get(getCurrentIndex()).hasOwner())
+		if(towns.isInvalid(getCurrentIndex()))
+		{
+			stateSubString = "";
+		}
+		else if(towns.get(getCurrentIndex()).hasOwner())
 		{
 			if(towns.get(getCurrentIndex()).isSameOwner(turn.getId()))
 				stateSubString = getCurrentTown().getName() + " is " + getCurrentUser() + "'s own property";
