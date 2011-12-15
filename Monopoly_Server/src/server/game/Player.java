@@ -8,7 +8,7 @@ public class Player
 	private String username;
 	private int money;
 	private int value;
-	private byte index;
+	protected byte index;
 	private Color color;
 	private int colorcode;
 

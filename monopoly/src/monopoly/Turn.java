@@ -10,14 +10,12 @@ public class Turn
 {
 
 	private byte playerId;
-	private boolean rolledDice;
 	boolean finished;
 	List<GameEvent> events;
 
 	public Turn(PlayerMP player)
 	{
 		playerId = player.getId();
-		rolledDice = false;
 		finished = false;
 		events = new ArrayList<GameEvent>();
 	}
@@ -53,9 +51,6 @@ public class Turn
 	{
 		if (!myTurn(Game.Monopoly().getMyID()))
 			return;
-		if (rolledDice)
-			return;
-		rolledDice = true;
 		Game.Monopoly().getPlayer().addPacket(new Packet07RollDice());
 	}
 

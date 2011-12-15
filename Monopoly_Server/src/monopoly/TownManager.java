@@ -34,6 +34,11 @@ public class TownManager
 		return false;
 	}
 	
+	public boolean isTownType(int sIndex, SpecialTown t)
+	{
+		return towns.get(sIndex).getType() == t;
+	}
+	
 	public void setOwner(int pId, int sIndex)
 	{
 		Town t = towns.get(sIndex);

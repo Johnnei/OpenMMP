@@ -151,6 +151,11 @@ public class ServerGame
 		return dice[0] + dice[1];
 	}
 	
+	public boolean diceDoubles()
+	{
+		return dice[0] == dice[1];
+	}
+	
 	public void sendPacket(Packet p, byte id)
 	{
 		if(players[id] != null)
