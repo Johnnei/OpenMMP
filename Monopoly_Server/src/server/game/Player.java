@@ -12,6 +12,7 @@ public class Player
 	private Color color;
 	private int colorcode;
 	private boolean inJail;
+	private byte jailTime;
 
 	public Player()
 	{
@@ -24,6 +25,8 @@ public class Player
 		money = 0;
 		value = money;
 		index = 0;
+		inJail = false;
+		jailTime = 0;
 	}
 
 	public void setUsername(String user)
@@ -68,6 +71,22 @@ public class Player
 	{
 		index = 10;
 		inJail = true;
+	}
+	
+	public void releaseFromJail()
+	{
+		inJail = false;
+		jailTime = 0;
+	}
+	
+	public void addJailTime()
+	{
+		++jailTime;
+	}
+	
+	public byte getJailTime()
+	{
+		return jailTime;
 	}
 	
 	public boolean isInJail()

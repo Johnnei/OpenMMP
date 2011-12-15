@@ -42,6 +42,21 @@ public class Packet07RollDice extends Packet
 				MMP.getServer().Monopoly().sendPacket(new Packet15SetIndex(MMP.getServer().Monopoly().getCurrentPlayer().getId(), (byte)10));
 				return;
 			}
+			//Player is in jail, Only handle jail
+			if(MMP.getServer().Monopoly().getCurrentPlayer().isInJail())
+			{
+				if(MMP.getServer().Monopoly().getCurrentPlayer().getJailTime() == 3)
+				{
+					if(MMP.getServer().Monopoly().diceDoubles())
+						MMP.getServer().Monopoly().getCurrentPlayer().releaseFromJail();
+					//TODO Jail
+					//Pay and release
+					//Check if has free jail card else pay 5000
+					MMP.getServer().Monopoly().getCurrentPlayer().releaseFromJail();
+				}
+				MMP.getServer().Monopoly().getCurrentPlayer().addJailTime();
+				return;
+			}
 			
 			MMP.getServer().Monopoly().getCurrentPlayer().addIndex((byte)MMP.getServer().Monopoly().diceEyesCount());
 			MMP.Sleep((MMP.getServer().Monopoly().diceEyesCount() * 150) + 10); //Delay actions so it merges with the clients
