@@ -39,6 +39,7 @@ public class Packet07RollDice extends Packet
 			if(MMP.getServer().Monopoly().turn.sendJail())
 			{
 				MMP.getServer().Monopoly().getCurrentPlayer().jailPlayer();
+				MMP.getServer().Monopoly().sendPacket(new Packet15SetIndex(MMP.getServer().Monopoly().getCurrentPlayer().getId(), (byte)10));
 				return;
 			}
 			
@@ -61,7 +62,7 @@ public class Packet07RollDice extends Packet
 			}
 			else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.ToJail))
 			{
-			
+				MMP.getServer().Monopoly().sendPacket(new Packet15SetIndex(MMP.getServer().Monopoly().getCurrentPlayer().getId(), (byte)10));
 			}
 			else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Start))
 			{
