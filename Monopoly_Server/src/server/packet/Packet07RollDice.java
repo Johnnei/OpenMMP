@@ -32,7 +32,11 @@ public class Packet07RollDice extends Packet
 			MMP.getServer().Monopoly().turn.rollDice();
 			MMP.getServer().Monopoly().rollDice();
 			MMP.getServer().Monopoly().sendPacket(new Packet08SetDice(MMP.getServer().Monopoly().getDices()));
-			MMP.getServer().Monopoly().getPlayer(MMP.getServer().Monopoly().turn.getID()).addIndex((byte)MMP.getServer().Monopoly().diceEyesCount());
+			MMP.getServer().Monopoly().getCurrentPlayer().addIndex((byte)MMP.getServer().Monopoly().diceEyesCount());
+			MMP.Sleep((MMP.getServer().Monopoly().diceEyesCount() * 150) + 10); //Delay actions so it merges with the clients
+			int cost = MMP.getServer().Monopoly().getTownManager().getPayPrice(MMP.getServer().Monopoly().getCurrentPlayer().getIndex());
+			if(cost > 0)
+				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(MMP.getServer().Monopoly().getCurrentPlayer().getId(), -cost));
 		}
 	}
 

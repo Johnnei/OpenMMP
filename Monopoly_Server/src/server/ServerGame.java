@@ -98,6 +98,11 @@ public class ServerGame
 	
 	/* MP Area */
 	
+	public PlayerMP getCurrentPlayer()
+	{
+		return getPlayer(MMP.getServer().Monopoly().turn.getID());
+	}
+	
 	public void setPlayer(PlayerMP player, byte slot)
 	{
 		players[slot] = player;

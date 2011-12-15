@@ -41,6 +41,21 @@ public class TownManager
 		towns.set(sIndex, t);
 	}
 	
+	public int getPayPrice(int index)
+	{
+		Town town = towns.get(index);
+		if(!town.hasOwner())
+			return 0;
+		if(town.getType() == SpecialTown.Belasting)
+			return 20000;
+		if(town.getType() == SpecialTown.Belasting_Extra)
+			return 10000;
+		if(town.getType() == SpecialTown.Kans || town.getType() == SpecialTown.Algemeen_Fonds)
+			return 0;
+		else
+			return getCost(index);
+	}
+	
 	public int getPrice(int index)
 	{
 		return towns.get(index).getPrice();
@@ -93,14 +108,15 @@ public class TownManager
 				stationCount++;
 			return cost[stationCount - 1];
 		}
-		else
-		// SpecialTown.Voorziening
+		else if(t.getType() == SpecialTown.Voorzieningen)
 		{
 			int voorzieningCount = 1;
 			if(towns.get(12).isSameOwner(towns.get(28).getOwnerId()))
 				voorzieningCount = 2;
 			return MMP.getServer().Monopoly().diceEyesCount() * 500 * voorzieningCount;
 		}
+		else
+			return t.getCost();
 	}
 
 	public void Add(String townName, Street streetName, int Price, int Cost)
