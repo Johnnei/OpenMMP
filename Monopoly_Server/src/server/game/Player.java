@@ -11,6 +11,7 @@ public class Player
 	protected byte index;
 	private Color color;
 	private int colorcode;
+	private boolean inJail;
 
 	public Player()
 	{
@@ -61,6 +62,17 @@ public class Player
 			}
 		}
 		return smoney;
+	}
+	
+	public void jailPlayer()
+	{
+		index = 10;
+		inJail = true;
+	}
+	
+	public boolean isInJail()
+	{
+		return inJail;
 	}
 
 	public int getColorCode()

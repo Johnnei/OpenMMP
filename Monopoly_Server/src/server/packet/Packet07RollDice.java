@@ -34,13 +34,22 @@ public class Packet07RollDice extends Packet
 			MMP.getServer().Monopoly().turn.rollDice();
 			MMP.getServer().Monopoly().rollDice();
 			MMP.getServer().Monopoly().sendPacket(new Packet08SetDice(MMP.getServer().Monopoly().getDices()));
+			
+			//If the player gets jailed by rolling trice doubles, End the roll-phase before applying any effect
+			if(MMP.getServer().Monopoly().turn.sendJail())
+			{
+				MMP.getServer().Monopoly().getCurrentPlayer().jailPlayer();
+				return;
+			}
+			
 			MMP.getServer().Monopoly().getCurrentPlayer().addIndex((byte)MMP.getServer().Monopoly().diceEyesCount());
 			MMP.Sleep((MMP.getServer().Monopoly().diceEyesCount() * 150) + 10); //Delay actions so it merges with the clients
 			//Pay Rent
+			byte pId = MMP.getServer().Monopoly().getCurrentPlayer().getId();
 			int sIndex = MMP.getServer().Monopoly().getCurrentPlayer().getIndex();
 			int sCost = MMP.getServer().Monopoly().getTownManager().getPayPrice(sIndex);
 			if(sCost > 0)
-				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(MMP.getServer().Monopoly().getCurrentPlayer().getId(), -sCost));
+				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(pId, -sCost));
 			//OnArrival Events
 			if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Kans))
 			{
@@ -53,6 +62,10 @@ public class Packet07RollDice extends Packet
 			else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.ToJail))
 			{
 			
+			}
+			else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Start))
+			{
+				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(pId, 20000));
 			}
 			//If has thrown doubles the player is allowed to roll again
 			if(MMP.getServer().Monopoly().diceDoubles())

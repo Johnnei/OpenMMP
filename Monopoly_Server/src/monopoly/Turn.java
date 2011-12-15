@@ -4,10 +4,11 @@ public class Turn
 {
 	byte playerId;
 	boolean canRoll;
+	byte turnCount;
 	
 	public Turn()
 	{
-		
+		turnCount = 0;
 	}
 	
 	public byte getID()
@@ -17,8 +18,17 @@ public class Turn
 	
 	public void ResetTurn(byte id)
 	{
+		if(playerId == id) //Same ID again: Double Eyes!
+			turnCount++;
+		else
+			turnCount = 1;
 		playerId = id;
 		canRoll = true;
+	}
+	
+	public boolean sendJail()
+	{
+		return turnCount > 3;
 	}
 	
 	public boolean canRollDice()
