@@ -33,12 +33,14 @@ public class ServerGame
 	{
 		generalFunds = new CardDeck();
 		generalFunds.addCard(new Card("Your Building Contract has expired.\nPay 5000 to renew it.", -5000));
+		//generalFunds.addCard(new Card(""));
 		generalFunds.shuffle();
 	}
 	
 	private void initCardDeckRandomFunds()
 	{
 		randomFunds = new CardDeck();
+		randomFunds.addCard(new Card("Goto Jail!\nDo not pass start, You'll not recieve 20'000", 10, false));
 		randomFunds.shuffle();
 	}
 	
