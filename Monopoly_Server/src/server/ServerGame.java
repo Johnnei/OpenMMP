@@ -2,6 +2,8 @@ package server;
 
 import java.util.Random;
 
+import monopoly.Card;
+import monopoly.CardDeck;
 import monopoly.SpecialTown;
 import monopoly.Street;
 import monopoly.TownManager;
@@ -21,9 +23,24 @@ public class ServerGame
 		dice = new byte[] { 1, 1 };
 		rand = new Random();
 		initStreets();
+		initCardDeckGeneralFunds();
+		initCardDeckRandomFunds();
 	}
 	
 	/* Game Simulation */
+	
+	private void initCardDeckGeneralFunds()
+	{
+		generalFunds = new CardDeck();
+		generalFunds.addCard(new Card("Your Building Contract has expired.\nPay 5000 to renew it.", -5000));
+		generalFunds.shuffle();
+	}
+	
+	private void initCardDeckRandomFunds()
+	{
+		randomFunds = new CardDeck();
+		randomFunds.shuffle();
+	}
 	
 	public void initStreets()
 	{
@@ -184,5 +201,7 @@ public class ServerGame
 	public Turn turn;
 	private byte turnId;
 	private Random rand;
+	private CardDeck generalFunds;
+	private CardDeck randomFunds;
 	
 }

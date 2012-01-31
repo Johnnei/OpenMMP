@@ -14,6 +14,23 @@ public class Card
 	
 	public Card(String txt, int moneyChange)
 	{
+		this.text = txt;
+		this.moneyChange = moneyChange;
+	}
+	
+	public Card(String text, int index, boolean move, boolean normal)
+	{
+		this(text, 0);
+		gotoIndexNormal = move;
+		if(move)
+			moveIndex = (byte)index;
+		else
+			gotoIndex = (byte)index;
+	}
+	
+	public Card(String text, int index, boolean move)
+	{
+		this(text, index, move, false);
 	}
 	
 	public String[] getStateStrings()
@@ -34,7 +51,7 @@ public class Card
 		{
 			if(gotoIndexNormal)
 			{
-				//TODO Send packets to do normal movement and make de server handle it
+				//TODO Send packets to do normal movement and make the server handle it
 			}
 			else
 			{
@@ -45,11 +62,13 @@ public class Card
 		{
 			if(gotoIndexNormal)
 			{
-				//TODO Send packets to do normal movement and make de server handle it
+				//TODO Send packets to do normal movement and make the server handle it
 			}
 			else
 			{
-				//TODO Send packets to move
+				byte index = MMP.getServer().Monopoly().getCurrentPlayer().getIndex();
+				index += moveIndex;
+				MMP.getServer().Monopoly().sendPacket(new Packet15SetIndex(MMP.getServer().Monopoly().getCurrentPlayer().getId(), index));
 			}
 		}
 			
