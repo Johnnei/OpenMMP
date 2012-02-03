@@ -69,11 +69,11 @@ public class Packet07RollDice extends Packet
 			//OnArrival Events
 			if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Kans))
 			{
-				
+				MMP.getServer().Monopoly().getDeck(true).drawCard().Handle();
 			}
 			else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Algemeen_Fonds))
 			{
-				
+				MMP.getServer().Monopoly().getDeck(false).drawCard().Handle();
 			}
 			else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.ToJail))
 			{

@@ -17,14 +17,20 @@ public class ServerGame
 	
 	public ServerGame()
 	{
+		long startMs = System.currentTimeMillis();
+		MMP.Log("Initializing Server Data... ", false);
 		players = new PlayerMP[6];
 		turn = new Turn();
 		turnId = -1;
 		dice = new byte[] { 1, 1 };
 		rand = new Random();
+		MMP.Log("Done ("+(System.currentTimeMillis() - startMs)+"ms)", true, false);
+		startMs = System.currentTimeMillis();
+		MMP.Log("Preparing Game Board... ", false);
 		initStreets();
 		initCardDeckGeneralFunds();
 		initCardDeckRandomFunds();
+		MMP.Log("Done ("+(System.currentTimeMillis() - startMs)+"ms)", true, false);
 	}
 	
 	/* Game Simulation */
@@ -32,13 +38,26 @@ public class ServerGame
 	private void initCardDeckGeneralFunds()
 	{
 		generalFunds = new CardDeck();
-		generalFunds.addCard(new Card("Your Building Contract has expired.\nPay 5000 to renew it.", -5000));
+		generalFunds.addCard(new Card("Your building contract has expired.\nPay €5000 to renew it.", -5000));
+		generalFunds.addCard(new Card("You recieve 5%goverment rent", 7500));
+		generalFunds.addCard(new Card("The bank made a mistake in your account, you've been refunded", 10000));
+		generalFunds.addCard(new Card("The bank made a mistake in your account, you've been charged", -10000));
+		generalFunds.addCard(new Card("The Tax-Company messed-up. You'll be charged.", -10000));
+		generalFunds.addCard(new Card("Your investments have been paid.\nYou'll recieve €15000", 15000));
+		generalFunds.addCard(new Card("Pay your monthly taxes.\nBill: €25000", -25000));
 		generalFunds.shuffle();
 	}
 	
 	private void initCardDeckRandomFunds()
 	{
 		randomFunds = new CardDeck();
+		randomFunds.addCard(new Card("Go to Jail!\nDo not pass start, You'll not recieve 20'000", 10, false));
+		randomFunds.addCard(new Card("Go to Start!\nYou'll recieve €40'000", 0, true, true));
+		randomFunds.addCard(new Card("You've been caught Drunk! Pay a €10'000 fine.", -10000));
+		randomFunds.addCard(new Card("You found €100 on the streets.", 100));
+		randomFunds.addCard(new Card("Go to Station East", 35, true, true));
+		randomFunds.addCard(new Card("Go to Station West", 15, true, true));
+		randomFunds.addCard(new Card("Pay your Car Rental\nYou'll be charged €5000", 5000));
 		randomFunds.shuffle();
 	}
 	
@@ -192,6 +211,11 @@ public class ServerGame
 	public TownManager getTownManager()
 	{
 		return towns;
+	}
+	
+	public CardDeck getDeck(boolean isRandomFunds)
+	{
+		return (isRandomFunds) ? randomFunds : generalFunds;
 	}
 	
 	private byte[] dice;

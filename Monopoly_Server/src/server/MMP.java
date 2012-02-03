@@ -154,7 +154,22 @@ public class MMP
 	
 	public static void Log(String line)
 	{
-		System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] " + line);
+		Log(line, true, true);
+	}
+	
+	public static void Log(String line, boolean endline)
+	{
+		Log(line, endline, true);
+	}
+	
+	public static void Log(String line, boolean endline, boolean addTime)
+	{
+		if(endline && addTime)
+			System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] " + line);
+		else if(endline)
+			System.out.println(line);
+		else if(addTime)
+			System.out.print("[" + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()) + "] " + line);
 	}
 	
 	//Game
