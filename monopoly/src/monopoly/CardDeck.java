@@ -6,10 +6,22 @@ import java.util.Random;
 
 public class CardDeck
 {
+	/**
+	 * Deck Used in the game
+	 */
 	private List<Card> deck;
+	/**
+	 * Original Deck
+	 */
 	private List<Card> deckCopy;
+	/**
+	 * Random Engine to shuffle the cards
+	 */
 	private Random rand;
 	
+	/**
+	 * Define CardDeck with 2 lists;
+	 */
 	public CardDeck(long seed)
 	{
 		deck = new ArrayList<Card>();
@@ -17,15 +29,20 @@ public class CardDeck
 		rand = new Random(seed);
 	}
 	
-	public void setSeed(long seed) {
-		rand = new Random(seed);
-	}
-	
+	/**
+	 * Add an Card to the Deck
+	 * @param c The Card to add to the Deck
+	 */
 	public void addCard(Card c)
 	{
 		addCard(c, true);
 	}
 	
+	/**
+	 * Add an Card to the Deck
+	 * @param c The Card to add to the Deck
+	 * @param newCard If the card should be added in both decks (original and in-use)
+	 */
 	private void addCard(Card c, boolean newCard)
 	{
 		deck.add(c);
@@ -33,6 +50,10 @@ public class CardDeck
 			deckCopy.add(c);
 	}
 	
+	/**
+	 * Pop the next card from the deck, If the deck is empty: Create a new deck
+	 * @return The card at index 0 of the CardDeck
+	 */
 	public Card drawCard()
 	{
 		if(deck.size() == 0)
@@ -46,6 +67,9 @@ public class CardDeck
 		return deck.remove(0);
 	}
 	
+	/**
+	 * Shuffle the deck, using the global seed.
+	 */
 	public void shuffle()
 	{
 		Card[] shuffledDeck = new Card[deck.size()];

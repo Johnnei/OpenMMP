@@ -9,7 +9,6 @@ import multiplayer.PlayerMP;
 import multiplayer.packet.Packet03Username;
 import multiplayer.packet.Packet04Colorcode;
 import multiplayer.packet.Packet06NextTurn;
-import multiplayer.packet.Packet07RollDice;
 import multiplayer.packet.Packet11BuyStreet;
 
 public class Game
@@ -24,12 +23,16 @@ public class Game
 	private int[] dice;
 	public Turn turn;
 	public TownManager towns;
+	private CardDeck randomFunds;
+	private CardDeck generalFunds;
 	
 	/* MP Data */
 	private byte myId = 127;
 	PlayerMP[] players;
 	public byte playerCount = 127;
 	public byte gotPlayers = 1;
+	private boolean hasSeed = false;
+	private long cardSeed;
 	
 	/* Pass by Reference */
 	private static Game game;
@@ -84,11 +87,14 @@ public class Game
 			getPlayer().addPacket(new Packet04Colorcode(colorCode, socket.getId()));
 			Log("Waiting for Server to start the game!");
 			
-			while(playerCount != gotPlayers)
+			while(playerCount != gotPlayers || !hasSeed)
 			{
-				//Idle to keep connection, just for testing atm
+				//Halt the Thread until we got everything sorted.
 				Sleep(100);
 			}
+			Log("Generating Card Decks");
+			randomFunds = new CardDeck(cardSeed);
+			generalFunds = new CardDeck(cardSeed);
 			Log("Game Can Start!");
 			new Thread(new GameFrame()).start();
 			GameLoop();
@@ -250,7 +256,7 @@ public class Game
 				stateSubString = getCurrentUser() + " needs to pay €" + towns.getCost(getCurrentIndex());
 		}
 		else
-			stateSubString = getCurrentUser() + " can buy " + getCurrentTown().getName() + " for €" + getCurrentTown().getPrice();
+			stateSubString = getCurrentUser() + " has landed on " + getCurrentTown().getName();
 	}
 	
 	public void resetStateString()
@@ -314,5 +320,10 @@ public class Game
 	public int diceEyesCount()
 	{
 		return dice[0] + dice[1];
+	}
+
+	public void setCardSeed(long seed)
+	{
+		cardSeed = seed;
 	}
 }

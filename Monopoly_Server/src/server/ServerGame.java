@@ -28,6 +28,7 @@ public class ServerGame
 		startMs = System.currentTimeMillis();
 		MMP.Log("Preparing Game Board... ", false);
 		initStreets();
+		cardSeed = rand.nextLong();
 		initCardDeckGeneralFunds();
 		initCardDeckRandomFunds();
 		MMP.Log("Done ("+(System.currentTimeMillis() - startMs)+"ms)", true, false);
@@ -37,7 +38,7 @@ public class ServerGame
 	
 	private void initCardDeckGeneralFunds()
 	{
-		generalFunds = new CardDeck();
+		generalFunds = new CardDeck(cardSeed);
 		generalFunds.addCard(new Card("Your building contract has expired.\nPay €5000 to renew it.", -5000));
 		generalFunds.addCard(new Card("You recieve 5%goverment rent", 7500));
 		generalFunds.addCard(new Card("The bank made a mistake in your account, you've been refunded", 10000));
@@ -50,7 +51,7 @@ public class ServerGame
 	
 	private void initCardDeckRandomFunds()
 	{
-		randomFunds = new CardDeck();
+		randomFunds = new CardDeck(cardSeed);
 		randomFunds.addCard(new Card("Go to Jail!\nDo not pass start, You'll not recieve 20'000", 10, false));
 		randomFunds.addCard(new Card("Go to Start!\nYou'll recieve €40'000", 0, true, true));
 		randomFunds.addCard(new Card("You've been caught Drunk! Pay a €10'000 fine.", -10000));
@@ -225,6 +226,7 @@ public class ServerGame
 	public Turn turn;
 	private byte turnId;
 	private Random rand;
+	private long cardSeed;
 	private CardDeck generalFunds;
 	private CardDeck randomFunds;
 	
