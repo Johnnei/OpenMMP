@@ -287,7 +287,12 @@ public class Game
 				else if (i == 1)
 					stateSubString = s[i];
 			}
-		} else if(towns.isInvalid(getCurrentIndex())) {
+ 		} else if (getCurrentIndex() == 10) { //Special Message for Jail
+ 			if(getCurrentPlayer().isInJail()) 
+ 				stateSubString = "You are in jail";
+ 			else
+ 				stateSubString = "You are visiting the jail";
+ 		} else if(towns.isInvalid(getCurrentIndex())) {
 			stateSubString = "";
 		} else if(towns.get(getCurrentIndex()).hasOwner()) {
 			if(towns.get(getCurrentIndex()).isSameOwner(turn.getId()))
@@ -296,7 +301,7 @@ public class Game
 				stateSubString = getCurrentUser() + " needs to pay €" + towns.getCost(getCurrentIndex());
 		}
 		else
-			stateSubString = getCurrentUser() + " has landed on " + getCurrentTown().getName();
+			stateSubString = getCurrentUser() + " can buy " + getCurrentTown().getName() + " for €" + getCurrentTown().getPrice();
 	}
 	
 	public void resetStateString()
@@ -308,6 +313,10 @@ public class Game
 	public Town getCurrentTown()
 	{
 		return towns.get(getCurrentIndex());
+	}
+	
+	public Player getCurrentPlayer() {
+		return getPlayers()[turn.getId()];
 	}
 	
 	public String getCurrentUser()

@@ -142,11 +142,19 @@ public class Town
 		}
 	}
 
+	/**
+	 * Gets the buy price of this town
+	 * @return buy price
+	 */
 	public int getPrice()
 	{
 		return price;
 	}
 
+	/**
+	 * Gets the "rent" price of this town
+	 * @return costs on landing
+	 */
 	public int getCost()
 	{
 		return cost + ((((cost * 10) - cost) / 5) * houseCount);
