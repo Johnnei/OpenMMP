@@ -11,6 +11,7 @@ public class Player
 	private int index;
 	private Color color;
 	private int colorCode;
+	private boolean inJail;
 	
 	public Player()
 	{
@@ -23,6 +24,11 @@ public class Player
 		index = 0;
 		money = 200000;
 		value = money;
+		inJail = false;
+	}
+	
+	public void setJail(boolean b) {
+		inJail = b;
 	}
 	
 	public void setUsername(String user)
@@ -54,39 +60,39 @@ public class Player
 		return sMoney;
 	}
 
-	public void addMoney(int amount)
+	public void incrementMoney(int amount)
 	{
 		money += amount;
 		value += amount;
 	}
 
-	public void Buy(int cost)
+	public void buyProperty(int cost)
 	{
 		money -= cost;
 		value += cost;
 	}
 
-	public String Username()
+	public String getUsername()
 	{
 		return username;
 	}
 	
-	public void addIndex(int i)
+	public void incrementIndex(int i)
 	{
 		index += i;
 	}
 	
-	public int Index()
+	public int getIndex()
 	{
 		return index;
 	}
 
-	public int Money()
+	public int getMoney()
 	{
 		return money;
 	}
 
-	public int Value()
+	public int getValue()
 	{
 		return value;
 	}
@@ -99,5 +105,9 @@ public class Player
 	public int getColorCode()
 	{
 		return colorCode;
+	}
+	
+	public boolean isInJail() {
+		return inJail;
 	}
 }

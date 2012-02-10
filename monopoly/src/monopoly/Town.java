@@ -154,7 +154,7 @@ public class Town
 
 	public String getOwner()
 	{
-		return (owner == null) ? null : owner.Username();
+		return (owner == null) ? null : owner.getUsername();
 	}
 	
 	public byte getOwnerId()

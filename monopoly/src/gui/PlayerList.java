@@ -29,7 +29,7 @@ public class PlayerList extends JList
 		{
 			if (players[i] != null)
 			{
-				vector.add(players[i].Username() + " €" + players[i].MoneyString());
+				vector.add(players[i].getUsername() + " €" + players[i].MoneyString());
 			}
 		}
 		setListData(vector);

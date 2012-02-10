@@ -104,7 +104,7 @@ public class Board extends JComponent
 		{
 			if (players[i] != null)
 			{
-				int[] cord = getCords(players[i].Index());
+				int[] cord = getCords(players[i].getIndex());
 				g.setColor(new Color(0x666666));
 				g.drawRect(cord[0] - 1, cord[1] - 1, 11, 11);
 				g.setColor(players[i].getColor());

@@ -43,7 +43,7 @@ public class GameFrame extends JComponent implements Runnable
 		{
 		}
 		GameFrame gframe = new GameFrame(800, 600, 150);
-		JFrame jframe = new JFrame("openMMP - Alpha 0.1 - " + Game.Monopoly().getPlayer().Username());
+		JFrame jframe = new JFrame("openMMP - Alpha 0.1 - " + Game.Monopoly().getPlayer().getUsername());
 		jframe.setIconImage(Images.getImages().Icon);
 		jframe.add(gframe);
 		jframe.pack();

@@ -239,10 +239,10 @@ public class Game
 		{
 			while(places != 0)
 			{
-				getPlayer(pId).addIndex(1);
+				getPlayer(pId).incrementIndex(1);
 				--places;
-				if(getPlayer(pId).Index() == 40)
-					getPlayer(pId).addIndex(-40);
+				if(getPlayer(pId).getIndex() == 40)
+					getPlayer(pId).incrementIndex(-40);
 				gframe.board.doUpdate();
 				Sleep(150);
 			}
@@ -251,10 +251,10 @@ public class Game
 		{
 			while(places != 0)
 			{
-				getPlayer(pId).addIndex(1);
+				getPlayer(pId).incrementIndex(1);
 				++places;
-				if(getPlayer(pId).Index() == -1)
-					getPlayer(pId).addIndex(40);
+				if(getPlayer(pId).getIndex() == -1)
+					getPlayer(pId).incrementIndex(40);
 				gframe.board.doUpdate();
 				Sleep(150);
 			}
@@ -312,12 +312,12 @@ public class Game
 	
 	public String getCurrentUser()
 	{
-		return getPlayers()[turn.getId()].Username();
+		return getPlayers()[turn.getId()].getUsername();
 	}
 	
 	public int getCurrentIndex()
 	{
-		return getPlayers()[turn.getId()].Index();
+		return getPlayers()[turn.getId()].getIndex();
 	}
 	
 	public String getState()
@@ -332,7 +332,7 @@ public class Game
 	
 	public void changePlayerMoney(byte id, int amount)
 	{
-		players[id].addMoney(amount);
+		players[id].incrementMoney(amount);
 	}
 
 	public PlayerMP[] getPlayers()
