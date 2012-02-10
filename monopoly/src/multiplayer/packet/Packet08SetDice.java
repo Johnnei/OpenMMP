@@ -31,7 +31,8 @@ public class Packet08SetDice extends Packet
 	public void handle()
 	{
 		Game.Monopoly().setDice(dice, dice2);
-		Game.Monopoly().movePlayer(Game.Monopoly().getDice(0) + Game.Monopoly().getDice(1));
+		if(!Game.Monopoly().getPlayer().isInJail()) //Prevent Client/Server De-sync when the player is in jail!
+			Game.Monopoly().movePlayer(Game.Monopoly().getDice(0) + Game.Monopoly().getDice(1));
 	}
 
 }

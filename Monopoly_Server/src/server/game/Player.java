@@ -2,6 +2,9 @@ package server.game;
 
 import java.awt.Color;
 
+import server.MMP;
+import server.packet.Packet18JailData;
+
 public class Player
 {
 
@@ -67,6 +70,7 @@ public class Player
 		return smoney;
 	}
 	
+	
 	public void jailPlayer()
 	{
 		index = 10;
@@ -98,8 +102,13 @@ public class Player
 	{
 		return colorcode;
 	}
+	
+	public void pay(int amount) {
+		money -= amount;
+		value -= amount;
+	}
 
-	public void getMoney(int amount)
+	public void incrementMoney(int amount)
 	{
 		money += amount;
 		value += amount;
@@ -111,17 +120,17 @@ public class Player
 		value += cost;
 	}
 
-	public String Username()
+	public String getUsername()
 	{
 		return username;
 	}
 
-	public int Money()
+	public int getMoney()
 	{
 		return money;
 	}
 
-	public int Value()
+	public int getValue()
 	{
 		return value;
 	}

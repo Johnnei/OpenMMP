@@ -112,9 +112,9 @@ public class MMP
 			PlayerMP player = Monopoly().getPlayer(i);
 			if(player != null)
 			{
-				Monopoly().sendPacket(new Packet01PlayerJoin(player.Username(), player.getColorCode(), player.getId()));
+				Monopoly().sendPacket(new Packet01PlayerJoin(player.getUsername(), player.getColorCode(), player.getId()));
 				Monopoly().sendPacket(new Packet14ChangeMoney(player.getId(), 150000));
-				Monopoly().getPlayer(i).getMoney(150000);
+				Monopoly().getPlayer(i).incrementMoney(150000);
 			}
 		}
 		

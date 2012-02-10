@@ -17,7 +17,7 @@ public class Packet00SetTurn extends Packet
 	public Packet00SetTurn(byte b)
 	{
 		turn = b;
-		MMP.Log("Turn has been given to " + MMP.getServer().Monopoly().getPlayer(turn).Username());
+		MMP.Log("Turn has been given to " + MMP.getServer().Monopoly().getPlayer(turn).getUsername());
 	}
 
 	public void readData(DataInputStream d) throws IOException

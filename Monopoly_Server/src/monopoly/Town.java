@@ -57,7 +57,7 @@ public class Town
 
 	public String getOwner()
 	{
-		return (ownerId == -1) ? "Bank" : getPlayer().Username();
+		return (ownerId == -1) ? "Bank" : getPlayer().getUsername();
 	}
 	
 	public byte getOwnerId()

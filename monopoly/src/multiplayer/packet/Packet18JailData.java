@@ -9,6 +9,9 @@ import monopoly.Game;
 public class Packet18JailData extends Packet
 {
 	
+	private final int ENTER_JAIL = 0x01;
+	private final int LEAVE_JAIL = 0x02;
+	
 	byte playerId;
 	byte jail;
 	
@@ -38,6 +41,11 @@ public class Packet18JailData extends Packet
 	@Override
 	public void handle()
 	{
+		if((jail & ENTER_JAIL) == ENTER_JAIL) {
+			Game.Monopoly().getPlayer(playerId).setJail(true);
+		} else if ((jail & LEAVE_JAIL) == LEAVE_JAIL) {
+			Game.Monopoly().getPlayer(playerId).setJail(false);
+		}
 	}
 
 }

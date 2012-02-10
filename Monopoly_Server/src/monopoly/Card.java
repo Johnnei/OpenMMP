@@ -45,7 +45,7 @@ public class Card
 	{
 		if(moneyChange != 0)
 		{
-			MMP.getServer().Monopoly().getCurrentPlayer().getMoney(moneyChange);
+			MMP.getServer().Monopoly().getCurrentPlayer().incrementMoney(moneyChange);
 			MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(MMP.getServer().Monopoly().getCurrentPlayer().getId(), moneyChange));
 		}
 		if(gotoIndex > -1)

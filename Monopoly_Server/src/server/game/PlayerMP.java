@@ -7,6 +7,7 @@ import server.MMP;
 import server.game.Player;
 import server.packet.Packet;
 import server.packet.Packet14ChangeMoney;
+import server.packet.Packet18JailData;
 
 public class PlayerMP extends Player
 {
@@ -34,6 +35,19 @@ public class PlayerMP extends Player
 		}
 		else if (index < 0)
 			index += 40;
+	}
+	
+	
+	public void jailPlayer()
+	{
+		MMP.getServer().Monopoly().sendPacket(new Packet18JailData(playerId, (byte)0x01));
+		super.jailPlayer();
+	}
+	
+	public void releaseFromJail()
+	{
+		MMP.getServer().Monopoly().sendPacket(new Packet18JailData(playerId, (byte)0x02));
+		super.releaseFromJail();
 	}
 	
 	public void setID(byte id)
