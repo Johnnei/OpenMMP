@@ -3,5 +3,8 @@
 #
 .metadata/**
 schooltest/**
+school/**
+installer/**
+instellercr/**
 /**/bin/**
 /**/*.class
