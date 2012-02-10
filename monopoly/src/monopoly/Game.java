@@ -13,6 +13,9 @@ import multiplayer.packet.Packet11BuyStreet;
 
 public class Game
 {
+	/* Public final static */
+	public static final String VERSION = "Alhpa 0.1";
+	
 	/* GUI Data */
 	public String myPlayer;
 	public GameFrame gframe;
