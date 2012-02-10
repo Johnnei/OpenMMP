@@ -12,6 +12,7 @@ import server.packet.Packet01PlayerJoin;
 import server.packet.Packet02GiveID;
 import server.packet.Packet05StartGame;
 import server.packet.Packet14ChangeMoney;
+import server.packet.Packet16SetCardSeed;
 
 public class MMP
 {
@@ -64,6 +65,7 @@ public class MMP
 			Packet02GiveID packet = new Packet02GiveID();
 			packet.id = playermp.getId();
 			Monopoly().sendPacket(packet, packet.id);
+			Monopoly().sendPacket(new Packet16SetCardSeed(Monopoly().getCardSeed()), packet.id);
 			Log("Player " + packet.id + " has joined");
 		} catch (Exception e) {
 			e.printStackTrace();

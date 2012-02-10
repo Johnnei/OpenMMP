@@ -95,6 +95,7 @@ public class Game
 			Log("Generating Card Decks");
 			randomFunds = new CardDeck(cardSeed);
 			generalFunds = new CardDeck(cardSeed);
+			initCardDecks();
 			Log("Game Can Start!");
 			new Thread(new GameFrame()).start();
 			GameLoop();
@@ -103,6 +104,29 @@ public class Game
 			Log("Failed!");
 			e.printStackTrace();
 		}
+	}
+	
+	private void initCardDecks() {
+		generalFunds.addCard(new Card("Your building contract has expired.\nPay €5000 to renew it.", -5000));
+		generalFunds.addCard(new Card("You recieve 5%goverment rent", 7500));
+		generalFunds.addCard(new Card("The bank made a mistake in your account, you've been refunded", 10000));
+		generalFunds.addCard(new Card("The bank made a mistake in your account, you've been charged", -10000));
+		generalFunds.addCard(new Card("The Tax-Company messed-up. You'll be charged.", -10000));
+		generalFunds.addCard(new Card("Your investments have been paid.\nYou'll recieve €15000", 15000));
+		generalFunds.addCard(new Card("Pay your monthly taxes.\nBill: €25000", -25000));
+		generalFunds.addCard(new Card("You've been caught speeding.\nBill: €5000", -5000));
+		
+		randomFunds.addCard(new Card("Go to Jail!\nDo not pass start, You'll not recieve 20'000", 10, false));
+		randomFunds.addCard(new Card("Go to Start!\nYou'll recieve €40'000", 0, true, true));
+		randomFunds.addCard(new Card("You've been caught Drunk! Pay a €10'000 fine.", -10000));
+		randomFunds.addCard(new Card("You found €100 on the streets.", 100));
+		randomFunds.addCard(new Card("Go to Station East", 35, true, true));
+		randomFunds.addCard(new Card("Go to Station West", 15, true, true));
+		randomFunds.addCard(new Card("Pay your Car Rental\nYou'll be charged €5000", 5000));
+		randomFunds.addCard(new Card("You've been trading houses, You've made: €10000 profit", 10000));
+		
+		generalFunds.shuffle();
+		randomFunds.shuffle();
 	}
 	
 	public static void Sleep(long l)
@@ -244,12 +268,28 @@ public class Game
 	public void updateStateString()
 	{
 		stateString = getCurrentUser() + " landed on " + getCurrentTown().getName();
-		if(towns.isInvalid(getCurrentIndex()))
-		{
-			stateSubString = "";
+		if(towns.isRandomFunds()) {
+			Card c = randomFunds.drawCard();
+			String[] s = c.getStateStrings();
+			for(int i = 0; i < s.length; i++) {
+				if(i == 0)
+					stateString = s[i];
+				else if (i == 1)
+					stateSubString = s[i];
+			}
 		}
-		else if(towns.get(getCurrentIndex()).hasOwner())
-		{
+		else if(towns.isGeneralFunds()) {
+			Card c = generalFunds.drawCard();
+			String[] s = c.getStateStrings();
+			for(int i = 0; i < s.length; i++) {
+				if(i == 0)
+					stateString = s[i];
+				else if (i == 1)
+					stateSubString = s[i];
+			}
+		} else if(towns.isInvalid(getCurrentIndex())) {
+			stateSubString = "";
+		} else if(towns.get(getCurrentIndex()).hasOwner()) {
 			if(towns.get(getCurrentIndex()).isSameOwner(turn.getId()))
 				stateSubString = getCurrentTown().getName() + " is " + getCurrentUser() + "'s own property";
 			else if(!towns.isInvalid(getCurrentIndex()))
@@ -325,5 +365,6 @@ public class Game
 	public void setCardSeed(long seed)
 	{
 		cardSeed = seed;
+		hasSeed = true;
 	}
 }

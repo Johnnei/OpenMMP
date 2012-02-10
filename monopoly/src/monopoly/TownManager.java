@@ -67,6 +67,16 @@ public class TownManager
 		else
 			return false;
 	}
+	
+	public boolean isRandomFunds() {
+		int cIndex = Game.Monopoly().getCurrentIndex();
+		return get(cIndex).getType() == SpecialTown.Kans;
+	}
+	
+	public boolean isGeneralFunds() {
+		int cIndex = Game.Monopoly().getCurrentIndex();
+		return get(cIndex).getType() == SpecialTown.Algemeen_Fonds;
+	}
 
 	public int getCost(int index)
 	{

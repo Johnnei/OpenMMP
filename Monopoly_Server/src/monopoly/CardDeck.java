@@ -6,14 +6,14 @@ import java.util.Random;
 
 public class CardDeck
 {
-	private List<Card> deck;
-	private List<Card> deckCopy;
+	private List<Card> playDeck;
+	private List<Card> deckSource;
 	private Random rand;
 	
 	public CardDeck(long seed)
 	{
-		deck = new ArrayList<Card>();
-		deckCopy = new ArrayList<Card>();
+		playDeck = new ArrayList<Card>();
+		deckSource = new ArrayList<Card>();
 		rand = new Random(seed);
 	}
 	
@@ -28,30 +28,26 @@ public class CardDeck
 	
 	private void addCard(Card c, boolean newCard)
 	{
-		deck.add(c);
+		playDeck.add(c);
 		if(newCard)
-			deckCopy.add(c);
+			deckSource.add(c);
 	}
 	
 	public Card drawCard()
 	{
-		if(deck.size() == 0)
-		{
-			for(int i = 0; i < deckCopy.size(); i++)
-			{
-				addCard(deckCopy.get(i), false);
-			}
+		if(playDeck.size() == 0)
 			shuffle();
-		}
-		return deck.remove(0);
+		return playDeck.remove(0);
 	}
 	
 	public void shuffle()
 	{
-		Card[] shuffledDeck = new Card[deck.size()];
-		while(deck.size() > 0)
+		List<Card> deckBack = new ArrayList<Card>();
+		deckBack = deckSource;
+		Card[] shuffledDeck = new Card[deckSource.size()];
+		while(deckSource.size() > 0)
 		{
-			Card c = deck.remove(0);
+			Card c = deckSource.remove(0);
 			while(true)
 			{
 				int i = rand.nextInt(shuffledDeck.length);
@@ -62,5 +58,11 @@ public class CardDeck
 				}
 			}
 		}
+		deckSource = deckBack;
+		List<Card> newDeck = new ArrayList<Card>();
+		for(Card c : shuffledDeck) {
+			newDeck.add(c);
+		}
+		playDeck = newDeck;
 	}
 }

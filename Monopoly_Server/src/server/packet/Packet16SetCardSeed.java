@@ -6,13 +6,15 @@ import java.io.IOException;
 
 public class Packet16SetCardSeed extends Packet
 {
+	long seed;
 	
 	public Packet16SetCardSeed()
 	{
 	}
 	
-	public Packet16SetCardSeed(byte id, byte index)
+	public Packet16SetCardSeed(long seed)
 	{
+		this.seed = seed;
 	}
 
 	@Override
@@ -23,6 +25,7 @@ public class Packet16SetCardSeed extends Packet
 	@Override
 	public void writeData(DataOutputStream d) throws IOException
 	{
+		d.writeLong(seed);
 	}
 
 	@Override

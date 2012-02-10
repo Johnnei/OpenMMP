@@ -43,15 +43,15 @@ public class Player
 
 	public String MoneyString()
 	{
-		String smoney = Integer.toString(money);
-		for (int i = smoney.length(); i > 0; i--)
+		String sMoney = Integer.toString(money);
+		for (int i = sMoney.length(), j = 1; i > 0; i--, j++)
 		{
-			if (i % 3 == 0 && i != smoney.length())
+			if (j % 3 == 0 && i != sMoney.length())
 			{
-				smoney = smoney.substring(0, i) + "'" + smoney.substring(i);
+				sMoney = sMoney.substring(0, i) + "'" + sMoney.substring(i);
 			}
 		}
-		return smoney;
+		return sMoney;
 	}
 
 	public void addMoney(int amount)

@@ -36,6 +36,7 @@ public class Packet16SetCardSeed extends Packet
 	public void handle()
 	{
 		Game.Monopoly().setCardSeed(seed);
+		Game.Log("Got Random Card Seed");
 	}
 
 }

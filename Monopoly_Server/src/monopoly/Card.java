@@ -3,13 +3,14 @@ package monopoly;
 import server.MMP;
 import server.packet.Packet14ChangeMoney;
 import server.packet.Packet15SetIndex;
+import server.packet.Packet17CardMove;
 
 public class Card
 {
 	String text; //Text on card
-	int moneyChange; //Money gain
-	byte gotoIndex; //Forced goto index
-	byte moveIndex; //Forced move amount
+	int moneyChange = 0; //Money gain
+	byte gotoIndex = -1; //Forced goto index
+	byte moveIndex = 0; //Forced move amount
 	boolean gotoIndexNormal; //If the movement should apply normal effects
 	
 	public Card(String txt, int moneyChange)
@@ -51,7 +52,7 @@ public class Card
 		{
 			if(gotoIndexNormal)
 			{
-				//TODO Send packets to do normal movement and make the server handle it
+				MMP.getServer().Monopoly().sendPacket(new Packet17CardMove(moveIndex));
 			}
 			else
 			{
@@ -62,7 +63,7 @@ public class Card
 		{
 			if(gotoIndexNormal)
 			{
-				//TODO Send packets to do normal movement and make the server handle it
+				MMP.getServer().Monopoly().sendPacket(new Packet17CardMove(moveIndex));
 			}
 			else
 			{

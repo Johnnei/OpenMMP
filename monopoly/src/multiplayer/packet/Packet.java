@@ -10,7 +10,7 @@ import monopoly.Game;
 public abstract class Packet
 {
 	
-	private static Class[] packetArray = new Class[15];
+	private static Class[] packetArray = new Class[18];
 
 	public Packet()
 	{
@@ -83,6 +83,9 @@ public abstract class Packet
 		registerClass(12, Packet12OwnerStreet.class);
 		registerClass(13, Packet13Trade.class);
 		registerClass(14, Packet14ChangeMoney.class);
+		registerClass(15, Packet15SetIndex.class);
+		registerClass(16, Packet16SetCardSeed.class);
+		registerClass(17, Packet17CardMove.class);
 	}
 	
 	public static void registerClass(int id, Class c)

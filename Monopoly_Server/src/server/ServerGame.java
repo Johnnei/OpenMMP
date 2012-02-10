@@ -46,6 +46,7 @@ public class ServerGame
 		generalFunds.addCard(new Card("The Tax-Company messed-up. You'll be charged.", -10000));
 		generalFunds.addCard(new Card("Your investments have been paid.\nYou'll recieve €15000", 15000));
 		generalFunds.addCard(new Card("Pay your monthly taxes.\nBill: €25000", -25000));
+		generalFunds.addCard(new Card("You've been caught speeding.\nBill: €5000", -5000));
 		generalFunds.shuffle();
 	}
 	
@@ -59,6 +60,7 @@ public class ServerGame
 		randomFunds.addCard(new Card("Go to Station East", 35, true, true));
 		randomFunds.addCard(new Card("Go to Station West", 15, true, true));
 		randomFunds.addCard(new Card("Pay your Car Rental\nYou'll be charged €5000", 5000));
+		randomFunds.addCard(new Card("You've been trading houses, You've made: €10000 profit", 10000));
 		randomFunds.shuffle();
 	}
 	
@@ -217,6 +219,10 @@ public class ServerGame
 	public CardDeck getDeck(boolean isRandomFunds)
 	{
 		return (isRandomFunds) ? randomFunds : generalFunds;
+	}
+	
+	public long getCardSeed() {
+		return cardSeed;
 	}
 	
 	private byte[] dice;
