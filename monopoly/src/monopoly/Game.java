@@ -1,6 +1,9 @@
 package monopoly;
 
+import gui.BuyHouseGUI;
 import gui.GameFrame;
+import gui.PopupManager;
+
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -14,7 +17,7 @@ import multiplayer.packet.Packet11BuyStreet;
 public class Game
 {
 	/* Public final static */
-	public static final String VERSION = "Alhpa 0.1";
+	public static final String VERSION = "Alpha 0.1";
 	
 	/* GUI Data */
 	public String myPlayer;
@@ -162,6 +165,7 @@ public class Game
 					break;
 				case buyHouse:
 					Game.Log("Buying Houses...");
+					PopupManager.manager.showFrame(new BuyHouseGUI());
 					break;
 				case buyStreet:
 					getPlayer().addPacket(new Packet11BuyStreet());
@@ -311,6 +315,10 @@ public class Game
 	{
 		stateString = "";
 		stateSubString = "";
+	}
+	
+	public TownManager getTownManager() {
+		return towns;
 	}
 	
 	public Town getCurrentTown()

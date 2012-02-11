@@ -37,6 +37,35 @@ public class TownManager
 		return false;
 	}
 	
+	public int getStreetSize(Street s) {
+		int count = 0;
+		for(Town t : towns) {
+			if(t.street == s)
+				++count;
+		}
+		return count;
+	}
+	
+	public String getStreetNameByIndex(Street s, int index) {
+		int i = 0;
+		for(Town t : towns) {
+			if(t.street == s) {
+				if(i++ == index) {
+					return t.getName();
+				}
+			}
+		}
+		return "ERR_NO_TOWN_FOUND";
+	}
+	
+	public boolean hasCompleteStreet(Street s, byte ownerId) {
+		for(Town t : towns) {
+			if(t.getOwnerId() != ownerId)
+				return false;
+		}
+		return true;
+	}
+	
 	public boolean isInvalid(int index)
 	{
 		return 
