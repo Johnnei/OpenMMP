@@ -31,6 +31,10 @@ public class Town
 		this(name, street, price, cost);
 		type = special;
 	}
+	
+	public void setHouseCount(int count) {
+		houseCount = count;
+	}
 
 	public void paint(Graphics g, int x, int y, int width, int height, boolean hor)
 	{

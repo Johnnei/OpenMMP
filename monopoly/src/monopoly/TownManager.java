@@ -66,6 +66,35 @@ public class TownManager
 		return true;
 	}
 	
+	public void setHouse(int index, int count) {
+		Town t = towns.get(index);
+		t.setHouseCount(count);
+		towns.set(index, t);
+	}
+	
+	public int getTownIndexByStreetAndIndex(Street s, int i) {
+		int index = 0;
+		for(Town t : towns) {
+			++index;
+			if(t.street == s) {
+				if (i-- == 0)
+					return index;
+			}
+		}
+		return 0;
+	}
+	
+	public int getHousePrice(int index) {
+		if(index < 10)
+			return 5000;
+		else if (index < 20)
+			return 10000;
+		else if (index < 30)
+			return 15000;
+		else
+			return 20000;
+	}
+	
 	public boolean isInvalid(int index)
 	{
 		return 

@@ -1,7 +1,5 @@
 package monopoly;
 
-import java.awt.Graphics;
-
 import server.MMP;
 import server.game.PlayerMP;
 
@@ -43,6 +41,14 @@ public class Town
 			}
 		}
 		return false;
+	}
+	
+	public void setHouseCount(int count) {
+		houseCount = count;
+	}
+	
+	public int getHouseCount() {
+		return houseCount;
 	}
 
 	public int getPrice()

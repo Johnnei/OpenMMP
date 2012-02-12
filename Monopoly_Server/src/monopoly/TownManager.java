@@ -46,6 +46,12 @@ public class TownManager
 		towns.set(sIndex, t);
 	}
 	
+	public void setHouseCount(int index, int count) {
+		Town t = towns.get(index);
+		t.setHouseCount(count);
+		towns.set(index, t);
+	}
+	
 	public int getPayPrice(int index)
 	{
 		Town town = towns.get(index);
@@ -66,7 +72,7 @@ public class TownManager
 		return towns.get(index).getPrice();
 	}
 	
-	private boolean isInvalid(int index)
+	public boolean isInvalid(int index)
 	{
 		return 
 		(
@@ -122,6 +128,17 @@ public class TownManager
 		}
 		else
 			return t.getCost();
+	}
+	
+	public int getHousePrice(int index) {
+		if(index < 10)
+			return 5000;
+		else if (index < 20)
+			return 10000;
+		else if (index < 30)
+			return 15000;
+		else
+			return 20000;
 	}
 
 	public void Add(String townName, Street streetName, int Price, int Cost)

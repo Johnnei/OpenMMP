@@ -5,6 +5,10 @@ public enum Street
 
 	Station, Voorziening, Start, Kans, AlgemeenFonds, VrijParkeren, Tax, Tax_Extra, Jail, ToJail, Ons_Dorp, Arnhem, Haarlem, Utrecht, Groningen, Gravenhaven, Rotterdam, Amsterdam;
 	
+	public String toString() {
+		return toString(this);
+	}
+	
 	public static String toString(Street s) {
 		if(s == Station)
 			return "Stations";

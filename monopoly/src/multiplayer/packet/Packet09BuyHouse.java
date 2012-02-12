@@ -7,9 +7,20 @@ import java.io.IOException;
 public class Packet09BuyHouse extends Packet
 {
 	
+	byte index;
+	byte data;
+	
 	public Packet09BuyHouse()
 	{
-		
+	}
+	
+	public Packet09BuyHouse(byte sIndex) {
+		this(sIndex, true);
+	}
+	
+	public Packet09BuyHouse(byte sIndex, boolean isBuy) {
+		index = sIndex;
+		data = (isBuy) ? (byte)1 : (byte)0;
 	}
 
 	@Override
@@ -20,6 +31,8 @@ public class Packet09BuyHouse extends Packet
 	@Override
 	public void writeData(DataOutputStream d) throws IOException
 	{
+		d.writeByte(index);
+		d.writeByte(data);
 	}
 
 	@Override
