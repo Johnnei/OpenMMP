@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +33,15 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	JButton[] sellHouseButtons;
 	
 	public BuyHouseGUI() {
+		int width = 400;
+		int height = 300;
 		setTitle("openMMP - " + Game.VERSION + " - Housing");
+		setIconImage(Images.getImages().Icon);
+		setLocation((int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getX() + (Game.Monopoly().getGameFrame().getWidth() / 2) - (width / 2)), (int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getY() + (Game.Monopoly().getGameFrame().getHeight() / 2) - (height / 2)));
+		setPreferredSize(new Dimension(width, height));
+		setMinimumSize(new Dimension(width, height));
+		setMaximumSize(new Dimension(width, height));
+		setResizable(false);
 		
 		//Go through all streets (which can have housing) and check which are owned by the player
 		ArrayList<Street> ownedStreets = new ArrayList<Street>();
@@ -66,12 +75,18 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 		}
 		
 		streetList = new JComboBox(streets);
+		
+		setLayout(new GridLayout(0, 2));
+		add(streetList);
+		add(new JPanel()); //Spacer to fill up the 2nd collum on the first row
+		
 		if(streets.length > 0) {
 			streetList.setSelectedIndex(0);
 			selectedStreet = 0;
 			updateHouseButtons((String)streetList.getItemAt(0));
-		}
-			
+		} else {
+			pack();
+		}	
 	}
 	
 	private void updateHouseButtons(String streetName) {
@@ -105,9 +120,6 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 			buyHouseButtons[i] = buy;
 			sellHouseButtons[i] = sell;
 		}
-		setLayout(new GridLayout(0, 2));
-		add(streetList);
-		add(new JPanel()); //Spacer to fill up the 2nd collum on the first row
 		for(int i = 0; i < buyHouseButtons.length; i++) {
 			add(buyHouseButtons[i]);
 			add(sellHouseButtons[i]);

@@ -317,6 +317,10 @@ public class Game
 		stateSubString = "";
 	}
 	
+	public GameFrame getGameFrame() {
+		return gframe;
+	}
+	
 	public TownManager getTownManager() {
 		return towns;
 	}
@@ -348,6 +352,10 @@ public class Game
 	public String getStateSub()
 	{
 		return stateSubString;
+	}
+	
+	public void jailPlayer(byte id, boolean enter) {
+		players[id].setJail(enter);
 	}
 	
 	public void changePlayerMoney(byte id, int amount)

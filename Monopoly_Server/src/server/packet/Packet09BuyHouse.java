@@ -38,6 +38,8 @@ public class Packet09BuyHouse extends Packet
 	{
 		if(MMP.getServer().Monopoly().getTownManager().isInvalid(index))
 			return;
+		if(!MMP.getServer().Monopoly().getTownManager().hasCompleteStreet(MMP.getServer().Monopoly().getCurrentPlayer().getId(), index))
+			return;
 		
 		Town t = MMP.getServer().Monopoly().getTownManager().get(index);
 		int housePrice = MMP.getServer().Monopoly().getTownManager().getHousePrice(index);

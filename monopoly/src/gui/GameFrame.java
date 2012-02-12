@@ -50,6 +50,7 @@ public class GameFrame extends JComponent implements Runnable
 		jframe.setLocationRelativeTo(null);
 		jframe.setVisible(true);
 		jframe.addWindowListener(new GameGUIHandler());
+		jframe.setResizable(false);
 		return gframe;
 	}
 

@@ -72,6 +72,35 @@ public class TownManager
 		return towns.get(index).getPrice();
 	}
 	
+	/**
+	 * Get the Street by the given index
+	 * @param index of the town
+	 * @return Street of the town
+	 */
+	public Street getStreetByIndex(int index) {
+		return towns.get(index).street;
+	}
+	
+	/**
+	 * Checks if the giver PlayerId owns all streets belonging to the given index
+	 * @param playerId, Id of the Player who should own the street
+	 * @param sIndex, Index of the Town which is part of the street
+	 * @return Player owns all town in the street? true, else false
+	 */
+	public boolean hasCompleteStreet(int playerId, int sIndex) {
+		Street s = getStreetByIndex(sIndex);
+		for(Town t : towns) {
+			if(t.street == s) {
+				if(t.hasOwner()) {
+					if(t.getOwnerId() != playerId)
+						return false;
+				} else
+					return false;
+			}
+		}
+		return true;
+	}
+	
 	public boolean isInvalid(int index)
 	{
 		return 

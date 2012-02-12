@@ -19,9 +19,9 @@ public class PlayerMP extends Player
 	public PlayerMP(Socket s) throws IOException
 	{
 		socket = s;
-		writer = new ThreadDataWriter(s.getOutputStream());
+		writer = new ThreadDataWriter(socket.getOutputStream());
 		writer.start();
-		reader = new ThreadDataReader(s.getInputStream());
+		reader = new ThreadDataReader(socket.getInputStream());
 		reader.start();
 	}
 	

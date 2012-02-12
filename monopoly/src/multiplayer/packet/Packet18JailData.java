@@ -42,9 +42,9 @@ public class Packet18JailData extends Packet
 	public void handle()
 	{
 		if((jail & ENTER_JAIL) == ENTER_JAIL) {
-			Game.Monopoly().getPlayer(playerId).setJail(true);
+			Game.Monopoly().jailPlayer(playerId, true);
 		} else if ((jail & LEAVE_JAIL) == LEAVE_JAIL) {
-			Game.Monopoly().getPlayer(playerId).setJail(false);
+			Game.Monopoly().jailPlayer(playerId, false);
 		}
 	}
 
