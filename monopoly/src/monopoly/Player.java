@@ -47,13 +47,15 @@ public class Player
 		index = i;
 	}
 
+	/**
+	 * Adds ' to the money to make the cash values more easily readable
+	 * @return The money in a string manner with '
+	 */
 	public String MoneyString()
 	{
 		String sMoney = Integer.toString(money);
-		for (int i = sMoney.length(), j = 1; i > 0; i--, j++)
-		{
-			if (j % 3 == 0 && i != sMoney.length())
-			{
+		for (int i = sMoney.length(), j = 0; i > 0; i--, j++) {
+			if (j % 3 == 0 && i != sMoney.length()) {
 				sMoney = sMoney.substring(0, i) + "'" + sMoney.substring(i);
 			}
 		}
