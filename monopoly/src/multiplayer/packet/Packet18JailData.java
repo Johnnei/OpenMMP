@@ -41,6 +41,7 @@ public class Packet18JailData extends Packet
 	@Override
 	public void handle()
 	{
+		Game.Log("Recieved jail data for player: " + playerId);
 		if((jail & ENTER_JAIL) == ENTER_JAIL) {
 			Game.Monopoly().jailPlayer(playerId, true);
 		} else if ((jail & LEAVE_JAIL) == LEAVE_JAIL) {

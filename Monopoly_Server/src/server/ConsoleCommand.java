@@ -4,6 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import server.packet.Packet11BuyStreet;
+import server.packet.Packet12OwnerStreet;
+import server.packet.Packet15SetIndex;
+
+import monopoly.Street;
+
 public class ConsoleCommand extends Thread
 {
 	public ConsoleCommand(MMP mmp)
@@ -19,16 +25,37 @@ public class ConsoleCommand extends Thread
 		{
 			try
 			{
-				cmd = in.readLine();
+				cmd = in.readLine().toLowerCase();
+				String cmdbase = cmd.split(" ")[0];
 				if(cmd.equals("start"))
 				{
 					mmp.startGame();
+				} else if(cmdbase.equals("givetown")) {
+					String[] args = cmd.split(" ");
+					if(args.length == 2) {
+						if(!isInt(args[1])) {
+							return;
+						}
+						mmp.Monopoly().getCurrentPlayer().addIndex((byte)Integer.parseInt(args[1]));
+						new Packet11BuyStreet().handle();
+						mmp.Monopoly().getCurrentPlayer().addIndex((byte)-Integer.parseInt(args[1]));
+						System.out.println("Town has been given");
+					}
 				}
 				
 			} catch (IOException e)
 			{
 				System.err.println("CCError: " + e.getMessage());
 			}
+		}
+	}
+	
+	private boolean isInt(String s) {
+		try {
+			Integer.parseInt(s);
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
 	}
 	

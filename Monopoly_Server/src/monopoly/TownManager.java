@@ -91,10 +91,7 @@ public class TownManager
 		Street s = getStreetByIndex(sIndex);
 		for(Town t : towns) {
 			if(t.street == s) {
-				if(t.hasOwner()) {
-					if(t.getOwnerId() != playerId)
-						return false;
-				} else
+				if(t.getOwnerId() != playerId)
 					return false;
 			}
 		}

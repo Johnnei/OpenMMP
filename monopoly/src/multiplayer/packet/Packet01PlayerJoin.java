@@ -5,7 +5,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import monopoly.Game;
-import monopoly.Player;
 import multiplayer.PlayerMP;
 
 public class Packet01PlayerJoin extends Packet

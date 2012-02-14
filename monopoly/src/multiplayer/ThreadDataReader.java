@@ -2,8 +2,6 @@ package multiplayer;
 
 import java.io.DataInputStream;
 import java.io.InputStream;
-
-import monopoly.Game;
 import multiplayer.packet.Packet;
 
 public class ThreadDataReader extends Thread

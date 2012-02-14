@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 import multiplayer.PlayerMP;
+import multiplayer.packet.Packet;
 import multiplayer.packet.Packet03Username;
 import multiplayer.packet.Packet04Colorcode;
 import multiplayer.packet.Packet06NextTurn;
@@ -238,6 +239,10 @@ public class Game
 	}
 	
 	/* Game */
+	
+	public void addPacket(Packet p) {
+		players[getMyID()].addPacket(p);
+	}
 	
 	public void movePlayer(int places)
 	{

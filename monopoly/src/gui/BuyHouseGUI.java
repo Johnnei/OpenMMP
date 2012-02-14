@@ -115,8 +115,10 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 		for(int i = 0; i < streetSize; i++) {
 			JButton buy = new JButton();
 			buy.setText("Buy House on " + townManager.getStreetNameByIndex(ownedStreets[selectedStreet], i));
+			buy.addActionListener(this);
 			JButton sell = new JButton();
 			sell.setText("Sell House on " + townManager.getStreetNameByIndex(ownedStreets[selectedStreet], i));
+			sell.addActionListener(this);
 			buyHouseButtons[i] = buy;
 			sellHouseButtons[i] = sell;
 		}
@@ -128,9 +130,10 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	}
 	
 	private void buyHouse(int index) {
+		Game.Log("Buying House on " + Game.Monopoly().getTownManager().getStreetNameByIndex(ownedStreets[selectedStreet], index));
 		int sIndex = Game.Monopoly().getTownManager().getTownIndexByStreetAndIndex(ownedStreets[selectedStreet], index);
 		if(Game.Monopoly().getPlayer().getMoney() >= Game.Monopoly().getTownManager().getHousePrice(sIndex))
-			Game.Monopoly().getPlayer().addPacket(new Packet09BuyHouse((byte)sIndex));
+			Game.Monopoly().addPacket(new Packet09BuyHouse((byte)sIndex));
 	}
 	
 	private void sellHouse(int index) {
@@ -141,15 +144,16 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() instanceof JComboBox) {
 			updateHouseButtons((String)((JComboBox)e.getSource()).getSelectedItem());
-		}
-		for(int i = 0; i < buyHouseButtons.length; i++) {
-			if(e.getSource().equals(buyHouseButtons[i])) {
-				buyHouse(i);
-				return;
-			}
-			if(e.getSource().equals(sellHouseButtons[i])) {
-				sellHouse(i);
-				return;
+		} else {
+			for(int i = 0; i < buyHouseButtons.length; i++) {
+				if(e.getSource().equals(buyHouseButtons[i])) {
+					buyHouse(i);
+					return;
+				}
+				if(e.getSource().equals(sellHouseButtons[i])) {
+					sellHouse(i);
+					return;
+				}
 			}
 		}
 	}

@@ -60,8 +60,10 @@ public class TownManager
 	
 	public boolean hasCompleteStreet(Street s, byte ownerId) {
 		for(Town t : towns) {
-			if(t.getOwnerId() != ownerId)
-				return false;
+			if(t.street == s) {
+				if(t.getOwnerId() != ownerId)
+					return false;
+			}
 		}
 		return true;
 	}
@@ -72,8 +74,14 @@ public class TownManager
 		towns.set(index, t);
 	}
 	
+	/**
+	 * Get the global Street index buy the given Street and the index relative from the street
+	 * @param s Street to search in
+	 * @param i Index relative to the start of the Street
+	 * @return Index of the street on the normal Board Index
+	 */
 	public int getTownIndexByStreetAndIndex(Street s, int i) {
-		int index = 0;
+		int index = -1;
 		for(Town t : towns) {
 			++index;
 			if(t.street == s) {
@@ -81,7 +89,7 @@ public class TownManager
 					return index;
 			}
 		}
-		return 0;
+		return -1;
 	}
 	
 	public int getHousePrice(int index) {

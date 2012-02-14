@@ -4,8 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import monopoly.Game;
-
 public class Packet11BuyStreet extends Packet
 {
 	
