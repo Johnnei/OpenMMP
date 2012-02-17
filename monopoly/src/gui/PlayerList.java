@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Dimension;
-import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.JList;
 import monopoly.Game;

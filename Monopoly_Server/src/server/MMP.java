@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import server.game.PlayerMP;
-import server.packet.Packet00SetTurn;
 import server.packet.Packet01PlayerJoin;
 import server.packet.Packet02GiveID;
 import server.packet.Packet05StartGame;

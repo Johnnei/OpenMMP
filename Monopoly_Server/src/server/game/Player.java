@@ -2,9 +2,6 @@ package server.game;
 
 import java.awt.Color;
 
-import server.MMP;
-import server.packet.Packet18JailData;
-
 public class Player
 {
 

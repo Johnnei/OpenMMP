@@ -3,7 +3,6 @@ package server.game;
 import java.io.DataInputStream;
 import java.io.InputStream;
 
-import server.MMP;
 import server.packet.Packet;
 
 public class ThreadDataReader extends Thread

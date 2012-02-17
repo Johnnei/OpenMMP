@@ -3,9 +3,6 @@ package multiplayer.packet;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-
-import monopoly.Game;
 
 public abstract class Packet
 {

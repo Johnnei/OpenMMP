@@ -5,10 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import javax.swing.JComponent;
-import javax.imageio.ImageIO;
 
 import monopoly.Game;
 import monopoly.Player;

@@ -1,7 +1,5 @@
 package gui;
 
-import monopoly.Game;
-
 public class PlayerListGUIUpdater extends Thread
 {
 
