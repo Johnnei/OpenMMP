@@ -25,6 +25,10 @@ public class PlayerMP extends Player
 		reader.start();
 	}
 	
+	public void setIndex(byte b) {
+		index = b;
+	}
+	
 	public void addIndex(byte value)
 	{
 		index += value;

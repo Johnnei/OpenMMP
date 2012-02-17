@@ -5,10 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import server.packet.Packet11BuyStreet;
-import server.packet.Packet12OwnerStreet;
-import server.packet.Packet15SetIndex;
-
-import monopoly.Street;
 
 public class ConsoleCommand extends Thread
 {
@@ -36,9 +32,10 @@ public class ConsoleCommand extends Thread
 						if(!isInt(args[1])) {
 							return;
 						}
-						mmp.Monopoly().getCurrentPlayer().addIndex((byte)Integer.parseInt(args[1]));
+						byte oldIndex = mmp.Monopoly().getCurrentPlayer().getIndex();
+						mmp.Monopoly().getCurrentPlayer().setIndex((byte)Integer.parseInt(args[1]));
 						new Packet11BuyStreet().handle();
-						mmp.Monopoly().getCurrentPlayer().addIndex((byte)-Integer.parseInt(args[1]));
+						mmp.Monopoly().getCurrentPlayer().setIndex(oldIndex);
 						System.out.println("Town has been given");
 					}
 				}

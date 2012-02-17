@@ -39,7 +39,7 @@ public class Packet09BuyHouse extends Packet
 		MMP.Log("Buying/Selling House at index " + index + "...");
 		if(index == -1)
 			MMP.Log("Invalid Street Supplied");
-		if(MMP.getServer().Monopoly().getTownManager().isInvalid(index)) {
+		if(MMP.getServer().Monopoly().getTownManager().isHouseInvalid(index)) {
 			MMP.Log("Invalid House Spot");
 			return;
 		}

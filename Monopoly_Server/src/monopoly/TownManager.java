@@ -98,6 +98,12 @@ public class TownManager
 		return true;
 	}
 	
+	public boolean isHouseInvalid(int index) {
+		if (isInvalid(index) || index == 5 || index == 15 || index == 25 || index == 35)
+			return true;
+		return false;
+	}
+	
 	public boolean isInvalid(int index)
 	{
 		return 
