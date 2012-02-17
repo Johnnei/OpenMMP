@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import monopoly.Card;
 import monopoly.SpecialTown;
 
 import server.MMP;
@@ -85,11 +86,15 @@ public class Packet07RollDice extends Packet
 		//OnArrival Events
 		if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Kans))
 		{
-			MMP.getServer().Monopoly().getDeck(true).drawCard().Handle();
+			Card c = MMP.getServer().Monopoly().getDeck(true).drawCard();
+			c.Handle();
+			MMP.getServer().Monopoly().addJackpotMoney(c.getJackpotMoney());
 		}
 		else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Algemeen_Fonds))
 		{
-			MMP.getServer().Monopoly().getDeck(false).drawCard().Handle();
+			Card c = MMP.getServer().Monopoly().getDeck(false).drawCard();
+			c.Handle();
+			MMP.getServer().Monopoly().addJackpotMoney(c.getJackpotMoney());
 		}
 		else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.ToJail))
 		{
@@ -100,6 +105,11 @@ public class Packet07RollDice extends Packet
 		{
 			MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(pId, 20000));
 			MMP.getServer().Monopoly().getCurrentPlayer().incrementMoney(20000);
+		}
+		else if(MMP.getServer().Monopoly().getTownManager().isTownType(sIndex, SpecialTown.Vrij_Parkeren))
+		{
+			MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(pId, MMP.getServer().Monopoly().getJackpot()));
+			MMP.getServer().Monopoly().clearJackpot();
 		}
 		//If has thrown doubles the player is allowed to roll again
 		if(MMP.getServer().Monopoly().diceDoubles() && normalTurn)

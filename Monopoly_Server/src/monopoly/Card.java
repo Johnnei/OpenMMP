@@ -74,4 +74,8 @@ public class Card
 		}
 			
 	}
+	
+	public int getJackpotMoney() {
+		return (moneyChange < 0) ? -moneyChange : 0;
+	}
 }

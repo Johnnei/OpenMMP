@@ -225,6 +225,18 @@ public class ServerGame
 		return cardSeed;
 	}
 	
+	public void addJackpotMoney(int i) {
+		jackpot += i;
+	}
+	
+	public void clearJackpot() {
+		jackpot = 0;
+	}
+	
+	public int getJackpot() {
+		return jackpot;
+	}
+	
 	private byte[] dice;
 	private byte phase;
 	private PlayerMP[] players;
@@ -235,5 +247,6 @@ public class ServerGame
 	private long cardSeed;
 	private CardDeck generalFunds;
 	private CardDeck randomFunds;
+	private int jackpot;
 	
 }
