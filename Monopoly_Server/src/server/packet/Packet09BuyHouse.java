@@ -53,16 +53,20 @@ public class Packet09BuyHouse extends Packet
 		
 		if(data == BUY) {
 			MMP.Log("House Data: Buy");
-			if(MMP.getServer().Monopoly().getPlayer(t.getOwnerId()).getMoney() >= housePrice) { 
-				MMP.getServer().Monopoly().getTownManager().setHouseCount(index, t.getHouseCount() + 1);
-				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(t.getOwnerId(), -MMP.getServer().Monopoly().getTownManager().getHousePrice(index)));
-				MMP.getServer().Monopoly().sendPacket(new Packet10HouseCount((byte)index, (byte)(t.getHouseCount() + 1)));
+			if(MMP.getServer().Monopoly().getPlayer(t.getOwnerId()).getMoney() >= housePrice) {
+				if(t.getHouseCount() < 5) {
+					MMP.getServer().Monopoly().getTownManager().setHouseCount(index, t.getHouseCount() + 1);
+					MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(t.getOwnerId(), -MMP.getServer().Monopoly().getTownManager().getHousePrice(index)));
+					MMP.getServer().Monopoly().sendPacket(new Packet10HouseCount((byte)index, (byte)(t.getHouseCount() + 1)));
+				}
 			}
 		} else if(data == SELL) {
 			MMP.Log("House Data: Sell");
-			MMP.getServer().Monopoly().getTownManager().setHouseCount(index, t.getHouseCount() - 1);
-			MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(t.getOwnerId(), (int)(housePrice * 0.5)));
-			MMP.getServer().Monopoly().sendPacket(new Packet10HouseCount((byte)index, (byte)(t.getHouseCount() - 1)));
+			if(t.getHouseCount() > 0) {
+				MMP.getServer().Monopoly().getTownManager().setHouseCount(index, t.getHouseCount() - 1);
+				MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(t.getOwnerId(), (int)(housePrice * 0.5)));
+				MMP.getServer().Monopoly().sendPacket(new Packet10HouseCount((byte)index, (byte)(t.getHouseCount() - 1)));
+			}
 		} //Else invalid
 	}
 

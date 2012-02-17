@@ -137,7 +137,9 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	}
 	
 	private void sellHouse(int index) {
-		
+		Game.Log("Selling House on " + Game.Monopoly().getTownManager().getStreetNameByIndex(ownedStreets[selectedStreet], index));
+		int sIndex = Game.Monopoly().getTownManager().getTownIndexByStreetAndIndex(ownedStreets[selectedStreet], index);
+		Game.Monopoly().addPacket(new Packet09BuyHouse((byte)sIndex, false));
 	}
 
 	@Override
