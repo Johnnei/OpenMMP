@@ -92,6 +92,11 @@ public class TownManager
 		return -1;
 	}
 	
+	public Town getTownByStreetAndIndex(Street s, int i) {
+		int index = getTownIndexByStreetAndIndex(s, i);
+		return (i != -1) ? get(index) : null;
+	}
+	
 	public int getHousePrice(int index) {
 		if(index < 10)
 			return 5000;

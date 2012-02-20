@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import monopoly.Game;
+import monopoly.Street;
+import monopoly.TownManager;
 import multiplayer.PlayerMP;
 
 public class TradeGui extends JFrame implements ActionListener {
@@ -53,7 +55,8 @@ public class TradeGui extends JFrame implements ActionListener {
 		ArrayList<String> playerListTemp = new ArrayList<String>();
 		for(int i = 0 ; i < 6; i++) {
 			if(players[i] != null) {
-				playerListTemp.add(players[i].getUsername());
+				if(players[i].getId() != Game.Monopoly().getMyID())
+					playerListTemp.add(players[i].getUsername());
 			}
 		}
 		String[] pList = new String[playerListTemp.size()];
@@ -105,16 +108,38 @@ public class TradeGui extends JFrame implements ActionListener {
 	 */
 	private void updateItems() {
 		PlayerMP player = null;
-		byte playerId = -1;
 		for(byte i = 0; i < 6; i++) {
 			if(Game.Monopoly().getPlayer(i).getUsername().equals(playerList.getSelectedItem())) {
 				player = Game.Monopoly().getPlayer(i);
-				playerId = i;
 				break;
 			}
 		}
 		if(player == null)
 			return;
+		ArrayList<Street> ownedStreets = new ArrayList<Street>();
+		ArrayList<Street> tradeableStreets = new ArrayList<Street>();
+		TownManager townManager = Game.Monopoly().towns;
+		if(townManager.hasCompleteStreet(Street.Ons_Dorp, player.getId()))
+			ownedStreets.add(Street.Ons_Dorp);
+		if(townManager.hasCompleteStreet(Street.Arnhem, player.getId()))
+			ownedStreets.add(Street.Arnhem);
+		if(townManager.hasCompleteStreet(Street.Haarlem, player.getId()))
+			ownedStreets.add(Street.Haarlem);
+		if(townManager.hasCompleteStreet(Street.Utrecht, player.getId()))
+			ownedStreets.add(Street.Utrecht);
+		if(townManager.hasCompleteStreet(Street.Groningen, player.getId()))
+			ownedStreets.add(Street.Groningen);
+		if(townManager.hasCompleteStreet(Street.Gravenhaven, player.getId()))
+			ownedStreets.add(Street.Gravenhaven);
+		if(townManager.hasCompleteStreet(Street.Groningen, player.getId()))
+			ownedStreets.add(Street.Groningen);
+		if(townManager.hasCompleteStreet(Street.Rotterdam, player.getId()))
+			ownedStreets.add(Street.Rotterdam);
+		if(townManager.hasCompleteStreet(Street.Amsterdam, player.getId()))
+			ownedStreets.add(Street.Amsterdam);
+		for(int i = 0; i < ownedStreets.size(); i++) {
+			Street s = ownedStreets.get(i);
+		}
 	}
 	
 	@Override
