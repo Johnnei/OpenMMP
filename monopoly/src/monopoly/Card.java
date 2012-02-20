@@ -8,11 +8,18 @@ package monopoly;
  */
 public class Card
 {
-	String text; //Text on card
+	private String text; //Text on card
+	private int jackpotMoney;
 	
 	public Card(String txt, int moneyChange)
 	{
 		this.text = txt;
+		jackpotMoney = 0;
+		if(moneyChange != 0) {
+			if(moneyChange < 0) {
+				jackpotMoney += -moneyChange;
+			}
+		}
 	}
 	
 	public Card(String text, int index, boolean move, boolean normal)
@@ -30,5 +37,9 @@ public class Card
 		if(text.contains("\n"))
 			return text.split("\n");
 		return new String[] { text };
+	}
+	
+	public int getJackpotMoney() {
+		return jackpotMoney;
 	}
 }

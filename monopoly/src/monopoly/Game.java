@@ -28,6 +28,7 @@ public class Game
 	
 	/* Game Data */
 	private int[] dice;
+	private int jackpot;
 	public Turn turn;
 	public TownManager towns;
 	private CardDeck randomFunds;
@@ -115,7 +116,7 @@ public class Game
 	
 	private void initCardDecks() {
 		generalFunds.addCard(new Card("Your building contract has expired.\nPay €5000 to renew it.", -5000));
-		generalFunds.addCard(new Card("You recieve 5%goverment rent", 7500));
+		generalFunds.addCard(new Card("You recieve 5% goverment rent", 7500));
 		generalFunds.addCard(new Card("The bank made a mistake in your account, you've been refunded", 10000));
 		generalFunds.addCard(new Card("The bank made a mistake in your account, you've been charged", -10000));
 		generalFunds.addCard(new Card("The Tax-Company messed-up. You'll be charged.", -10000));
@@ -183,6 +184,7 @@ public class Game
 	{
 		players = new PlayerMP[6];
 		dice = new int[] { 1, 1};
+		jackpot = 0;
 		resetStateString();
 		towns = new TownManager();
 		towns.Add("Start", Street.Start, 0, 0, SpecialTown.Start);
@@ -282,6 +284,7 @@ public class Game
 		stateString = getCurrentUser() + " landed on " + getCurrentTown().getName();
 		if(towns.isRandomFunds()) {
 			Card c = randomFunds.drawCard();
+			jackpot += c.getJackpotMoney();
 			String[] s = c.getStateStrings();
 			for(int i = 0; i < s.length; i++) {
 				if(i == 0)
@@ -292,6 +295,7 @@ public class Game
 		}
 		else if(towns.isGeneralFunds()) {
 			Card c = generalFunds.drawCard();
+			jackpot += c.getJackpotMoney();
 			String[] s = c.getStateStrings();
 			for(int i = 0; i < s.length; i++) {
 				if(i == 0)
@@ -304,6 +308,9 @@ public class Game
  				stateSubString = "You are in jail";
  			else
  				stateSubString = "You are visiting the jail";
+ 		} else if(getCurrentIndex() == 20) {
+ 			stateSubString = "You recieve €" + jackpot + " Jackpot Money!";
+ 			jackpot = 0;
  		} else if(towns.isInvalid(getCurrentIndex())) {
 			stateSubString = "";
 		} else if(towns.get(getCurrentIndex()).hasOwner()) {
