@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import monopoly.Game;
@@ -23,9 +25,14 @@ public class TradeGui extends JFrame implements ActionListener {
 	JCheckBox[] placeGetBoxes;
 	JButton[] tradeButtons;
 	JComboBox playerList;
-	boolean isRequest = false;
+	boolean isRequest;
 	
 	public TradeGui() {
+		this(false);
+	}
+	
+	public TradeGui(boolean isRequestScreen) {
+		isRequest = isRequestScreen;
 		textFields = new JLabel[4];
 		textFields[0] = new JLabel("Money Given: €");
 		textFields[1] = new JLabel("Money Requested: €");
@@ -54,29 +61,67 @@ public class TradeGui extends JFrame implements ActionListener {
 			pList[i] = playerListTemp.get(i);
 		}
 		playerList = new JComboBox(pList);
+		playerList.setSelectedIndex(0);
 		placeGiveBoxes = new JCheckBox[0];
 		placeGetBoxes = new JCheckBox[0];
+		updateItems();
 		generateScreen();
 	}
 	
-	public TradeGui(boolean b) {
-		isRequest = b;
-	}
-	
+	/**
+	 * Generate the layout and JFrame
+	 */
 	private void generateScreen() {
+		//Generate JFrame Dimensions
 		int width = 500;
 		int height = 400;
-		setTitle("openMMP - " + Game.VERSION + " - Housing");
+		setTitle("openMMP - " + Game.VERSION + " - Trading");
 		setIconImage(Images.getImages().Icon);
 		setLocation((int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getX() + (Game.Monopoly().getGameFrame().getWidth() / 2) - (width / 2)), (int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getY() + (Game.Monopoly().getGameFrame().getHeight() / 2) - (height / 2)));
 		setPreferredSize(new Dimension(width, height));
 		setMinimumSize(new Dimension(width, height));
 		setMaximumSize(new Dimension(width, height));
 		setResizable(false);
+		//Generate Components and Layout
+		setLayout(new GridLayout(0,2));
+		//Generate Select Player Section
+		add(playerList);
+		add(new JPanel());//Spacer
+		//Generate Tables for Towns and Money
+		//Money Given
+		add(textFields[0]);
+		add(moneyFields[0]);
+		//Money Requested
+		add(textFields[1]);
+		add(moneyFields[1]);
+		//Given Streets
+		add(textFields[2]);
+		//Wrap it up
+		pack();
+	}
+	
+	/**
+	 * Will update available items to select on the Trade Screen
+	 */
+	private void updateItems() {
+		PlayerMP player = null;
+		byte playerId = -1;
+		for(byte i = 0; i < 6; i++) {
+			if(Game.Monopoly().getPlayer(i).getUsername().equals(playerList.getSelectedItem())) {
+				player = Game.Monopoly().getPlayer(i);
+				playerId = i;
+				break;
+			}
+		}
+		if(player == null)
+			return;
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0)
-	{
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() instanceof JComboBox) {
+			updateItems();
+			generateScreen();
+		}
 	}
 }
