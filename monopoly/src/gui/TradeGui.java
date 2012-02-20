@@ -1,0 +1,82 @@
+package gui;
+
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import monopoly.Game;
+import multiplayer.PlayerMP;
+
+public class TradeGui extends JFrame implements ActionListener {
+	
+	JLabel[] textFields;
+	JTextField[] moneyFields;
+	JCheckBox[] placeGiveBoxes;
+	JCheckBox[] placeGetBoxes;
+	JButton[] tradeButtons;
+	JComboBox playerList;
+	boolean isRequest = false;
+	
+	public TradeGui() {
+		textFields = new JLabel[4];
+		textFields[0] = new JLabel("Money Given: €");
+		textFields[1] = new JLabel("Money Requested: €");
+		textFields[2] = new JLabel("Streets Given:");
+		textFields[3] = new JLabel("Streets Requested:");
+		moneyFields = new JTextField[2];
+		moneyFields[0] = new JTextField();
+		moneyFields[1] = new JTextField();
+		//Generate tradeButtons
+		tradeButtons = (isRequest) ? new JButton[2] : new JButton[1];
+		if(isRequest) {
+			tradeButtons[0] = new JButton("Accept");
+			tradeButtons[1] = new JButton("Decline");
+		} else
+			tradeButtons[0] = new JButton("Send Request");
+		//Generate a List of all Player Names
+		PlayerMP[] players = Game.Monopoly().getPlayers();
+		ArrayList<String> playerListTemp = new ArrayList<String>();
+		for(int i = 0 ; i < 6; i++) {
+			if(players[i] != null) {
+				playerListTemp.add(players[i].getUsername());
+			}
+		}
+		String[] pList = new String[playerListTemp.size()];
+		for(int i = 0; i < pList.length; i++) {
+			pList[i] = playerListTemp.get(i);
+		}
+		playerList = new JComboBox(pList);
+		placeGiveBoxes = new JCheckBox[0];
+		placeGetBoxes = new JCheckBox[0];
+		generateScreen();
+	}
+	
+	public TradeGui(boolean b) {
+		isRequest = b;
+	}
+	
+	private void generateScreen() {
+		int width = 500;
+		int height = 400;
+		setTitle("openMMP - " + Game.VERSION + " - Housing");
+		setIconImage(Images.getImages().Icon);
+		setLocation((int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getX() + (Game.Monopoly().getGameFrame().getWidth() / 2) - (width / 2)), (int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getY() + (Game.Monopoly().getGameFrame().getHeight() / 2) - (height / 2)));
+		setPreferredSize(new Dimension(width, height));
+		setMinimumSize(new Dimension(width, height));
+		setMaximumSize(new Dimension(width, height));
+		setResizable(false);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0)
+	{
+	}
+}
