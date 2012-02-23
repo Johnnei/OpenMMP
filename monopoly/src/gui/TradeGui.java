@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import monopoly.Game;
 import monopoly.Street;
+import monopoly.Town;
 import monopoly.TownManager;
 import multiplayer.PlayerMP;
 
@@ -99,25 +100,27 @@ public class TradeGui extends JFrame implements ActionListener {
 		add(moneyFields[1]);
 		//Given Streets
 		add(textFields[2]);
+		add(new JPanel());
+		for(int i = 0; i < placeGiveBoxes.length; i++) {
+			add(placeGiveBoxes[i]);
+		}
+		if(placeGiveBoxes.length % 2 != 0) 
+			add(new JPanel());
+		add(textFields[3]);
+		add(new JPanel());
+		for(int i = 0; i < placeGetBoxes.length; i++) {
+			add(placeGetBoxes[i]);
+		}
+		if(placeGetBoxes.length % 2 != 0) 
+			add(new JPanel());
 		//Wrap it up
 		pack();
 	}
 	
-	/**
-	 * Will update available items to select on the Trade Screen
-	 */
-	private void updateItems() {
-		PlayerMP player = null;
-		for(byte i = 0; i < 6; i++) {
-			if(Game.Monopoly().getPlayer(i).getUsername().equals(playerList.getSelectedItem())) {
-				player = Game.Monopoly().getPlayer(i);
-				break;
-			}
-		}
-		if(player == null)
-			return;
+	private void updateTradeItems(PlayerMP player, boolean isMyPlayer) {
 		ArrayList<Street> ownedStreets = new ArrayList<Street>();
 		ArrayList<Street> tradeableStreets = new ArrayList<Street>();
+		JCheckBox[] streetBoxes; //Temp value to prefect lots of if then else's
 		TownManager townManager = Game.Monopoly().towns;
 		if(townManager.hasCompleteStreet(Street.Ons_Dorp, player.getId()))
 			ownedStreets.add(Street.Ons_Dorp);
@@ -137,9 +140,51 @@ public class TradeGui extends JFrame implements ActionListener {
 			ownedStreets.add(Street.Rotterdam);
 		if(townManager.hasCompleteStreet(Street.Amsterdam, player.getId()))
 			ownedStreets.add(Street.Amsterdam);
+		//Filter streets, only "tradeable" streets/towns should be added
 		for(int i = 0; i < ownedStreets.size(); i++) {
 			Street s = ownedStreets.get(i);
+			if(townManager.canTradeStreet(s)) {
+				tradeableStreets.add(s);
+			}
 		}
+		int totalSize = 0;
+		for(int i = 0; i < tradeableStreets.size(); i++) {
+			totalSize += townManager.getStreetSize(tradeableStreets.get(i));
+		}
+		Game.Log("Total Size: " + totalSize);
+		streetBoxes = new JCheckBox[totalSize];
+		for(int i = 0, currentItem = 0; i < tradeableStreets.size(); i++) {
+			Street s = tradeableStreets.get(i);
+			int streetSize = townManager.getStreetSize(s);
+			for(int j = 0; j < streetSize; j++) {
+				Town t = townManager.get(townManager.getTownIndexByStreetAndIndex(s, j));
+				JCheckBox jc = new JCheckBox(t.getName());
+				jc.setBackground(t.getColor());
+				streetBoxes[currentItem++] = jc;
+			}
+		}
+		//Push data to the class and wait for a repaint
+		if(isMyPlayer)
+			placeGiveBoxes = streetBoxes;
+		else
+			placeGetBoxes = streetBoxes;
+	}
+	
+	/**
+	 * Will update available items to select on the Trade Screen
+	 */
+	private void updateItems() {
+		PlayerMP player = null;
+		for(byte i = 0; i < 6; i++) {
+			if(Game.Monopoly().getPlayer(i).getUsername().equals(playerList.getSelectedItem())) {
+				player = Game.Monopoly().getPlayer(i);
+				break;
+			}
+		}
+		if(player == null)
+			return;
+		updateTradeItems(player, false);
+		updateTradeItems(Game.Monopoly().getMyPlayer(), true);
 	}
 	
 	@Override

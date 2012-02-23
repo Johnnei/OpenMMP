@@ -15,6 +15,7 @@ public class Town
 	private int price;
 	private int cost;
 	private SpecialTown type;
+	private Color color;
 
 	public Town(String name, Street street, int price, int cost)
 	{
@@ -24,6 +25,11 @@ public class Town
 		this.street = street;
 		houseCount = 0;
 		type = SpecialTown.Normaal;
+	}
+	
+	public Town(String name, Street street, int price, int cost, Color c) {
+		this(name, street, price, cost);
+		color = c;
 	}
 
 	public Town(String name, Street street, int price, int cost, SpecialTown special)
@@ -163,6 +169,14 @@ public class Town
 	{
 		return cost + ((((cost * 10) - cost) / 5) * houseCount);
 	}
+	
+	/**
+	 * Gets the amount of houses on this town
+	 * @return House Count
+	 */
+	public int getHouseCount() {
+		return houseCount;
+	}
 
 	public String getOwner()
 	{
@@ -211,6 +225,14 @@ public class Town
 	public SpecialTown getType()
 	{
 		return type;
+	}
+	
+	public Color getColor() {
+		return (color != null) ? color : null;
+	}
+	
+	public String toString() {
+		return getName();
 	}
 
 }

@@ -132,7 +132,7 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	private void buyHouse(int index) {
 		Game.Log("Buying House on " + Game.Monopoly().getTownManager().getStreetNameByIndex(ownedStreets[selectedStreet], index));
 		int sIndex = Game.Monopoly().getTownManager().getTownIndexByStreetAndIndex(ownedStreets[selectedStreet], index);
-		if(Game.Monopoly().getPlayer().getMoney() >= Game.Monopoly().getTownManager().getHousePrice(sIndex))
+		if(Game.Monopoly().getMyPlayer().getMoney() >= Game.Monopoly().getTownManager().getHousePrice(sIndex))
 			Game.Monopoly().addPacket(new Packet09BuyHouse((byte)sIndex));
 	}
 	

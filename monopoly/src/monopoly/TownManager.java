@@ -92,9 +92,17 @@ public class TownManager
 		return -1;
 	}
 	
-	public Town getTownByStreetAndIndex(Street s, int i) {
-		int index = getTownIndexByStreetAndIndex(s, i);
-		return (i != -1) ? get(index) : null;
+	public boolean canTradeStreet(Street s) {
+		for(int i = 0; i < towns.size(); i++) {
+			Town t = towns.get(i);
+			if(t.street == s) {
+				if(!t.hasOwner())
+					return false;
+				if(t.getHouseCount() > 0)
+					return false;
+			}
+		}
+		return true;
 	}
 	
 	public int getHousePrice(int index) {
@@ -128,14 +136,12 @@ public class TownManager
 
 	public boolean isBuyable(int index)
 	{
-		if (towns.get(index).getPlayer() == null)
-		{
+		if (towns.get(index).getPlayer() == null) {
 			SpecialTown t = towns.get(index).getType();
 			if(t == SpecialTown.Normaal || t == SpecialTown.Voorzieningen)
 				return true;
 			return false;
-		}
-		else
+		} else
 			return false;
 	}
 	

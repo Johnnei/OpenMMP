@@ -3,6 +3,7 @@ package monopoly;
 import gui.BuyHouseGUI;
 import gui.GameFrame;
 import gui.PopupManager;
+import gui.TradeGui;
 
 import java.net.Socket;
 import java.text.SimpleDateFormat;
@@ -47,7 +48,7 @@ public class Game
 	public static Game Monopoly() { return game; }
 	
 	public PlayerMP getPlayer(byte b) { return players[b]; }
-	public PlayerMP getPlayer() { return players[myId]; }
+	public PlayerMP getMyPlayer() { return players[myId]; }
 	public byte getMyID() { return myId; }
 	public void setMyID(byte b) { myId = b; }
 	
@@ -91,8 +92,8 @@ public class Game
 			socket.setId(myId);
 			players[socket.getId()] = socket;
 			Log("Sending Player Data...");
-			getPlayer().addPacket(new Packet03Username(username, socket.getId()));
-			getPlayer().addPacket(new Packet04Colorcode(colorCode, socket.getId()));
+			getMyPlayer().addPacket(new Packet03Username(username, socket.getId()));
+			getMyPlayer().addPacket(new Packet04Colorcode(colorCode, socket.getId()));
 			Log("Waiting for Server to start the game!");
 			
 			while(playerCount != gotPlayers || !hasSeed)
@@ -162,7 +163,7 @@ public class Game
 					Game.Log("Rolling Dice...");
 					break;
 				case nextTurn:
-					getPlayer().addPacket(new Packet06NextTurn());
+					getMyPlayer().addPacket(new Packet06NextTurn());
 					Game.Log("Ending turn...");
 					break;
 				case buyHouse:
@@ -170,10 +171,11 @@ public class Game
 					PopupManager.manager.showFrame(new BuyHouseGUI());
 					break;
 				case buyStreet:
-					getPlayer().addPacket(new Packet11BuyStreet());
+					getMyPlayer().addPacket(new Packet11BuyStreet());
 					Game.Log("Buying Street...");
 					break;
 				case trade:
+					PopupManager.manager.showFrame(new TradeGui());
 					Game.Log("Trading...");
 					break;
 			}
