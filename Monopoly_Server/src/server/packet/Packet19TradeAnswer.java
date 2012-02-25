@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import server.MMP;
+
 public class Packet19TradeAnswer extends Packet
 {
 
@@ -32,6 +34,10 @@ public class Packet19TradeAnswer extends Packet
 	@Override
 	public void handle()
 	{
+		if(accepted) {
+			//TODO Process Trade
+		} else
+			MMP.getServer().Monopoly().clearTradeData();
 	}
 
 }

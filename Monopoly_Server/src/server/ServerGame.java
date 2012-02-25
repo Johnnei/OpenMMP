@@ -11,6 +11,7 @@ import monopoly.Turn;
 import server.game.PlayerMP;
 import server.packet.Packet;
 import server.packet.Packet00SetTurn;
+import server.packet.Packet13Trade;
 
 public class ServerGame
 {
@@ -19,11 +20,7 @@ public class ServerGame
 	{
 		long startMs = System.currentTimeMillis();
 		MMP.Log("Initializing Server Data... ", false);
-		players = new PlayerMP[6];
-		turn = new Turn();
-		turnId = -1;
-		dice = new byte[] { 1, 1 };
-		rand = new Random();
+		initServer();
 		MMP.Log("Done ("+(System.currentTimeMillis() - startMs)+"ms)", true, false);
 		startMs = System.currentTimeMillis();
 		MMP.Log("Preparing Game Board... ", false);
@@ -32,6 +29,17 @@ public class ServerGame
 		initCardDeckGeneralFunds();
 		initCardDeckRandomFunds();
 		MMP.Log("Done ("+(System.currentTimeMillis() - startMs)+"ms)", true, false);
+	}
+	
+	/* Server Data */
+	
+	private void initServer() {
+		players = new PlayerMP[6];
+		turn = new Turn();
+		turnId = -1;
+		dice = new byte[] { 1, 1 };
+		rand = new Random();
+		tradePacket = null;
 	}
 	
 	/* Game Simulation */
@@ -127,6 +135,7 @@ public class ServerGame
 			if(getPlayer(++turnId) != null)
 			{
 				sendPacket(new Packet00SetTurn(turnId));
+				clearTradeData(); //Clear Trades which are aren't handled
 				turn.ResetTurn(turnId);
 				break;
 			}
@@ -237,6 +246,22 @@ public class ServerGame
 		return jackpot;
 	}
 	
+	public boolean hasTradeData() {
+		return tradePacket != null;
+	}
+	
+	public Packet13Trade getTradeData() {
+		return tradePacket;
+	}
+	
+	public void clearTradeData() {
+		tradePacket = null;
+	}
+	
+	public void setTrade(Packet13Trade p) {
+		tradePacket = p;
+	}
+	
 	private byte[] dice;
 	private byte phase;
 	private PlayerMP[] players;
@@ -248,5 +273,6 @@ public class ServerGame
 	private CardDeck generalFunds;
 	private CardDeck randomFunds;
 	private int jackpot;
+	private Packet13Trade tradePacket;
 	
 }

@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import server.MMP;
+
 public class Packet13Trade extends Packet
 {
 	byte[] townsGet;
@@ -55,6 +57,9 @@ public class Packet13Trade extends Packet
 	@Override
 	public void handle()
 	{
+		if(!MMP.getServer().Monopoly().hasTradeData()) {
+			MMP.getServer().Monopoly().setTrade(this);
+		}
 	}
 
 }
