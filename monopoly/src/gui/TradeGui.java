@@ -19,6 +19,7 @@ import monopoly.Street;
 import monopoly.Town;
 import monopoly.TownManager;
 import multiplayer.PlayerMP;
+import multiplayer.packet.Packet19TradeAnswer;
 
 public class TradeGui extends JFrame implements ActionListener {
 	
@@ -27,7 +28,7 @@ public class TradeGui extends JFrame implements ActionListener {
 	JCheckBox[] placeGiveBoxes;
 	JCheckBox[] placeGetBoxes;
 	JButton[] tradeButtons;
-	JComboBox playerList;
+	JComboBox<String> playerList;
 	boolean isRequest;
 	
 	public TradeGui() {
@@ -64,7 +65,7 @@ public class TradeGui extends JFrame implements ActionListener {
 		for(int i = 0; i < pList.length; i++) {
 			pList[i] = playerListTemp.get(i);
 		}
-		playerList = new JComboBox(pList);
+		playerList = new JComboBox<String>(pList);
 		playerList.setSelectedIndex(0);
 		placeGiveBoxes = new JCheckBox[0];
 		placeGetBoxes = new JCheckBox[0];
@@ -113,6 +114,10 @@ public class TradeGui extends JFrame implements ActionListener {
 		}
 		if(placeGetBoxes.length % 2 != 0) 
 			add(new JPanel());
+		//Add Buttons
+		for(int i = 0; i < tradeButtons.length; i++) {
+			add(tradeButtons[i]);
+		}
 		//Wrap it up
 		pack();
 	}
@@ -120,7 +125,7 @@ public class TradeGui extends JFrame implements ActionListener {
 	private void updateTradeItems(PlayerMP player, boolean isMyPlayer) {
 		ArrayList<Street> ownedStreets = new ArrayList<Street>();
 		ArrayList<Street> tradeableStreets = new ArrayList<Street>();
-		JCheckBox[] streetBoxes; //Temp value to prefect lots of if then else's
+		JCheckBox[] streetBoxes; //Temporary value to prevent lots of if then else's
 		TownManager townManager = Game.Monopoly().towns;
 		if(townManager.hasCompleteStreet(Street.Ons_Dorp, player.getId()))
 			ownedStreets.add(Street.Ons_Dorp);
@@ -192,6 +197,24 @@ public class TradeGui extends JFrame implements ActionListener {
 		if(e.getSource() instanceof JComboBox) {
 			updateItems();
 			generateScreen();
+		} else if(e.getSource() instanceof JButton) {//One of the x tradeButtons[]
+			for(int i = 0; i < tradeButtons.length; i++) {
+				if(e.getSource().equals(tradeButtons[i])) {
+					if(i == 0 && isRequest) {
+						//Accept
+						PopupManager.manager.close();
+						Game.Monopoly().addPacket(new Packet19TradeAnswer(true));
+					} else if(i == 0) {
+						//Send Request
+						PopupManager.manager.close();
+						//TODO Generate Data for Packet13
+					} else {
+						//Decline
+						PopupManager.manager.close();
+						Game.Monopoly().addPacket(new Packet19TradeAnswer(false));
+					}
+				}
+			}
 		}
 	}
 }

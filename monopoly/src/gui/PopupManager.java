@@ -24,4 +24,10 @@ public class PopupManager
 		this.frame = frame;
 		this.frame.setVisible(true);
 	}
+	
+	public void close() {
+		frame.setVisible(false);
+		frame.dispose();
+		frame = null;
+	}
 }

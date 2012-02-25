@@ -26,7 +26,7 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	/**
 	 * List of the available streets where the player can put houses on
 	 */
-	JComboBox streetList;
+	JComboBox<String> streetList;
 	Street[] ownedStreets;
 	int selectedStreet;
 	JButton[] buyHouseButtons;
@@ -74,7 +74,7 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 			streets[i] = Street.toString(ownedStreets.get(i));
 		}
 		
-		streetList = new JComboBox(streets);
+		streetList = new JComboBox<String>(streets);
 		
 		setLayout(new GridLayout(0, 2));
 		add(streetList);
