@@ -7,7 +7,8 @@ import java.io.IOException;
 public abstract class Packet
 {
 	
-	private static Class[] packetArray = new Class[19];
+	@SuppressWarnings("rawtypes")
+	private static Class[] packetArray = new Class[20];
 
 	public Packet()
 	{
@@ -36,9 +37,7 @@ public abstract class Packet
 	{
 		if (d.available() <= 0)
 			return null;
-		short packetId = d.readShort();
-		Class packetClass = packetArray[packetId];
-		Packet p = (Packet)packetClass.newInstance();
+		Packet p = (Packet) packetArray[d.readShort()].newInstance();
 		p.readData(d);
 		return p;
 	}
@@ -84,9 +83,10 @@ public abstract class Packet
 		registerClass(16, Packet16SetCardSeed.class);
 		registerClass(17, Packet17CardMove.class);
 		registerClass(18, Packet18JailData.class);
+		registerClass(19, Packet19TradeAnswer.class);
 	}
 	
-	public static void registerClass(int id, Class c)
+	public static void registerClass(int id, @SuppressWarnings("rawtypes") Class c)
 	{
 		packetArray[id] = c;
 	}
