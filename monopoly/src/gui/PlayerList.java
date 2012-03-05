@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JList;
 import monopoly.Game;
@@ -22,16 +23,16 @@ public class PlayerList extends JList
 
 	public void doUpdate()
 	{
-		Vector<String> vector = new Vector<String>();
-		Player[] players = game.getPlayers();
-		for (int i = 0; i < players.length; i++)
-		{
-			if (players[i] != null)
-			{
-				vector.add(players[i].getUsername() + " €" + players[i].MoneyString());
-			}
+		ArrayList<String> pList = new ArrayList<String>();
+		for(int i = 0; i < game.getPlayers().length; i++) {
+			if(game.getPlayer((byte)i) != null)
+				pList.add(game.getPlayer((byte)i).getUsername());
 		}
-		setListData(vector);
+		String[] plData = new String[pList.size()];
+		for(int i = 0; i < plData.length; i++) {
+			plData[i] = pList.get(i);
+		}
+		setListData(plData);
 	}
 
 }
