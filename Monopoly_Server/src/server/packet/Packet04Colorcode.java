@@ -33,8 +33,8 @@ public class Packet04Colorcode extends Packet
 	@Override
 	public void handle()
 	{
-		MMP.Log("Client " + MMP.getServer().Monopoly().getPlayer(id).getUsername() + " picked color " + code);
-		MMP.getServer().Monopoly().setColor(id, code);
+		MMP.Log("Client " + MMP.getServer().getMonopoly().getPlayer(id).getUsername() + " picked color " + code);
+		MMP.getServer().getMonopoly().setColor(id, code);
 	}
 
 }

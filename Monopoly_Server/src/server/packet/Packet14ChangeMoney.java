@@ -19,7 +19,7 @@ public class Packet14ChangeMoney extends Packet
 	{
 		id = pId;
 		amount = mChange;
-		MMP.Log(MMP.getServer().Monopoly().getPlayer(id).getUsername() + " has gained " + amount + " money");
+		MMP.Log(MMP.getServer().getMonopoly().getPlayer(id).getUsername() + " has gained " + amount + " money");
 	}
 	
 	@Override

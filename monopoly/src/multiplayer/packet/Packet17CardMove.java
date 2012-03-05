@@ -34,7 +34,7 @@ public class Packet17CardMove extends Packet
 	@Override
 	public void handle()
 	{
-		Game.Monopoly().movePlayer(amount);
+		Game.getMonopoly().movePlayer(amount);
 	}
 
 }

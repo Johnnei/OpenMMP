@@ -22,7 +22,7 @@ public class GameFrame extends JComponent implements Runnable
 
 	public GameFrame(int WIDTH, int HEIGHT, int Split)
 	{
-		this.game = Game.Monopoly();
+		this.game = Game.getMonopoly();
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setMinimumSize(new Dimension(WIDTH, HEIGHT));
 		setMaximumSize(new Dimension(WIDTH, HEIGHT));
@@ -43,7 +43,7 @@ public class GameFrame extends JComponent implements Runnable
 		{
 		}
 		GameFrame gframe = new GameFrame(800, 600, 150);
-		JFrame jframe = new JFrame("openMMP - " + Game.VERSION + " - " + Game.Monopoly().getMyPlayer().getUsername());
+		JFrame jframe = new JFrame("openMMP - " + Game.VERSION + " - " + Game.getMonopoly().getMyPlayer().getUsername());
 		jframe.setIconImage(Images.getImages().Icon);
 		jframe.add(gframe);
 		jframe.pack();

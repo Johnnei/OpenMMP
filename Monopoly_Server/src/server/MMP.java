@@ -63,8 +63,8 @@ public class MMP
 			game.setPlayer(playermp, playermp.getId());
 			Packet02GiveID packet = new Packet02GiveID();
 			packet.id = playermp.getId();
-			Monopoly().sendPacket(packet, packet.id);
-			Monopoly().sendPacket(new Packet16SetCardSeed(Monopoly().getCardSeed()), packet.id);
+			getMonopoly().sendPacket(packet, packet.id);
+			getMonopoly().sendPacket(new Packet16SetCardSeed(getMonopoly().getCardSeed()), packet.id);
 			Log("Player " + packet.id + " has joined");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,22 +105,22 @@ public class MMP
 		pAccepter.interrupt();
 		Log("Preparing Game...");
 		
-		Monopoly().sendPacket(new Packet05StartGame(nextId));
-		for(int i = 0; i < Monopoly().getPlayers().length; i++)
+		getMonopoly().sendPacket(new Packet05StartGame(nextId));
+		for(int i = 0; i < getMonopoly().getPlayers().length; i++)
 		{
-			PlayerMP player = Monopoly().getPlayer(i);
+			PlayerMP player = getMonopoly().getPlayer(i);
 			if(player != null)
 			{
-				Monopoly().sendPacket(new Packet01PlayerJoin(player.getUsername(), player.getColorCode(), player.getId()));
-				Monopoly().sendPacket(new Packet14ChangeMoney(player.getId(), 150000));
-				Monopoly().getPlayer(i).incrementMoney(150000);
+				getMonopoly().sendPacket(new Packet01PlayerJoin(player.getUsername(), player.getColorCode(), player.getId()));
+				getMonopoly().sendPacket(new Packet14ChangeMoney(player.getId(), 150000));
+				getMonopoly().getPlayer(i).incrementMoney(150000);
 			}
 		}
 		
 		Log("Starting Game...");
 		// Phase 2 - Let's Play
 		game.setPhase(2);
-		Monopoly().advanceTurn();
+		getMonopoly().advanceTurn();
 		
 		while(game.isPhase(2))
 		{
@@ -175,7 +175,7 @@ public class MMP
 	
 	//Game
 	private ServerGame game;
-	public ServerGame Monopoly() { return game; }
+	public ServerGame getMonopoly() { return game; }
 	
 	//Connection Data
 	private byte nextId = 0;

@@ -30,7 +30,7 @@ public class Packet14ChangeMoney extends Packet
 	@Override
 	public void handle()
 	{
-		Game.Monopoly().changePlayerMoney(playerId, amount);
+		Game.getMonopoly().changePlayerMoney(playerId, amount);
 	}
 
 }

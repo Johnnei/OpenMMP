@@ -45,31 +45,31 @@ public class Card
 	{
 		if(moneyChange != 0)
 		{
-			MMP.getServer().Monopoly().getCurrentPlayer().incrementMoney(moneyChange);
-			MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(MMP.getServer().Monopoly().getCurrentPlayer().getId(), moneyChange));
+			MMP.getServer().getMonopoly().getCurrentPlayer().incrementMoney(moneyChange);
+			MMP.getServer().getMonopoly().sendPacket(new Packet14ChangeMoney(MMP.getServer().getMonopoly().getCurrentPlayer().getId(), moneyChange));
 		}
 		if(gotoIndex > -1)
 		{
 			if(gotoIndexNormal)
 			{
-				MMP.getServer().Monopoly().sendPacket(new Packet17CardMove(moveIndex));
+				MMP.getServer().getMonopoly().sendPacket(new Packet17CardMove(moveIndex));
 			}
 			else
 			{
-				MMP.getServer().Monopoly().sendPacket(new Packet15SetIndex(MMP.getServer().Monopoly().getCurrentPlayer().getId(), gotoIndex));
+				MMP.getServer().getMonopoly().sendPacket(new Packet15SetIndex(MMP.getServer().getMonopoly().getCurrentPlayer().getId(), gotoIndex));
 			}
 		}
 		if(moveIndex != 0)
 		{
 			if(gotoIndexNormal)
 			{
-				MMP.getServer().Monopoly().sendPacket(new Packet17CardMove(moveIndex));
+				MMP.getServer().getMonopoly().sendPacket(new Packet17CardMove(moveIndex));
 			}
 			else
 			{
-				byte index = MMP.getServer().Monopoly().getCurrentPlayer().getIndex();
+				byte index = MMP.getServer().getMonopoly().getCurrentPlayer().getIndex();
 				index += moveIndex;
-				MMP.getServer().Monopoly().sendPacket(new Packet15SetIndex(MMP.getServer().Monopoly().getCurrentPlayer().getId(), index));
+				MMP.getServer().getMonopoly().sendPacket(new Packet15SetIndex(MMP.getServer().getMonopoly().getCurrentPlayer().getId(), index));
 			}
 		}
 			

@@ -83,7 +83,7 @@ public class Town
 
 	public PlayerMP getPlayer()
 	{
-		return MMP.getServer().Monopoly().getPlayer(ownerId);
+		return MMP.getServer().getMonopoly().getPlayer(ownerId);
 	}
 
 	public void setOwner(byte pId)

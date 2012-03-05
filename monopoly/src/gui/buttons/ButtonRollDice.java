@@ -15,7 +15,7 @@ public class ButtonRollDice extends JButton implements ActionListener
 
 	public ButtonRollDice()
 	{
-		game = Game.Monopoly();
+		game = Game.getMonopoly();
 		setText("Roll Dice");
 		addActionListener(this);
 	}

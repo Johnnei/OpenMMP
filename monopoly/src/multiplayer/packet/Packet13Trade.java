@@ -6,20 +6,24 @@ import java.io.IOException;
 
 public class Packet13Trade extends Packet
 {
-	byte[] townsGet;
-	byte[] townsGive;
-	int moneyGet;
-	int moneyGive;
+	public byte[] townsGet;
+	public byte[] townsGive;
+	public int moneyGet;
+	public int moneyGive;
+	public byte playerGetId;
+	public byte playerGiveId;
 	
 	public Packet13Trade()
 	{
 	}
 	
-	public Packet13Trade(byte[] townsGet, byte[] townsGive, int moneyGet, int moneyGive) {
+	public Packet13Trade(byte[] townsGet, byte[] townsGive, int moneyGet, int moneyGive, byte pGet, byte pGive) {
 		this.townsGet = townsGet;
 		this.townsGive = townsGive;
 		this.moneyGet = moneyGet;
 		this.moneyGive = moneyGive;
+		playerGetId = pGet;
+		playerGiveId = pGive;
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class Packet15SetIndex extends Packet
 	@Override
 	public void handle()
 	{
-		Game.Monopoly().getPlayer(pId).setIndex(sIndex);
+		Game.getMonopoly().getPlayer(pId).setIndex(sIndex);
 	}
 
 }

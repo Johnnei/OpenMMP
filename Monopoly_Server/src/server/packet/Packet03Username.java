@@ -34,7 +34,7 @@ public class Packet03Username extends Packet
 	public void handle()
 	{
 		MMP.Log("Client " + id + " identified with " + username);
-		MMP.getServer().Monopoly().setUsername(id, username);
+		MMP.getServer().getMonopoly().setUsername(id, username);
 	}
 
 }

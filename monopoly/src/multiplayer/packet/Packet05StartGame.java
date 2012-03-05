@@ -33,7 +33,7 @@ public class Packet05StartGame extends Packet
 	@Override
 	public void handle()
 	{
-		Game.Monopoly().playerCount = pCount;
+		Game.getMonopoly().playerCount = pCount;
 		Game.Log("Server wants to start! We got " + pCount + " players!");
 	}
 	

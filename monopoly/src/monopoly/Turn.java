@@ -49,9 +49,9 @@ public class Turn
 
 	public void rollDice()
 	{
-		if (!myTurn(Game.Monopoly().getMyID()))
+		if (!myTurn(Game.getMonopoly().getMyID()))
 			return;
-		Game.Monopoly().getMyPlayer().addPacket(new Packet07RollDice());
+		Game.getMonopoly().getMyPlayer().addPacket(new Packet07RollDice());
 	}
 
 }

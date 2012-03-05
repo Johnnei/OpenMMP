@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,7 @@ import monopoly.Street;
 import monopoly.Town;
 import monopoly.TownManager;
 import multiplayer.PlayerMP;
+import multiplayer.packet.Packet13Trade;
 import multiplayer.packet.Packet19TradeAnswer;
 
 public class TradeGui extends JFrame implements ActionListener {
@@ -28,7 +30,8 @@ public class TradeGui extends JFrame implements ActionListener {
 	JCheckBox[] placeGiveBoxes;
 	JCheckBox[] placeGetBoxes;
 	JButton[] tradeButtons;
-	JComboBox<String> playerList;
+	JComboBox playerList;
+	byte otherPlayerId = -1;
 	boolean isRequest;
 	
 	public TradeGui() {
@@ -53,11 +56,11 @@ public class TradeGui extends JFrame implements ActionListener {
 		} else
 			tradeButtons[0] = new JButton("Send Request");
 		//Generate a List of all Player Names
-		PlayerMP[] players = Game.Monopoly().getPlayers();
+		PlayerMP[] players = Game.getMonopoly().getPlayers();
 		ArrayList<String> playerListTemp = new ArrayList<String>();
 		for(int i = 0 ; i < 6; i++) {
 			if(players[i] != null) {
-				if(players[i].getId() != Game.Monopoly().getMyID())
+				if(players[i].getId() != Game.getMonopoly().getMyID())
 					playerListTemp.add(players[i].getUsername());
 			}
 		}
@@ -65,7 +68,7 @@ public class TradeGui extends JFrame implements ActionListener {
 		for(int i = 0; i < pList.length; i++) {
 			pList[i] = playerListTemp.get(i);
 		}
-		playerList = new JComboBox<String>(pList);
+		playerList = new JComboBox(pList);
 		playerList.setSelectedIndex(0);
 		placeGiveBoxes = new JCheckBox[0];
 		placeGetBoxes = new JCheckBox[0];
@@ -82,7 +85,7 @@ public class TradeGui extends JFrame implements ActionListener {
 		int height = 400;
 		setTitle("openMMP - " + Game.VERSION + " - Trading");
 		setIconImage(Images.getImages().Icon);
-		setLocation((int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getX() + (Game.Monopoly().getGameFrame().getWidth() / 2) - (width / 2)), (int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getY() + (Game.Monopoly().getGameFrame().getHeight() / 2) - (height / 2)));
+		setLocation((int)(Game.getMonopoly().getGameFrame().getLocationOnScreen().getX() + (Game.getMonopoly().getGameFrame().getWidth() / 2) - (width / 2)), (int)(Game.getMonopoly().getGameFrame().getLocationOnScreen().getY() + (Game.getMonopoly().getGameFrame().getHeight() / 2) - (height / 2)));
 		setPreferredSize(new Dimension(width, height));
 		setMinimumSize(new Dimension(width, height));
 		setMaximumSize(new Dimension(width, height));
@@ -123,10 +126,12 @@ public class TradeGui extends JFrame implements ActionListener {
 	}
 	
 	private void updateTradeItems(PlayerMP player, boolean isMyPlayer) {
+		if(!isMyPlayer)
+			otherPlayerId = player.getId();
 		ArrayList<Street> ownedStreets = new ArrayList<Street>();
 		ArrayList<Street> tradeableStreets = new ArrayList<Street>();
 		JCheckBox[] streetBoxes; //Temporary value to prevent lots of if then else's
-		TownManager townManager = Game.Monopoly().towns;
+		TownManager townManager = Game.getMonopoly().towns;
 		if(townManager.hasCompleteStreet(Street.Ons_Dorp, player.getId()))
 			ownedStreets.add(Street.Ons_Dorp);
 		if(townManager.hasCompleteStreet(Street.Arnhem, player.getId()))
@@ -181,15 +186,15 @@ public class TradeGui extends JFrame implements ActionListener {
 	private void updateItems() {
 		PlayerMP player = null;
 		for(byte i = 0; i < 6; i++) {
-			if(Game.Monopoly().getPlayer(i).getUsername().equals(playerList.getSelectedItem())) {
-				player = Game.Monopoly().getPlayer(i);
+			if(Game.getMonopoly().getPlayer(i).getUsername().equals(playerList.getSelectedItem())) {
+				player = Game.getMonopoly().getPlayer(i);
 				break;
 			}
 		}
 		if(player == null)
 			return;
 		updateTradeItems(player, false);
-		updateTradeItems(Game.Monopoly().getMyPlayer(), true);
+		updateTradeItems(Game.getMonopoly().getMyPlayer(), true);
 	}
 	
 	@Override
@@ -203,18 +208,66 @@ public class TradeGui extends JFrame implements ActionListener {
 					if(i == 0 && isRequest) {
 						//Accept
 						PopupManager.manager.close();
-						Game.Monopoly().addPacket(new Packet19TradeAnswer(true));
+						Game.getMonopoly().addPacket(new Packet19TradeAnswer(true));
 					} else if(i == 0) {
+						//0 == MoneyGive, 1 == MoneyGet
+						if(!isInt(moneyFields[0].getText())) {
+							moneyFields[0].setBackground(Color.red);
+							return;
+						}
+						if(!isInt(moneyFields[1].getText())) {
+							moneyFields[1].setBackground(Color.red);
+							return;
+						}
+						if(otherPlayerId == -1)
+							return;
+						int moneyGet = Integer.parseInt(moneyFields[1].getText());
+						int moneyGive = Integer.parseInt(moneyFields[0].getText());
 						//Send Request
+						//Generate Data for Packet13
+						ArrayList<Byte> streetsToGet = new ArrayList<Byte>();
+						ArrayList<Byte> streetsToGive = new ArrayList<Byte>();
+						for(int j = 0; j < placeGetBoxes.length; j++) {
+							if(placeGetBoxes[j].isSelected())
+								streetsToGet.add(Game.getMonopoly().getTownManager().getTownIndexByName(placeGetBoxes[j].getText()));
+						}
+						for(int j = 0; j < placeGiveBoxes.length; j++) {
+							if(placeGiveBoxes[j].isSelected())
+								streetsToGive.add(Game.getMonopoly().getTownManager().getTownIndexByName(placeGiveBoxes[j].getText()));
+						}
+						byte[] streetsGet = new byte[streetsToGet.size()];
+						byte[] streetsGive = new byte[streetsToGive.size()];
+						for(int j = 0; j < streetsGet.length; j++) {
+							streetsGet[j] = streetsToGet.get(j);
+						}
+						for(int j = 0; j < streetsGive.length; j++) {
+							streetsGive[j] = streetsToGive.get(j);
+						}
+						Packet13Trade trade = new Packet13Trade();
+						trade.moneyGet = moneyGet;
+						trade.moneyGive = moneyGive;
+						trade.townsGet = streetsGet;
+						trade.townsGive = streetsGive;
+						trade.playerGetId = Game.getMonopoly().getMyID();
+						trade.playerGiveId = otherPlayerId;
+						Game.getMonopoly().addPacket(trade);
 						PopupManager.manager.close();
-						//TODO Generate Data for Packet13
 					} else {
 						//Decline
 						PopupManager.manager.close();
-						Game.Monopoly().addPacket(new Packet19TradeAnswer(false));
+						Game.getMonopoly().addPacket(new Packet19TradeAnswer(false));
 					}
 				}
 			}
+		}
+	}
+	
+	private boolean isInt(String s) {
+		try {
+			Integer.parseInt(s);
+			return true;
+		} catch(Exception e) {
+			return false;
 		}
 	}
 }

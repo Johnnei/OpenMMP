@@ -45,7 +45,7 @@ public class Game
 	
 	/* Pass by Reference */
 	private static Game game;
-	public static Game Monopoly() { return game; }
+	public static Game getMonopoly() { return game; }
 	
 	public PlayerMP getPlayer(byte b) { return players[b]; }
 	public PlayerMP getMyPlayer() { return players[myId]; }

@@ -26,7 +26,7 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	/**
 	 * List of the available streets where the player can put houses on
 	 */
-	JComboBox<String> streetList;
+	JComboBox streetList;
 	Street[] ownedStreets;
 	int selectedStreet;
 	JButton[] buyHouseButtons;
@@ -37,7 +37,7 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 		int height = 300;
 		setTitle("openMMP - " + Game.VERSION + " - Housing");
 		setIconImage(Images.getImages().Icon);
-		setLocation((int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getX() + (Game.Monopoly().getGameFrame().getWidth() / 2) - (width / 2)), (int)(Game.Monopoly().getGameFrame().getLocationOnScreen().getY() + (Game.Monopoly().getGameFrame().getHeight() / 2) - (height / 2)));
+		setLocation((int)(Game.getMonopoly().getGameFrame().getLocationOnScreen().getX() + (Game.getMonopoly().getGameFrame().getWidth() / 2) - (width / 2)), (int)(Game.getMonopoly().getGameFrame().getLocationOnScreen().getY() + (Game.getMonopoly().getGameFrame().getHeight() / 2) - (height / 2)));
 		setPreferredSize(new Dimension(width, height));
 		setMinimumSize(new Dimension(width, height));
 		setMaximumSize(new Dimension(width, height));
@@ -45,25 +45,25 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 		
 		//Go through all streets (which can have housing) and check which are owned by the player
 		ArrayList<Street> ownedStreets = new ArrayList<Street>();
-		TownManager townManager = Game.Monopoly().getTownManager();
+		TownManager townManager = Game.getMonopoly().getTownManager();
 		
-		if(townManager.hasCompleteStreet(Street.Ons_Dorp, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Ons_Dorp, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Ons_Dorp);
-		if(townManager.hasCompleteStreet(Street.Arnhem, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Arnhem, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Arnhem);
-		if(townManager.hasCompleteStreet(Street.Haarlem, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Haarlem, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Haarlem);
-		if(townManager.hasCompleteStreet(Street.Utrecht, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Utrecht, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Utrecht);
-		if(townManager.hasCompleteStreet(Street.Groningen, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Groningen, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Groningen);
-		if(townManager.hasCompleteStreet(Street.Gravenhaven, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Gravenhaven, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Gravenhaven);
-		if(townManager.hasCompleteStreet(Street.Groningen, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Groningen, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Groningen);
-		if(townManager.hasCompleteStreet(Street.Rotterdam, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Rotterdam, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Rotterdam);
-		if(townManager.hasCompleteStreet(Street.Amsterdam, Game.Monopoly().getMyID()))
+		if(townManager.hasCompleteStreet(Street.Amsterdam, Game.getMonopoly().getMyID()))
 			ownedStreets.add(Street.Amsterdam);
 		
 		String[] streets = new String[ownedStreets.size()];
@@ -74,7 +74,7 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 			streets[i] = Street.toString(ownedStreets.get(i));
 		}
 		
-		streetList = new JComboBox<String>(streets);
+		streetList = new JComboBox(streets);
 		
 		setLayout(new GridLayout(0, 2));
 		add(streetList);
@@ -108,7 +108,7 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 		if(selectedStreet == -1)
 			return;
 		
-		TownManager townManager = Game.Monopoly().getTownManager();
+		TownManager townManager = Game.getMonopoly().getTownManager();
 		int streetSize = townManager.getStreetSize(ownedStreets[selectedStreet]);
 		buyHouseButtons = new JButton[streetSize];
 		sellHouseButtons = new JButton[streetSize];
@@ -130,16 +130,16 @@ public class BuyHouseGUI extends JFrame implements ActionListener {
 	}
 	
 	private void buyHouse(int index) {
-		Game.Log("Buying House on " + Game.Monopoly().getTownManager().getStreetNameByIndex(ownedStreets[selectedStreet], index));
-		int sIndex = Game.Monopoly().getTownManager().getTownIndexByStreetAndIndex(ownedStreets[selectedStreet], index);
-		if(Game.Monopoly().getMyPlayer().getMoney() >= Game.Monopoly().getTownManager().getHousePrice(sIndex))
-			Game.Monopoly().addPacket(new Packet09BuyHouse((byte)sIndex));
+		Game.Log("Buying House on " + Game.getMonopoly().getTownManager().getStreetNameByIndex(ownedStreets[selectedStreet], index));
+		int sIndex = Game.getMonopoly().getTownManager().getTownIndexByStreetAndIndex(ownedStreets[selectedStreet], index);
+		if(Game.getMonopoly().getMyPlayer().getMoney() >= Game.getMonopoly().getTownManager().getHousePrice(sIndex))
+			Game.getMonopoly().addPacket(new Packet09BuyHouse((byte)sIndex));
 	}
 	
 	private void sellHouse(int index) {
-		Game.Log("Selling House on " + Game.Monopoly().getTownManager().getStreetNameByIndex(ownedStreets[selectedStreet], index));
-		int sIndex = Game.Monopoly().getTownManager().getTownIndexByStreetAndIndex(ownedStreets[selectedStreet], index);
-		Game.Monopoly().addPacket(new Packet09BuyHouse((byte)sIndex, false));
+		Game.Log("Selling House on " + Game.getMonopoly().getTownManager().getStreetNameByIndex(ownedStreets[selectedStreet], index));
+		int sIndex = Game.getMonopoly().getTownManager().getTownIndexByStreetAndIndex(ownedStreets[selectedStreet], index);
+		Game.getMonopoly().addPacket(new Packet09BuyHouse((byte)sIndex, false));
 	}
 
 	@Override

@@ -148,7 +148,7 @@ public class ServerGame
 	
 	public PlayerMP getCurrentPlayer()
 	{
-		return getPlayer(MMP.getServer().Monopoly().turn.getID());
+		return getPlayer(MMP.getServer().getMonopoly().turn.getID());
 	}
 	
 	public void setPlayer(PlayerMP player, byte slot)

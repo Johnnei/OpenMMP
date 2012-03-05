@@ -15,7 +15,7 @@ public class ButtonNextTurn extends JButton implements ActionListener
 
 	public ButtonNextTurn()
 	{
-		game = Game.Monopoly();
+		game = Game.getMonopoly();
 		setText("Next Turn");
 		addActionListener(this);
 	}

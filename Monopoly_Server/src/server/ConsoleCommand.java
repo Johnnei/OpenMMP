@@ -32,10 +32,10 @@ public class ConsoleCommand extends Thread
 						if(!isInt(args[1])) {
 							return;
 						}
-						byte oldIndex = mmp.Monopoly().getCurrentPlayer().getIndex();
-						mmp.Monopoly().getCurrentPlayer().setIndex((byte)Integer.parseInt(args[1]));
+						byte oldIndex = mmp.getMonopoly().getCurrentPlayer().getIndex();
+						mmp.getMonopoly().getCurrentPlayer().setIndex((byte)Integer.parseInt(args[1]));
 						new Packet11BuyStreet().handle();
-						mmp.Monopoly().getCurrentPlayer().setIndex(oldIndex);
+						mmp.getMonopoly().getCurrentPlayer().setIndex(oldIndex);
 						System.out.println("Town has been given");
 					}
 				}

@@ -113,14 +113,14 @@ public class Board extends JComponent
 		drawImage(g, Images.getImages().Dice[game.getDice(1) - 1], 210, 100, 310, 200);
 		g.setColor(new Color(Integer.valueOf("000000", 16)));
 		g.setFont(new Font("Times New Roman", Font.PLAIN, 24));
-		g.drawString(Game.Monopoly().getCurrentUser() + "'s Turn", 100, 225);
+		g.drawString(Game.getMonopoly().getCurrentUser() + "'s Turn", 100, 225);
 		g.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		g.drawString(Game.Monopoly().getState(), 100, 245);
-		g.drawString(Game.Monopoly().getStateSub(), 100, 260);
+		g.drawString(Game.getMonopoly().getState(), 100, 245);
+		g.drawString(Game.getMonopoly().getStateSub(), 100, 260);
 		
-		for (int i = 0; i < Game.Monopoly().towns.size(); i++)
+		for (int i = 0; i < Game.getMonopoly().towns.size(); i++)
 		{
-			Town t = Game.Monopoly().towns.get(i);
+			Town t = Game.getMonopoly().towns.get(i);
 			/* Bottom Row */
 			//Start
 			if(i == 1)

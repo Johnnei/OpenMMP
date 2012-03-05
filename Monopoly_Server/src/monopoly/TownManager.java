@@ -156,7 +156,7 @@ public class TownManager
 			int voorzieningCount = 1;
 			if(towns.get(12).isSameOwner(towns.get(28).getOwnerId()))
 				voorzieningCount = 2;
-			return MMP.getServer().Monopoly().diceEyesCount() * 500 * voorzieningCount;
+			return MMP.getServer().getMonopoly().diceEyesCount() * 500 * voorzieningCount;
 		}
 		else
 			return t.getCost();

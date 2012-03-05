@@ -15,7 +15,7 @@ public class ButtonBuyHouse extends JButton implements ActionListener
 
 	public ButtonBuyHouse()
 	{
-		game = Game.Monopoly();
+		game = Game.getMonopoly();
 		setText("Buy House");
 		addActionListener(this);
 	}

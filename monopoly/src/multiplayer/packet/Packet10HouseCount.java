@@ -31,6 +31,6 @@ public class Packet10HouseCount extends Packet
 	@Override
 	public void handle()
 	{
-		Game.Monopoly().towns.setHouse(index, count);
+		Game.getMonopoly().towns.setHouse(index, count);
 	}
 }

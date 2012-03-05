@@ -38,13 +38,13 @@ public class Packet01PlayerJoin extends Packet
 	public void handle()
 	{
 		Game.Log("Player " + id + " has joined the game as 0x" + colorCode + " \"" + user + "\"");
-		if(Game.Monopoly().getMyID() == id) //Ignore Myself
+		if(Game.getMonopoly().getMyID() == id) //Ignore Myself
 		{
 			Game.Log("I joined the game! (" + id + ")");
 			return;
 		}
 		PlayerMP player = new PlayerMP(user, id, colorCode);
-		Game.Monopoly().registerPlayer(player);
+		Game.getMonopoly().registerPlayer(player);
 	}
 	
 	public int size()

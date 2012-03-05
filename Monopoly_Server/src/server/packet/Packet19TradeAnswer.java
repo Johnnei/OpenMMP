@@ -35,9 +35,23 @@ public class Packet19TradeAnswer extends Packet
 	public void handle()
 	{
 		if(accepted) {
-			//TODO Process Trade
-		} else
-			MMP.getServer().Monopoly().clearTradeData();
+			Packet13Trade trade = MMP.getServer().getMonopoly().getTradeData();
+			if(trade.moneyGet != 0) {
+				MMP.getServer().getMonopoly().sendPacket(new Packet14ChangeMoney(trade.playerGetId, trade.moneyGet));
+				MMP.getServer().getMonopoly().sendPacket(new Packet14ChangeMoney(trade.playerGiveId, -trade.moneyGet));
+			}
+			if(trade.moneyGive != 0) {
+				MMP.getServer().getMonopoly().sendPacket(new Packet14ChangeMoney(trade.playerGiveId, trade.moneyGive));
+				MMP.getServer().getMonopoly().sendPacket(new Packet14ChangeMoney(trade.playerGetId, -trade.moneyGive));
+			}
+			for(int i = 0; i < trade.townsGet.length; i++) {
+				MMP.getServer().getMonopoly().sendPacket(new Packet12OwnerStreet(trade.playerGetId, trade.townsGet[i]));
+			}
+			for(int i = 0; i < trade.townsGive.length; i++) {
+				MMP.getServer().getMonopoly().sendPacket(new Packet12OwnerStreet(trade.playerGiveId, trade.townsGive[i]));
+			}
+		}
+		MMP.getServer().getMonopoly().clearTradeData();
 	}
 
 }

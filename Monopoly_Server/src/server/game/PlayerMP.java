@@ -35,7 +35,7 @@ public class PlayerMP extends Player
 		if (index > 40)
 		{
 			index -= 40;
-			MMP.getServer().Monopoly().sendPacket(new Packet14ChangeMoney(playerId, 20000)); //Gain Money on passing start
+			MMP.getServer().getMonopoly().sendPacket(new Packet14ChangeMoney(playerId, 20000)); //Gain Money on passing start
 		}
 		else if (index < 0)
 			index += 40;
@@ -44,13 +44,13 @@ public class PlayerMP extends Player
 	
 	public void jailPlayer()
 	{
-		MMP.getServer().Monopoly().sendPacket(new Packet18JailData(playerId, (byte)0x01));
+		MMP.getServer().getMonopoly().sendPacket(new Packet18JailData(playerId, (byte)0x01));
 		super.jailPlayer();
 	}
 	
 	public void releaseFromJail()
 	{
-		MMP.getServer().Monopoly().sendPacket(new Packet18JailData(playerId, (byte)0x02));
+		MMP.getServer().getMonopoly().sendPacket(new Packet18JailData(playerId, (byte)0x02));
 		super.releaseFromJail();
 	}
 	

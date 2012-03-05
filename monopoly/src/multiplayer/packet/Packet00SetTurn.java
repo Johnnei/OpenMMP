@@ -31,8 +31,8 @@ public class Packet00SetTurn extends Packet
 
 	public void handle()
 	{
-		Game.Monopoly().turn = new Turn(Game.Monopoly().getPlayers()[turn]);
-		Game.Monopoly().resetStateString();
+		Game.getMonopoly().turn = new Turn(Game.getMonopoly().getPlayers()[turn]);
+		Game.getMonopoly().resetStateString();
 	}
 	
 	public int size()

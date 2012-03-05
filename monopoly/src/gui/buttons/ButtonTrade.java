@@ -15,7 +15,7 @@ public class ButtonTrade extends JButton implements ActionListener
 
 	public ButtonTrade()
 	{
-		game = Game.Monopoly();
+		game = Game.getMonopoly();
 		setText("Trade");
 		addActionListener(this);
 	}

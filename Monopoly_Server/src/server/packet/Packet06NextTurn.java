@@ -26,8 +26,8 @@ public class Packet06NextTurn extends Packet
 	@Override
 	public void handle()
 	{
-		if(!MMP.getServer().Monopoly().turn.canRollDice())
-			MMP.getServer().Monopoly().advanceTurn();
+		if(!MMP.getServer().getMonopoly().turn.canRollDice())
+			MMP.getServer().getMonopoly().advanceTurn();
 	}
 
 }

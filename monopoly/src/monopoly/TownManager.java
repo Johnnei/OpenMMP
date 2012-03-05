@@ -68,6 +68,15 @@ public class TownManager
 		return true;
 	}
 	
+	public byte getTownIndexByName(String s) {
+		for(int i = 0; i < towns.size(); i++) {
+			if(get(i).getName().equals(s)) {
+				return (byte)i;
+			}
+		}
+		return (byte)-1;
+	}
+	
 	public void setHouse(int index, int count) {
 		Town t = towns.get(index);
 		t.setHouseCount(count);
@@ -130,7 +139,7 @@ public class TownManager
 	public void setOwner(byte pId, byte sIndex)
 	{
 		Town t = towns.get(sIndex);
-		t.setOwner(Game.Monopoly().getPlayer(pId));
+		t.setOwner(Game.getMonopoly().getPlayer(pId));
 		towns.set(sIndex, t);
 	}
 
@@ -146,12 +155,12 @@ public class TownManager
 	}
 	
 	public boolean isRandomFunds() {
-		int cIndex = Game.Monopoly().getCurrentIndex();
+		int cIndex = Game.getMonopoly().getCurrentIndex();
 		return get(cIndex).getType() == SpecialTown.Kans;
 	}
 	
 	public boolean isGeneralFunds() {
-		int cIndex = Game.Monopoly().getCurrentIndex();
+		int cIndex = Game.getMonopoly().getCurrentIndex();
 		return get(cIndex).getType() == SpecialTown.Algemeen_Fonds;
 	}
 
@@ -181,7 +190,7 @@ public class TownManager
 			int voorzieningCount = 1;
 			if(towns.get(12).isSameOwner(towns.get(28).getOwnerId()))
 				voorzieningCount = 2;
-			return Game.Monopoly().diceEyesCount() * 500 * voorzieningCount;
+			return Game.getMonopoly().diceEyesCount() * 500 * voorzieningCount;
 		}
 	}
 
